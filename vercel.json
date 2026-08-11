@@ -8,17 +8,7 @@
           "value": "profile.larp.pp.ua"
         }
       ],
-      "destination": "/profile/index.html"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "profile.larp.pp.ua"
-        }
-      ],
-      "destination": "/profile/:path*"
+      "destination": "/profile/"
     }
   ]
 }
