@@ -20,215 +20,128 @@
             justify-content: center;
             align-items: center;
             background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat fixed;
-            perspective: 1000px; /* Включаем 3D-перспективу */
+            perspective: 1000px;
             overflow-x: hidden;
             overflow-y: auto;
             padding: 20px 0;
         }
 
-        /* Главный контейнер с 3D-наклоном и Liquid Glass */
+        /* Главная панель с 3D-наклоном и эффектом матового стекла */
         .glass-panel {
             background: rgba(15, 15, 15, 0.45);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 32px;
             width: 92%;
-            max-width: 620px;
+            max-width: 580px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             
-            /* Плавная анимация трансформации */
             transition: transform 0.5s ease;
             transform-style: preserve-3d;
             will-change: transform;
         }
 
-        /* Шапка профиля */
+        /* Шапка */
         .header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
         .header h1 {
             font-family: monospace;
             font-size: 28px;
+            letter-spacing: 1px;
             margin-bottom: 6px;
         }
 
-        /* Карточки */
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.2s, border-color 0.2s;
-        }
-        
-        .card:hover {
-            background: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.15);
+        .header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Блок профиля */
-        .profile-card {
-            justify-content: space-between;
-        }
-
-        .profile-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background: #fff;
-            object-fit: cover;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25);
-        }
-
-        .profile-info h2 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .profile-info p {
-            font-size: 13px;
-            color: #aaa;
-            max-width: 220px;
-            line-height: 1.3;
-        }
-
-        /* Ссылки профиля */
-        .action-links {
+        /* Сетка разделов */
+        .nav-grid {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            gap: 12px;
+        }
+
+        /* Навигационная карточка */
+        .nav-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-info h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
             gap: 8px;
         }
 
-        .action-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            padding: 2px 0;
-        }
-
-        .action-link:hover {
-            opacity: 0.8;
-            transform: translateX(2px);
-        }
-
-        /* Блок плеера */
-        .player-card {
-            flex-direction: column;
-            margin-bottom: 0;
-        }
-        
-        .player-top {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 16px;
-        }
-        
-        .player-title {
-            flex: 1;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        .progress-bar {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .card-info p {
             font-size: 13px;
+            color: #aaa;
+            line-height: 1.35;
         }
 
-        /* Линия прогресса */
-        .line {
-            flex: 1;
-            height: 7px;
+        /* Кнопка-стрелка */
+        .badge-btn {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .nav-card:hover .badge-btn {
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            position: relative;
-            cursor: pointer;
         }
 
-        .line-fill {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0%;
-            background: #fff;
-            border-radius: 4px;
-            pointer-events: none;
+        /* Футер */
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
         }
 
-        .line-fill::after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: -2.5px;
-            width: 12px;
-            height: 12px;
-            background: #fff;
-            border-radius: 50%;
-        }
-
-        /* Кнопки управления плеером */
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-left: 12px;
-            user-select: none;
-        }
-
-        .controls .icon-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.1s ease, opacity 0.2s ease;
-            opacity: 0.85;
-            padding: 4px;
-        }
-
-        .controls .icon-btn:hover {
-            opacity: 1;
-        }
-
-        .controls .icon-btn:active {
-            transform: scale(0.85);
-        }
-
-        /* Иконки */
-        .icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* ==========================================
-           АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
-           ========================================== */
+        /* Адаптивность для мобильных */
         @media (max-width: 520px) {
             body {
                 align-items: flex-start;
@@ -236,66 +149,17 @@
             }
 
             .glass-panel {
-                padding: 20px 16px;
+                padding: 24px 16px;
                 border-radius: 20px;
             }
 
-            .header h1 {
-                font-size: 24px;
+            .nav-card {
+                padding: 14px;
             }
 
-            .card {
-                padding: 16px 14px;
-            }
-
-            /* Перевод блока профиля в вертикальный вид */
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 16px;
-            }
-
-            .profile-left {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .profile-info p {
-                max-width: 100%;
-            }
-
-            .action-links {
-                align-items: center;
-                width: 100%;
-                gap: 10px;
-            }
-
-            .action-link {
-                font-size: 15px;
-                padding: 6px 12px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 8px;
-                width: 100%;
-                text-align: center;
-            }
-
-            .action-link:hover {
-                transform: none;
-            }
-
-            /* Плеер на мобильных */
-            .progress-bar {
-                gap: 8px;
+            .badge-btn {
+                padding: 6px 10px;
                 font-size: 12px;
-            }
-
-            .controls {
-                gap: 10px;
-                margin-left: 4px;
-            }
-
-            .controls .icon-btn {
-                padding: 8px; /* Увеличиваем область нажатия пальцем */
             }
         }
     </style>
@@ -304,57 +168,40 @@
 
     <div class="glass-panel" id="glassPanel">
         
+        <!-- Шапка главной страницы -->
         <div class="header">
-            <h1>профиль</h1>
-        </div>
 
-        <div class="card profile-card">
-            <div class="profile-left">
-                <img src="images/avatar.jpg" alt="avatar" class="avatar">
-                <div class="profile-info">
-                    <h2>писькад</h2>
-                    <p>@k0sty4pskd</p>
-                </div>
-            </div>
+            <h1>писькад</h1>
             
-            <div class="action-links">
-                <a href="https://t.me/k0sty4pskd" target="_blank" class="action-link">Telegram →</a>
-                <a href="https://discord.com/users/1015892476378218546" target="_blank" class="action-link">Discord →</a>
-                <a href="https://www.tiktok.com/@k0sty4pskd" target="_blank" class="action-link">TikTok →</a>
-            </div>
         </div>
 
-        <div class="card player-card">
-            <div class="player-top">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                <div class="player-title" id="trackTitle">@StarGGamer_official – zxc 1000-7 I'm ghoul</div>
-            </div>
-            <div class="progress-bar">
-                <span id="currentTime">00:00</span>
-                <div class="line" id="progressContainer">
-                    <div class="line-fill" id="progressFill"></div>
+        <!-- Навигационные карточки перехода -->
+        <div class="nav-grid">
+            
+            <a href="iosexploits/" class="nav-card">
+                <div class="card-info">
+                    <h2>⚡ Shortcuts</h2>
+                    <p>Эксплоиты на основе ярлыков и приложении комманды</p>
                 </div>
-                <span id="duration">00:00</span>
-                <div class="controls">
-                    <span class="icon-btn" id="prevBtn">
-                        <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-                    </span>
-                    <span class="icon-btn" id="playBtn">
-                        <svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </span>
-                    <span class="icon-btn" id="nextBtn">
-                        <svg class="icon" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-                    </span>
+                <span class="badge-btn">Открыть →</span>
+            </a>
+
+            <a href="profile/" class="nav-card">
+                <div class="card-info">
+                    <h2>👤 Профиль</h2>
+                    <p>Информация обо мне, соцсети</p>
                 </div>
-            </div>
+                <span class="badge-btn">Перейти →</span>
+            </a>
+
         </div>
+
+
 
     </div>
 
-    <audio id="audioPlayer" src="audio/musicprofile.mp3"></audio>
-
     <script>
-        // --- 3D TILT EFFECT (Включается только на устройствах с мышью) ---
+        // --- 3D TILT EFFECT (Только для устройств с мышами) ---
         if (window.matchMedia('(hover: hover)').matches) {
             const panel = document.getElementById('glassPanel');
 
@@ -367,7 +214,7 @@
                 const x = (e.clientX - panelCenterX) / (rect.width / 2);
                 const y = (e.clientY - panelCenterY) / (rect.height / 2);
 
-                const maxTilt = 12;
+                const maxTilt = 10;
 
                 const tiltX = -y * maxTilt;
                 const tiltY = x * maxTilt;
@@ -381,60 +228,6 @@
                 panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
         }
-
-        // --- ЛОГИКА ПЛЕЕРА ---
-        const audio = document.getElementById('audioPlayer');
-        const playBtn = document.getElementById('playBtn');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationEl = document.getElementById('duration');
-        const progressFill = document.getElementById('progressFill');
-        const progressContainer = document.getElementById('progressContainer');
-
-        const playIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-        const pauseIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return "00:00";
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
-
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = pauseIcon;
-            } else {
-                audio.pause();
-                playBtn.innerHTML = playIcon;
-            }
-        });
-
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = formatTime(audio.duration);
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = progressPercent + '%';
-                currentTimeEl.textContent = formatTime(audio.currentTime);
-            }
-        });
-
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            if (audio.duration) {
-                audio.currentTime = (clickX / width) * audio.duration;
-            }
-        });
-
-        audio.addEventListener('ended', () => {
-            playBtn.innerHTML = playIcon;
-            progressFill.style.width = '0%';
-            currentTimeEl.textContent = '00:00';
-        });
     </script>
 
 </body>
