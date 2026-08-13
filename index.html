@@ -56,9 +56,19 @@
             max-width: 580px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             
-            transition: transform 0.5s ease;
             transform-style: preserve-3d;
             will-change: transform;
+
+            /* Начальное состояние для вылета снизу */
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        /* Класс активации: плавно возвращает панель на место */
+        body.page-loaded .glass-panel {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Шапка */
@@ -210,33 +220,70 @@
     </div>
 
     <script>
-        // --- 3D TILT EFFECT (Только для устройств с мышами) ---
-        if (window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('DOMContentLoaded', () => {
             const panel = document.getElementById('glassPanel');
 
-            panel.addEventListener('mousemove', (e) => {
-                const rect = panel.getBoundingClientRect();
-                
-                const panelCenterX = rect.left + rect.width / 2;
-                const panelCenterY = rect.top + rect.height / 2;
+            // 1. Показываем панель вылетом снизу при загрузке
+            setTimeout(() => {
+                document.body.classList.add('page-loaded');
+            }, 50);
 
-                const x = (e.clientX - panelCenterX) / (rect.width / 2);
-                const y = (e.clientY - panelCenterY) / (rect.height / 2);
+            // 2. Перехват кликов по ссылкам для плавного ухода вниз
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const target = this.getAttribute('target');
 
-                const maxTilt = 10;
+                    if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') {
+                        return;
+                    }
 
-                const tiltX = -y * maxTilt;
-                const tiltY = x * maxTilt;
+                    e.preventDefault();
 
-                panel.style.transition = 'transform 0.1s ease-out';
-                panel.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                    // Сбрасываем инлайновый 3D-наклон, чтобы плавно сработал уход вниз
+                    if (panel) panel.style.transform = '';
+                    
+                    document.body.classList.remove('page-loaded');
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
             });
 
-            panel.addEventListener('mouseleave', () => {
-                panel.style.transition = 'transform 0.5s ease';
-                panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
-            });
-        }
+            // 3. 3D TILT EFFECT (Только для устройств с мышами)
+            if (window.matchMedia('(hover: hover)').matches && panel) {
+                panel.addEventListener('mousemove', (e) => {
+                    const rect = panel.getBoundingClientRect();
+                    
+                    const panelCenterX = rect.left + rect.width / 2;
+                    const panelCenterY = rect.top + rect.height / 2;
+
+                    const x = (e.clientX - panelCenterX) / (rect.width / 2);
+                    const y = (e.clientY - panelCenterY) / (rect.height / 2);
+
+                    const maxTilt = 10;
+
+                    const tiltX = -y * maxTilt;
+                    const tiltY = x * maxTilt;
+
+                    panel.style.transition = 'transform 0.1s ease-out';
+                    panel.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                });
+
+                panel.addEventListener('mouseleave', () => {
+                    panel.style.transition = 'transform 0.5s ease';
+                    panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
+            }
+        });
+
+        // 4. Фикс для Safari/iOS при возврате назад по стрелке браузера
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.add('page-loaded');
+            }
+        });
     </script>
 
 </body>
