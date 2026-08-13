@@ -26,11 +26,11 @@
             justify-content: center;
             align-items: center;
             background-color: #000;
-            perspective: 1000px; /* Включаем 3D-перспективу */
+            perspective: 1000px;
             position: relative;
         }
 
-        /* Размытый фоновый рисунок (как в твоем примере) */
+        /* Размытый фоновый рисунок */
         body::before {
             content: '';
             position: fixed;
@@ -40,7 +40,7 @@
             height: 100%;
             background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat;
             filter: blur(8px);
-            transform: scale(1.05); /* Убирает прозрачные края после размытия */
+            transform: scale(1.05);
             z-index: -1;
         }
 
@@ -56,10 +56,59 @@
             max-width: 620px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             
-            /* Плавная анимация трансформации */
-            transition: transform 0.5s ease;
             transform-style: preserve-3d;
-            will-change: transform;
+            will-change: transform, opacity;
+
+            /* Начальное состояние стартовой анимации */
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Активация панели */
+        body.page-loaded .glass-panel {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- ЭФФЕКТ СТАРТОВОГО ВЫЛЕТА (КАСКАД) --- */
+        .header, .card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            will-change: transform, opacity;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Поочередное всплытие элементов */
+        body.page-loaded .header {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.1s;
+        }
+
+        body.page-loaded .card:nth-of-type(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.22s;
+        }
+
+        body.page-loaded .card:nth-of-type(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.34s;
+        }
+
+        /* --- ПОСЛЕ ЗАГРУЗКИ: РЕЖИМ МГНОВЕННОГО ИНТЕРАКТИВА --- */
+        body.page-ready .card {
+            /* Сбрасываем задержки вылета и включаем быстрый возврат при mouseout (0.18s) */
+            transition-delay: 0s !important;
+            transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.18s ease-out,
+                        border-color 0.18s ease-out,
+                        box-shadow 0.18s ease-out,
+                        opacity 0.4s ease !important;
         }
 
         /* Шапка профиля */
@@ -74,7 +123,7 @@
             margin-bottom: 6px;
         }
 
-        /* Карточки */
+        /* Базовый стиль карточек */
         .card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -83,12 +132,17 @@
             display: flex;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.2s, border-color 0.2s;
         }
         
         .card:hover {
             background: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px) scale(1.008) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.12s ease-out,
+                        background 0.12s ease-out,
+                        border-color 0.12s ease-out,
+                        box-shadow 0.12s ease-out !important;
         }
 
         /* Блок профиля */
@@ -108,12 +162,13 @@
             border-radius: 12px;
             background: #fff;
             object-fit: cover;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
         }
 
         .avatar:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
             box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25);
+            transition: transform 0.12s ease-out, box-shadow 0.12s ease-out !important;
         }
 
         .profile-info h2 {
@@ -133,7 +188,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
+            gap: 6px;
         }
 
         .action-link {
@@ -141,13 +196,24 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            padding: 2px 0;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: opacity 0.18s ease-out, transform 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out;
         }
 
         .action-link:hover {
-            opacity: 0.8;
-            transform: translateX(2px);
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateX(3px);
+            transition: opacity 0.12s ease-out, transform 0.12s ease-out, background 0.12s ease-out !important;
+        }
+
+        .action-link:active {
+            transform: scale(0.95) !important;
+            transition: transform 0.08s ease !important;
         }
 
         /* Блок плеера */
@@ -224,17 +290,20 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.1s ease, opacity 0.2s ease;
+            transition: transform 0.18s ease-out, opacity 0.18s ease-out;
             opacity: 0.85;
             padding: 4px;
         }
 
         .controls .icon-btn:hover {
             opacity: 1;
+            transform: scale(1.1);
+            transition: transform 0.12s ease-out, opacity 0.12s ease-out !important;
         }
 
         .controls .icon-btn:active {
-            transform: scale(0.85);
+            transform: scale(0.88) !important;
+            transition: transform 0.08s ease !important;
         }
 
         /* Иконки */
@@ -244,9 +313,7 @@
             fill: currentColor;
         }
 
-        /* ==========================================
-           АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
-           ========================================== */
+        /* Адаптивность для мобильных устройств */
         @media (max-width: 520px) {
             body {
                 align-items: flex-start;
@@ -266,7 +333,6 @@
                 padding: 16px 14px;
             }
 
-            /* Перевод блока профиля в вертикальный вид */
             .profile-card {
                 flex-direction: column;
                 text-align: center;
@@ -285,23 +351,22 @@
             .action-links {
                 align-items: center;
                 width: 100%;
-                gap: 10px;
+                gap: 8px;
             }
 
             .action-link {
                 font-size: 15px;
-                padding: 6px 12px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 8px;
+                padding: 8px 12px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 10px;
                 width: 100%;
                 text-align: center;
             }
 
             .action-link:hover {
-                transform: none;
+                transform: none !important;
             }
 
-            /* Плеер на мобильных */
             .progress-bar {
                 gap: 8px;
                 font-size: 12px;
@@ -372,86 +437,136 @@
     <audio id="audioPlayer" src="audio/musicprofile.mp3"></audio>
 
     <script>
-        // --- 3D TILT EFFECT (Включается только на устройствах с мышью) ---
-        if (window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('DOMContentLoaded', () => {
             const panel = document.getElementById('glassPanel');
 
-            panel.addEventListener('mousemove', (e) => {
-                const rect = panel.getBoundingClientRect();
-                
-                const panelCenterX = rect.left + rect.width / 2;
-                const panelCenterY = rect.top + rect.height / 2;
-
-                const x = (e.clientX - panelCenterX) / (rect.width / 2);
-                const y = (e.clientY - panelCenterY) / (rect.height / 2);
-
-                const maxTilt = 12;
-
-                const tiltX = -y * maxTilt;
-                const tiltY = x * maxTilt;
-
-                panel.style.transition = 'transform 0.1s ease-out';
-                panel.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            // 1. Запуск вылета элементов при открытии страницы
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    document.body.classList.add('page-loaded');
+                }, 50);
             });
 
-            panel.addEventListener('mouseleave', () => {
-                panel.style.transition = 'transform 0.5s ease';
-                panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            // 2. Включаем режим быстрого отклика (page-ready) сразу после завершения стартового вылета
+            setTimeout(() => {
+                document.body.classList.add('page-ready');
+            }, 900);
+
+            // 3. Плавный переход при клике по ссылкам (для внутренних ссылок)
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const target = this.getAttribute('target');
+
+                    if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') {
+                        return;
+                    }
+
+                    e.preventDefault();
+
+                    document.querySelectorAll('.header, .card').forEach(el => {
+                        el.style.transitionDelay = '0s';
+                    });
+
+                    if (panel) {
+                        panel.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    }
+                    
+                    document.body.classList.remove('page-loaded');
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
             });
-        }
 
-        // --- ЛОГИКА ПЛЕЕРА ---
-        const audio = document.getElementById('audioPlayer');
-        const playBtn = document.getElementById('playBtn');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationEl = document.getElementById('duration');
-        const progressFill = document.getElementById('progressFill');
-        const progressContainer = document.getElementById('progressContainer');
+            // 4. 3D TILT EFFECT (Только для устройств с мышами)
+            if (window.matchMedia('(hover: hover)').matches && panel) {
+                panel.addEventListener('mousemove', (e) => {
+                    const rect = panel.getBoundingClientRect();
+                    
+                    const panelCenterX = rect.left + rect.width / 2;
+                    const panelCenterY = rect.top + rect.height / 2;
 
-        const playIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-        const pauseIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                    const x = (e.clientX - panelCenterX) / (rect.width / 2);
+                    const y = (e.clientY - panelCenterY) / (rect.height / 2);
 
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return "00:00";
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
+                    const maxTilt = 8;
 
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = pauseIcon;
-            } else {
-                audio.pause();
+                    const tiltX = -y * maxTilt;
+                    const tiltY = x * maxTilt;
+
+                    panel.style.transition = 'transform 0.1s ease-out';
+                    panel.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                });
+
+                panel.addEventListener('mouseleave', () => {
+                    panel.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
+            }
+
+            // 5. ЛОГИКА АУДИО ПЛЕЕРА
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.getElementById('playBtn');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const progressFill = document.getElementById('progressFill');
+            const progressContainer = document.getElementById('progressContainer');
+
+            const playIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            const pauseIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+            function formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = pauseIcon;
+                } else {
+                    audio.pause();
+                    playBtn.innerHTML = playIcon;
+                }
+            });
+
+            audio.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = progressPercent + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            });
+
+            progressContainer.addEventListener('click', (e) => {
+                const width = progressContainer.clientWidth;
+                const clickX = e.offsetX;
+                if (audio.duration) {
+                    audio.currentTime = (clickX / width) * audio.duration;
+                }
+            });
+
+            audio.addEventListener('ended', () => {
                 playBtn.innerHTML = playIcon;
+                progressFill.style.width = '0%';
+                currentTimeEl.textContent = '00:00';
+            });
+        });
+
+        // 6. Фикс восстановления анимации при навигации "Назад" в Safari / iOS
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.add('page-loaded');
+                document.body.classList.add('page-ready');
             }
-        });
-
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = formatTime(audio.duration);
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = progressPercent + '%';
-                currentTimeEl.textContent = formatTime(audio.currentTime);
-            }
-        });
-
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            if (audio.duration) {
-                audio.currentTime = (clickX / width) * audio.duration;
-            }
-        });
-
-        audio.addEventListener('ended', () => {
-            playBtn.innerHTML = playIcon;
-            progressFill.style.width = '0%';
-            currentTimeEl.textContent = '00:00';
         });
     </script>
 
