@@ -12,28 +12,22 @@
             padding: 0;
         }
 
+        /* Полностью блокируем любую прокрутку */
+        html, body {
+            overflow: hidden; 
+            height: 100%; 
+            width: 100%;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #000;
             perspective: 1000px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            padding: 20px 0;
             position: relative;
-
-            /* Скрытие полосы прокрутки для Firefox, IE и Edge */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        /* Скрытие полосы прокрутки для Chrome, Safari и Opera */
-        body::-webkit-scrollbar {
-            display: none;
         }
 
         /* Размытый фоновый рисунок */
@@ -46,7 +40,7 @@
             height: 100%;
             background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat;
             filter: blur(8px);
-            transform: scale(1.05);
+            transform: scale(1.05); /* Убирает прозрачные края после размытия */
             z-index: -1;
         }
 
@@ -167,11 +161,6 @@
 
         /* Адаптивность для мобильных */
         @media (max-width: 520px) {
-            body {
-                align-items: flex-start;
-                padding: 16px 0;
-            }
-
             .glass-panel {
                 padding: 24px 16px;
                 border-radius: 20px;
