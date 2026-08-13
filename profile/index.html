@@ -12,18 +12,22 @@
             padding: 0;
         }
 
+        /* Полностью блокируем любую прокрутку */
+        html, body {
+            overflow: hidden; 
+            height: 100%; 
+            width: 100%;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat fixed;
             perspective: 1000px; /* Включаем 3D-перспективу */
-            overflow-x: hidden;
-            overflow-y: auto;
-            padding: 20px 0;
+            position: relative;
         }
 
         /* Главный контейнер с 3D-наклоном и Liquid Glass */
