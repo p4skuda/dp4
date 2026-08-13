@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') no-repeat center center / cover fixed;
+}
+
+/* Обертка для контента или карточек */
+.container, .card, main {
+    background: rgba(255, 255, 255, 0.15); /* Полупрозрачный слой */
+    backdrop-filter: blur(12px);             /* Размытие заднего плана */
+    -webkit-backdrop-filter: blur(12px);      /* Поддержка Safari */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+}
