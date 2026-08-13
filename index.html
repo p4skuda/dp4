@@ -59,19 +59,54 @@
             transform-style: preserve-3d;
             will-change: transform, opacity;
 
-            /* Начальное состояние: опущена вниз, чуть уменьшена и полностью прозрачна */
+            /* Вылет основной панели */
             opacity: 0;
             transform: translateY(50px) scale(0.95);
-            
-            /* Ультра-плавная кривая анимации iOS (0.8 секунды) */
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
                         transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Активация: мягкое всплытие и полноразмерный вид */
+        /* Активация панели */
         body.page-loaded .glass-panel {
             opacity: 1;
             transform: translateY(0) scale(1);
+        }
+
+        /* --- ЭФФЕКТ ВЫЛЕТА ЭЛЕМЕНТОВ (КАСКАД) --- */
+        .header, .nav-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            will-change: transform, opacity;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.25s ease,
+                        border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        /* Поочередное всплытие при загрузке страницы */
+        body.page-loaded .header {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.1s;
+        }
+
+        body.page-loaded .nav-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.22s;
+        }
+
+        body.page-loaded .nav-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.34s;
+        }
+
+        body.page-loaded .nav-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.46s;
         }
 
         /* Шапка */
@@ -113,25 +148,33 @@
             gap: 12px;
         }
 
-        /* Навигационная карточка */
+        /* Навигационная карточка (Кнопка) */
         .nav-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             padding: 18px 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.25s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
         }
 
+        /* Наведение на кнопку (Плавный подъем и свечение) */
         .nav-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.015) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Клики/Тапы по кнопке (iOS-отклик при нажатии) */
+        .nav-card:active {
+            transform: scale(0.97) !important;
+            transition: transform 0.1s ease !important;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .card-info h2 {
@@ -149,7 +192,7 @@
             line-height: 1.35;
         }
 
-        /* Кнопка-стрелка */
+        /* Кнопка-стрелка внутри карточки */
         .badge-btn {
             font-size: 13px;
             font-weight: 600;
@@ -157,11 +200,12 @@
             background: rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             white-space: nowrap;
-            transition: background 0.2s;
+            transition: background 0.25s, transform 0.25s;
         }
 
         .nav-card:hover .badge-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateX(2px);
         }
 
         /* Футер */
@@ -226,14 +270,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const panel = document.getElementById('glassPanel');
 
-            // 1. Запускаем мягкий вылет панели
+            // 1. Активируем плавное появление (панель + каскад элементов)
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     document.body.classList.add('page-loaded');
-                }, 60);
+                }, 50);
             });
 
-            // 2. Плавный уход панели вниз при клике на ссылку
+            // 2. Перехват кликов для красивого ухода элементов вниз перед переходом
             document.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -245,20 +289,24 @@
 
                     e.preventDefault();
 
-                    // Возвращаем плавный transition для скрытия панели
+                    // Сбрасываем задержки при уходе, чтобы всё скрывалось одновременно
+                    document.querySelectorAll('.header, .nav-card').forEach(el => {
+                        el.style.transitionDelay = '0s';
+                    });
+
                     if (panel) {
-                        panel.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                        panel.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                     }
                     
                     document.body.classList.remove('page-loaded');
 
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 600);
+                    }, 500);
                 });
             });
 
-            // 3. 3D TILT EFFECT (Только для десктопов, без конфликта с появлением)
+            // 3. 3D TILT EFFECT (Только для ПК, адаптированный под анимацию)
             if (window.matchMedia('(hover: hover)').matches && panel) {
                 panel.addEventListener('mousemove', (e) => {
                     const rect = panel.getBoundingClientRect();
@@ -269,7 +317,7 @@
                     const x = (e.clientX - panelCenterX) / (rect.width / 2);
                     const y = (e.clientY - panelCenterY) / (rect.height / 2);
 
-                    const maxTilt = 8;
+                    const maxTilt = 7;
                     const tiltX = -y * maxTilt;
                     const tiltY = x * maxTilt;
 
@@ -284,7 +332,7 @@
             }
         });
 
-        // 4. Страховка для Safari при возврате по истории
+        // 4. Фикс для Safari/iOS при свайпе "назад"
         window.addEventListener('pageshow', (event) => {
             if (event.persisted) {
                 document.body.classList.add('page-loaded');
