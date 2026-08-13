@@ -1,0 +1,2116 @@
+<!DOCTYPE html><html lang="ru" style="--wm-toolbar-height: 1px; --app-height: 730px;" class="low-perf" data-scrapbook-source="https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html" data-scrapbook-create="20260813195121259"><head>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="banner-styles.css">
+<link rel="stylesheet" type="text/css" href="iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>(Web-Break)</title>
+  <meta name="description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta name="theme-color" content="#0b0b10">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web-Break">
+  <meta property="og:url" content="https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html">
+  <meta property="og:title" content="Jailbreak for iOS 26">
+  <meta property="og:description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta property="og:image" content="https://web.archive.org/web/20260503211418im_/https://vityaig.github.io/embed-index.png">
+  <meta property="og:image:alt" content="Web-Break preview image">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jailbreak for iOS 26">
+  <meta name="twitter:description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta name="twitter:image" content="https://web.archive.org/web/20260503211418im_/https://vityaig.github.io/embed-index.png">
+  <link rel="icon" type="image/svg+xml" href="8d1a9df62c6fd51214e19d5b7c6df188b44d85ff.svg">
+  
+  
+  
+  <style>
+    :root {
+      --bg-color: #000000;
+      --app-height: 100vh;
+      --category-sheen: rgba(255, 255, 255, 0.08);
+      --category-glow: rgba(34, 197, 94, 0.14);
+      --category-glow-soft: rgba(34, 197, 94, 0.05);
+    }
+    
+    body { 
+      background-color: var(--bg-color); 
+      color: white; 
+      margin: 0; 
+      overflow-x: hidden;
+      width: 100%;
+      min-height: var(--app-height);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif; 
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    body.panic-active {
+      overflow: hidden;
+      background: #8b0000;
+    }
+
+    .panic-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 4px;
+      padding: 0;
+      overflow: hidden;
+      background: #8b0000;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      opacity: 0;
+      transform: scale(1.015);
+      transition: opacity 90ms linear, transform 180ms ease-out;
+      pointer-events: none;
+    }
+
+    .panic-screen.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .panic-screen .error-msg {
+      position: relative;
+      z-index: 2;
+      padding: 1px;
+      font-size: 6px;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+      opacity: 0.62;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.18);
+    }
+
+    /* Animations */
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .gradient-text {
+      background-size: 200% 200%;
+      animation: gradient 4s ease infinite;
+      background-image: linear-gradient(to right, #ffffff, #888888, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: nowrap;
+    }
+
+    .hero-logo-shell {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-logo-glow {
+      position: absolute;
+      inset: -24%;
+      border-radius: 9999px;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.12) 28%, rgba(255, 255, 255, 0.03) 54%, transparent 74%);
+      filter: blur(12px);
+      opacity: 0;
+      transform: scale(0.84);
+      animation: logoGlowReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards, logoGlowBreath 5.8s ease-in-out 1.2s infinite;
+    }
+
+    .hero-logo {
+      width: 3.35rem;
+      height: 3.35rem;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.28));
+      image-rendering: auto;
+      opacity: 0;
+      transform: translateY(6px) scale(0.94);
+      animation: logoReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-title {
+      min-height: 1.12em;
+      white-space: nowrap;
+    }
+
+    .hero-title.typing::after {
+      content: '';
+      display: inline-block;
+      width: 0.08em;
+      height: 0.82em;
+      margin-left: 0.1em;
+      background: rgba(255,255,255,0.9);
+      vertical-align: -0.08em;
+      animation: cursorBlink 0.8s steps(1) infinite;
+      -webkit-text-fill-color: initial;
+    }
+
+    @keyframes logoReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes logoGlowReveal {
+      to {
+        opacity: 0.88;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes logoGlowBreath {
+      0%, 100% {
+        opacity: 0.54;
+        transform: scale(0.96);
+      }
+      50% {
+        opacity: 0.9;
+        transform: scale(1.06);
+      }
+    }
+
+    @keyframes cursorBlink {
+      50% { opacity: 0; }
+    }
+
+    #stars-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: block;
+      opacity: 0.42;
+      pointer-events: none;
+      contain: strict;
+      transform: translateZ(0);
+      transition: opacity 0.8s ease;
+    }
+
+    #stars-canvas.jb-active {
+      opacity: 0.56;
+    }
+
+    .low-perf .hero-logo,
+    .low-perf .option-item,
+    .low-perf #continue-btn,
+    .low-perf #main-jailbreak-btn,
+    .low-perf #lang-btn,
+    .low-perf #info-btn,
+    .low-perf #view-credits-btn,
+    .low-perf #info-content,
+    .low-perf #lang-content,
+    .low-perf #jb-selected-box {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+    }
+
+    .low-perf .jb-pulse-waves span {
+      background: none;
+      box-shadow: none;
+    }
+
+    .low-perf .particle {
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .low-perf .hero-logo-glow {
+      filter: none;
+      box-shadow: none;
+    }
+
+    /* Transitions */
+    .fade-out {
+      animation: fadeOut 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; filter: blur(0px); transform: translateY(0) scale(1); }
+      to { opacity: 0; filter: blur(8px); transform: translateY(-40px) scale(0.95); }
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    #selection-screen {
+      position: relative;
+      min-height: var(--app-height);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 4rem 1.5rem;
+    }
+
+    #selection-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(60% 45% at 50% 14%, var(--category-glow) 0%, transparent 72%),
+        radial-gradient(42% 34% at 16% 72%, var(--category-glow-soft) 0%, transparent 78%),
+        radial-gradient(36% 30% at 84% 30%, var(--category-glow-soft) 0%, transparent 74%);
+      opacity: 1;
+      transition: opacity 0.45s ease, background 0.45s ease;
+      z-index: 0;
+    }
+
+    #jailbreak-screen {
+      position: fixed;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #jailbreak-screen.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #selection-screen,
+    #jailbreak-screen,
+    #info-modal,
+    #lang-modal {
+      isolation: isolate;
+    }
+
+    /* Option Button New Design: Sleek horizontal */
+    #options-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      #options-list {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 56rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #options-list[data-category="icloud"] .option-title {
+        font-size: 1.1rem;
+      }
+
+      #options-list[data-category="icloud"] .option-desc {
+        font-size: 0.94rem;
+      }
+    }
+
+    .option-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1.25rem;
+      background: rgba(3, 3, 3, 0.64);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                  background 0.4s ease, border-color 0.4s ease, 
+                  box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+      overflow: hidden;
+      transform: translateZ(0); /* Fix for webkit white borders/bleeding on scale */
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .option-item:hover,
+    .option-item:focus-visible {
+      background: rgba(8, 8, 8, 0.78);
+      transform: scale(1.02);
+    }
+
+    .option-item:focus-visible {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+    }
+    
+    .option-item:active {
+      transform: scale(0.98);
+    }
+
+    .option-icon-wrapper {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-right: 1.25rem;
+      transition: all 0.4s ease;
+      color: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+    }
+
+    .option-icon-asset {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .option-icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: none;
+    }
+
+    .option-icon-wrapper img.is-contained {
+      object-fit: contain;
+      padding: 0.18rem;
+      background: rgba(0, 0, 0, 0.16);
+      border-radius: 0.68rem;
+    }
+
+    .option-icon-wrapper img.is-contained.is-tight {
+      padding: 0.12rem;
+    }
+
+    .option-svg-icon {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: relative;
+      z-index: 10;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
+    }
+
+    .option-svg-icon.is-icloud {
+      width: 100%;
+      height: 100%;
+    }
+
+    .option-item[data-id="roothide"] .option-icon-wrapper {
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      color: #f87171;
+      box-shadow: inset 0 0 18px rgba(239, 68, 68, 0.08);
+    }
+
+    .option-item[data-id="roothide"] .option-icon-wrapper svg {
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.45));
+    }
+
+    .option-content {
+      flex-grow: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+
+    .option-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: white;
+      transition: color 0.3s ease;
+      text-align: left;
+    }
+
+    .option-desc {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.25rem;
+      transition: color 0.3s ease;
+      text-align: left;
+    }
+
+    #options-list[data-category="icloud"] .option-title {
+      font-size: 1.24rem;
+    }
+
+    #options-list[data-category="icloud"] .option-desc {
+      font-size: 1rem;
+      line-height: 1.52;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    #options-list[data-category="icloud"] .option-icon-wrapper {
+      width: 3.35rem;
+      height: 3.35rem;
+      background: color-mix(in srgb, var(--theme-color, #ffffff) 14%, rgba(0, 0, 0, 0.38));
+      border-color: color-mix(in srgb, var(--theme-color, #ffffff) 32%, rgba(255, 255, 255, 0.08));
+      box-shadow: inset 0 0 18px color-mix(in srgb, var(--theme-color, #ffffff) 14%, transparent);
+    }
+
+    .desc-accent-purple {
+      color: #c4b5fd;
+      font-weight: 600;
+    }
+
+    .option-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.65rem;
+    }
+
+    .ios-availability-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.12);
+      color: #4ade80;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.12);
+      white-space: nowrap;
+    }
+
+    .recommendation-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .recommendation-badge::before {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 9999px;
+      margin-right: 0.38rem;
+      background: var(--theme-color, #ffffff);
+      box-shadow: 0 0 12px var(--theme-color, #ffffff);
+    }
+
+    .exclusive-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 12px rgba(251, 191, 36, 0.08);
+    }
+
+    .exclusive-badge::before {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 9999px;
+      margin-right: 0.38rem;
+      background: #fcd34d;
+      box-shadow: 0 0 12px rgba(252, 211, 77, 0.7);
+    }
+
+    .option-item[data-id="dg_17_0"],
+    .option-item[data-id="dg_16_5_1"] {
+      border-color: rgba(251, 191, 36, 0.16);
+      background:
+        linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(245, 158, 11, 0.04) 36%, rgba(120, 53, 15, 0.04) 100%),
+        rgba(3, 3, 3, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .option-item[data-id="dg_17_0"] .option-icon-wrapper,
+    .option-item[data-id="dg_16_5_1"] .option-icon-wrapper {
+      background: linear-gradient(145deg, rgba(251, 191, 36, 0.18), rgba(217, 119, 6, 0.08));
+      border-color: rgba(251, 191, 36, 0.24);
+      color: #fcd34d;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 18px rgba(251, 191, 36, 0.08);
+    }
+
+    .option-item[data-id="dg_17_0"] .option-glow,
+    .option-item[data-id="dg_16_5_1"] .option-glow {
+      background: radial-gradient(120% 100% at 0% 50%, rgba(251, 191, 36, 0.22) 0%, transparent 100%);
+    }
+
+    .option-radio {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      margin-left: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .option-radio::after {
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0);
+    }
+
+    .option-glow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background: radial-gradient(120% 100% at 0% 50%, var(--theme-color) 0%, transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Selected State */
+    @keyframes selectPop {
+      0% {
+        transform: scale(0.98);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+      100% {
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes particle-burst {
+      0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    .particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: particle-burst 0.6s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+      color: var(--theme-color);
+      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    }
+
+
+    .option-item.selected {
+      border-color: var(--theme-color);
+      background: rgba(3, 3, 3, 0.78);
+      transform: scale(1.02);
+      box-shadow: 0 12px 34px -18px var(--theme-color), inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+      animation: selectPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    #options-list:has(.option-item.selected) .option-item:not(.selected) {
+      opacity: 0.5;
+      transform: scale(0.96);
+      filter: grayscale(0.7);
+    }
+
+    #options-list.has-selection .option-item:not(.selected) {
+      opacity: 0.5;
+      transform: scale(0.96);
+      filter: grayscale(0.7);
+    }
+
+    .option-item.selected .option-glow {
+      opacity: 0.1;
+    }
+
+    .option-item.selected .option-icon-wrapper {
+      background: var(--theme-color);
+      color: white;
+      box-shadow: 0 0 20px 0 var(--theme-color);
+    }
+
+    .option-item.selected .option-title {
+      color: white;
+    }
+    
+    .option-item.selected .option-desc {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .option-item.selected .option-radio {
+      border-color: var(--theme-color);
+    }
+
+    .option-item.selected .option-radio::after {
+      background: var(--theme-color);
+      transform: scale(1);
+    }
+
+    /* Continue Button */
+    #continue-btn-container {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      margin-top: 2.5rem;
+      width: 100%;
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 768px) {
+      #continue-btn-container {
+        max-width: 56rem;
+      }
+    }
+    
+    #continue-btn-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .step-indicator {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .step-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-height: 2rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 9999px;
+      color: rgba(255, 255, 255, 0.56);
+      transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .step-chip.is-active {
+      color: rgba(255, 255, 255, 0.98);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 24px -20px rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .step-dot {
+      width: 0.52rem;
+      height: 0.52rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: background 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+    }
+
+    .step-chip.is-active .step-dot {
+      background: var(--theme-color, #ffffff);
+      box-shadow: 0 0 14px var(--theme-color, #ffffff);
+      transform: scale(1.08);
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .step-divider {
+      width: 1.15rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    #continue-btn {
+      width: 100%;
+      min-height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.25rem 2rem;
+      background: rgba(4, 4, 4, 0.86);
+      color: white;
+      border-radius: 1rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 1.1;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 32px -24px rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    #continue-btn:focus-visible,
+    #main-jailbreak-btn:focus-visible,
+    #lang-btn:focus-visible,
+    #info-btn:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 3px;
+    }
+
+    #continue-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(10, 10, 10, 0.94);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 34px -22px rgba(255, 255, 255, 0.45);
+    }
+    
+    #continue-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Jailbreak Button */
+    #jb-btn-wrapper {
+      position: relative;
+      display: inline-flex;
+      width: auto;
+      max-width: calc(100vw - 2rem);
+      transform: translateZ(0);
+      border-radius: 9999px;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+      will-change: transform;
+      contain: layout;
+    }
+
+    #lang-btn,
+    #info-btn {
+      flex-shrink: 0;
+    }
+
+    #jb-selected-value {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    #jb-btn-wrapper:hover {
+      transform: translateZ(0) scale(1.05);
+      box-shadow: 0 0 30px 0 var(--theme-color, rgba(255,255,255,0.3));
+    }
+
+    #jb-btn-wrapper:active {
+      transform: translateZ(0) scale(1.08) !important;
+      transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    }
+
+    .jb-orbit-ring {
+      position: absolute;
+      inset: -14px;
+      width: calc(100% + 28px);
+      height: calc(100% + 28px);
+      display: none;
+      pointer-events: none;
+      overflow: visible;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.75)) drop-shadow(0 0 18px rgba(5, 150, 105, 0.35));
+      transform: translateZ(0);
+    }
+
+    .jb-orbit-track,
+    .jb-orbit-line {
+      fill: none;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .jb-pulse-waves {
+      position: absolute;
+      inset: -16px;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 9999px;
+    }
+
+    .jb-button-halo {
+      position: absolute;
+      inset: -26px;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 9999px;
+      background:
+        radial-gradient(ellipse at center, rgba(var(--theme-rgb, 34, 197, 94), 0.34) 0%, rgba(var(--theme-rgb, 34, 197, 94), 0.18) 32%, rgba(var(--theme-rgb, 34, 197, 94), 0.06) 56%, transparent 78%);
+      filter: blur(18px);
+      opacity: 0.42;
+      transform: scale(0.92);
+      animation: button-halo-breathe 4.8s ease-in-out infinite;
+    }
+
+    .jb-pulse-waves span {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(var(--theme-rgb, 34, 197, 94), 0.55);
+      background: radial-gradient(closest-side, rgba(var(--theme-rgb, 34, 197, 94), 0.12), transparent 72%);
+      box-shadow: 0 0 16px rgba(var(--theme-rgb, 34, 197, 94), 0.28), inset 0 0 18px rgba(var(--theme-rgb, 34, 197, 94), 0.1);
+      opacity: 0;
+      transform: scale(0.92);
+      animation: pulse-wave 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    .jb-pulse-waves span:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .jb-pulse-waves span:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @keyframes pulse-wave {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      18% {
+        opacity: 0.42;
+      }
+      72% {
+        opacity: 0;
+        transform: scale(1.42);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.42);
+      }
+    }
+
+    @keyframes button-halo-breathe {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.9);
+      }
+      50% {
+        opacity: 0.62;
+        transform: scale(1.08);
+      }
+    }
+
+    .jb-orbit-track {
+      stroke: rgba(34, 197, 94, 0.18);
+      stroke-width: 2;
+    }
+
+    .jb-orbit-line {
+      stroke: url("26jailbreak.html");
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 18 82;
+      animation: orbit-line 2.2s linear infinite, orbit-pulse 3.4s ease-in-out infinite;
+      will-change: stroke-dashoffset;
+    }
+
+    @keyframes orbit-line {
+      to { stroke-dashoffset: -100; }
+    }
+
+    @keyframes orbit-pulse {
+      0%, 100% {
+        opacity: 0.72;
+        stroke-width: 2.5;
+      }
+      50% {
+        opacity: 1;
+        stroke-width: 3.8;
+      }
+    }
+
+    #main-jailbreak-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      max-width: 100%;
+      padding: 1.5rem 4rem;
+      background-color: transparent;
+      color: white;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      line-height: 1.1;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      transform: translateZ(0);
+      z-index: 10;
+      will-change: transform;
+    }
+
+    #main-jailbreak-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(90deg, var(--accent-deep, #052e16), var(--accent-dark, #16a34a), var(--theme-color, #22c55e), var(--accent-soft, #bbf7d0), var(--theme-color, #22c55e), var(--accent-deep, #064e3b));
+      background-size: 260% 100%;
+      box-shadow: inset 0 0 10px rgba(var(--theme-rgb, 34, 197, 94), 0.22), 0 0 10px rgba(var(--theme-rgb, 34, 197, 94), 0.34);
+      animation: button-border-flow 3.2s linear infinite;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    @keyframes button-border-flow {
+      to { background-position: 260% 0; }
+    }
+
+    @media (max-width: 640px) {
+      #selection-screen {
+        justify-content: flex-start;
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+      }
+
+      .hero-heading {
+        gap: 0.55rem;
+      }
+
+      .hero-logo {
+        width: 2.65rem;
+        height: 2.65rem;
+      }
+
+      .hero-logo-glow {
+        inset: -20%;
+      }
+
+      .option-item {
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+
+      .option-icon-wrapper {
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-right: 1rem;
+      }
+
+      .option-title {
+        font-size: 1rem;
+      }
+
+      .option-desc {
+        font-size: 0.8125rem;
+      }
+
+      .option-radio {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-left: 0.75rem;
+      }
+
+      #main-jailbreak-btn {
+        padding: 1.25rem 3rem;
+        font-size: 1.7rem;
+      }
+
+      .jb-orbit-ring {
+        inset: -12px;
+        width: calc(100% + 24px);
+        height: calc(100% + 24px);
+      }
+
+      .jb-pulse-waves {
+        inset: -12px;
+      }
+
+      .jb-button-halo {
+        inset: -18px;
+      }
+    }
+
+    #main-jailbreak-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    #main-jailbreak-btn {
+      background: rgba(4, 4, 4, 0.92) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 22px 46px -34px rgba(255, 255, 255, 0.5);
+    }
+
+    #lang-btn,
+    #info-btn,
+    #view-credits-btn,
+    #info-close-btn,
+    #lang-close-btn {
+      background: rgba(4, 4, 4, 0.72) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    #lang-btn,
+    #info-btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -28px rgba(255, 255, 255, 0.55);
+    }
+
+    #lang-btn::before,
+    #info-btn::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.14) 48%, transparent 76%);
+      transform: translateX(-135%);
+      transition: transform 0.65s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #lang-btn > *,
+    #info-btn > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #lang-btn:hover::before,
+    #info-btn:hover::before {
+      transform: translateX(135%);
+    }
+
+    #jb-selected-box,
+    #info-content,
+    #lang-content {
+      background: rgba(5, 5, 5, 0.88) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    #status-badge {
+      background: rgba(4, 4, 4, 0.62) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    body.language-swapping #hero-title,
+    body.language-swapping #category-tabs,
+    body.language-swapping #options-list,
+    body.language-swapping #continue-btn-container,
+    body.language-swapping #info-content {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(4px);
+    }
+
+    #hero-title,
+    #category-tabs,
+    #options-list,
+    #continue-btn-container,
+    #info-content {
+      transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+    }
+
+    .category-nav-btn {
+      width: 2.45rem;
+      height: 2.45rem;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.86);
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .category-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .category-nav-btn:active {
+      transform: scale(0.95);
+    }
+
+    .category-current-label {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      letter-spacing: 0;
+      padding: 0 0.35rem;
+      transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+      will-change: opacity, transform;
+    }
+
+    .category-current-label.is-transitioning {
+      opacity: 0;
+      filter: blur(4px);
+    }
+
+    .category-current-label.is-transitioning.is-forward {
+      transform: translateX(-16px);
+    }
+
+    .category-current-label.is-transitioning.is-backward {
+      transform: translateX(16px);
+    }
+
+    @media (min-width: 640px) {
+      .category-current-label {
+        font-size: 1.45rem;
+      }
+
+      .category-nav-btn {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
+
+      .category-current-label {
+        font-size: 0.98rem;
+      }
+    }
+
+    .about-logo-wrap {
+      position: relative;
+      width: 4rem;
+      height: 4rem;
+      display: grid;
+      place-items: center;
+      border-radius: 1.25rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 18px 40px -28px rgba(255,255,255,0.9);
+    }
+
+    .about-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 64%);
+      animation: logoGlowBreath 5.5s ease-in-out infinite;
+    }
+
+    .about-logo-wrap img {
+      position: relative;
+      width: 2.8rem;
+      height: 2.8rem;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.22));
+    }
+
+    .about-stat,
+    .about-feature {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .about-feature {
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .about-feature:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.13);
+    }
+
+    #share-btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38rem;
+      padding: 0.34rem 0.62rem;
+      min-height: 1.9rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+    }
+
+    #share-btn::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, transparent 18%, rgba(255,255,255,0.12) 50%, transparent 82%);
+      transform: translateX(-135%);
+      transition: transform 0.65s ease;
+      pointer-events: none;
+    }
+
+    #share-btn:hover::before {
+      transform: translateX(135%);
+    }
+
+    #share-btn > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #share-btn i {
+      color: rgba(255, 255, 255, 0.72);
+      width: 0.82rem;
+      height: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    #share-toast {
+      position: fixed;
+      top: 1.15rem;
+      left: 50%;
+      transform: translate(-50%, -140%);
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.8rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(74, 222, 128, 0.22);
+      background: rgba(5, 5, 5, 0.88);
+      color: rgba(255,255,255,0.95);
+      box-shadow: 0 20px 40px -28px rgba(74, 222, 128, 0.65), inset 0 1px 0 rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+    }
+
+    #share-toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    .share-toast-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 9999px;
+      background: #4ade80;
+      box-shadow: 0 0 14px rgba(74, 222, 128, 0.8);
+      animation: toastPulse 1.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes toastPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.22); opacity: 1; }
+    }
+
+    html[lang="en"] .hero-title {
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+
+    html[lang="en"] .step-label,
+    html[lang="en"] #category-current-label,
+    html[lang="en"] .option-title,
+    html[lang="en"] #continue-btn,
+    html[lang="en"] #jb-btn-text {
+      letter-spacing: 0;
+    }
+
+    body[data-category="jailbreak"] {
+      --category-glow: rgba(34, 197, 94, 0.16);
+      --category-glow-soft: rgba(16, 185, 129, 0.06);
+    }
+
+    body[data-category="downgrade"] {
+      --category-glow: rgba(96, 165, 250, 0.16);
+      --category-glow-soft: rgba(59, 130, 246, 0.06);
+    }
+
+    body[data-category="pcgames"] {
+      --category-glow: rgba(255, 255, 255, 0.12);
+      --category-glow-soft: rgba(139, 92, 246, 0.05);
+    }
+
+    body[data-category="pcgames"] #category-tabs {
+      background: linear-gradient(90deg, rgba(255,255,255,0.025), rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border-radius: 1rem;
+    }
+
+    #category-spotlight {
+      position: relative;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto 1.1rem;
+      padding: 1rem 1rem 0.95rem;
+      border-radius: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        rgba(5, 5, 5, 0.58);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    #category-spotlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,0.06) 0%, transparent 55%);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .category-spotlight-title {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.25;
+    }
+
+    .category-spotlight-title-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      background: var(--category-glow-dot, rgba(255,255,255,0.88));
+      box-shadow: 0 0 14px var(--category-glow-dot, rgba(255,255,255,0.45));
+      flex-shrink: 0;
+    }
+
+    .category-spotlight-desc {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.45rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.62);
+      text-align: left;
+    }
+
+    .category-spotlight-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .category-spotlight-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+      align-items: center;
+    }
+
+    .category-spotlight-footer .category-spotlight-tags {
+      margin-top: 0;
+      align-items: center;
+    }
+
+    .category-spotlight-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      padding: 0.34rem 0.62rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .category-spotlight-tag::before {
+      content: '';
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 9999px;
+      background: currentColor;
+      opacity: 0.95;
+      box-shadow: 0 0 10px currentColor;
+      flex-shrink: 0;
+    }
+
+    .category-spotlight-tag.is-gold {
+      border-color: rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+    }
+
+    .downgrade-track-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      background: rgba(96, 165, 250, 0.1);
+      color: #bfdbfe;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .downgrade-track-badge.is-gold {
+      border-color: rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+    }
+
+    body[data-category="jailbreak"] {
+      --category-glow-dot: rgba(74, 222, 128, 0.95);
+    }
+
+    #options-list[data-category="pcgames"] .option-item {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02) 34%, rgba(255,255,255,0.035) 100%),
+        rgba(3, 3, 3, 0.72);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    #options-list[data-category="pcgames"] .option-icon-wrapper {
+      border-radius: 0.9rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    body[data-category="downgrade"] {
+      --category-glow-dot: rgba(147, 197, 253, 0.95);
+    }
+
+    body[data-category="downgrade"] #category-spotlight {
+      background:
+        linear-gradient(140deg, rgba(59,130,246,0.1), rgba(37,99,235,0.04) 34%, rgba(15,23,42,0.08) 100%),
+        rgba(5, 5, 5, 0.64);
+      border-color: rgba(96, 165, 250, 0.16);
+    }
+
+    #options-list[data-category="downgrade"] .option-item {
+      background:
+        linear-gradient(145deg, rgba(96,165,250,0.06), rgba(59,130,246,0.025) 32%, rgba(3,3,3,0.02) 100%),
+        rgba(3, 3, 3, 0.68);
+      border-color: rgba(96, 165, 250, 0.11);
+    }
+
+    #options-list[data-category="downgrade"] .option-item:not(.selected):hover,
+    #options-list[data-category="downgrade"] .option-item:not(.selected):focus-visible {
+      border-color: rgba(125, 211, 252, 0.18);
+      box-shadow: 0 12px 34px -24px rgba(96, 165, 250, 0.25);
+    }
+
+    body[data-category="pcgames"] {
+      --category-glow-dot: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (min-width: 768px) {
+      #category-spotlight {
+        max-width: 56rem;
+        padding: 1rem 1.1rem;
+      }
+    }
+
+    @media (hover: hover) {
+      #main-jailbreak-btn:hover::before {
+        opacity: 0.1;
+      }
+    }
+    @keyframes ambient-float {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(var(--ambient-tx), var(--ambient-ty));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      #stars-canvas {
+        display: none;
+      }
+
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-6{left:1.5rem}.right-6{right:1.5rem}.top-6{top:1.5rem}.z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.z-0{z-index:0}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mr-1\.5{margin-right:0.375rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-9{height:2.25rem}.h-full{height:100%}.h-6{height:1.5rem}.max-h-\[85vh\]{max-height:85vh}.w-1\.5{width:0.375rem}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-9{width:2.25rem}.w-full{width:100%}.w-6{width:1.5rem}.min-w-0{min-width:0px}.max-w-\[320px\]{max-width:320px}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.translate-y-4{--tw-translate-y:1rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-0{--tw-translate-y:0px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform-gpu{transform:translate3d(var(--tw-translate-x), var(--tw-translate-y), 0) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.\!border-none{border-style:none !important}.border-green-400\/20{border-color:rgb(74 222 128 / 0.2)}.border-transparent{border-color:transparent}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-\[\#0a0a0a\]\/80{background-color:rgb(10 10 10 / 0.8)}.bg-\[\#111\]{--tw-bg-opacity:1;background-color:rgb(17 17 17 / var(--tw-bg-opacity, 1))}.bg-\[\#2AABEE\]\/10{background-color:rgb(42 171 238 / 0.1)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-cyan-400\/10{background-color:rgb(34 211 238 / 0.1)}.bg-cyan-500\/10{background-color:rgb(6 182 212 / 0.1)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-green-400\/10{background-color:rgb(74 222 128 / 0.1)}.bg-green-500\/10{background-color:rgb(34 197 94 / 0.1)}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.p-1\.5{padding:0.375rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.pb-2{padding-bottom:0.5rem}.pt-3{padding-top:0.75rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#2AABEE\]{--tw-text-opacity:1;color:rgb(42 171 238 / var(--tw-text-opacity, 1))}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-green-300{--tw-text-opacity:1;color:rgb(134 239 172 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/50{color:rgb(255 255 255 / 0.5)}.text-white\/70{color:rgb(255 255 255 / 0.7)}.text-white\/75{color:rgb(255 255 255 / 0.75)}.text-white\/80{color:rgb(255 255 255 / 0.8)}.text-white\/90{color:rgb(255 255 255 / 0.9)}.opacity-0{opacity:0}.opacity-50{opacity:0.5}.opacity-100{opacity:1}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-300{transition-delay:300ms}.duration-300{transition-duration:300ms}.duration-700{transition-duration:700ms}.hover\:bg-white\/10:hover{background-color:rgb(255 255 255 / 0.1)}.hover\:bg-white\/15:hover{background-color:rgb(255 255 255 / 0.15)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:bg-white\/15:active{background-color:rgb(255 255 255 / 0.15)}.active\:bg-white\/20:active{background-color:rgb(255 255 255 / 0.2)}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:mt-12{margin-top:3rem}.sm\:h-5{height:1.25rem}.sm\:w-5{width:1.25rem}.sm\:max-w-2xl{max-width:42rem}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:gap-3{gap:0.75rem}.sm\:p-2{padding:0.5rem}.sm\:px-4{padding-left:1rem;padding-right:1rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-xs{font-size:0.75rem;line-height:1rem}}@media (min-width: 768px){.md\:max-w-3xl{max-width:48rem}.md\:max-w-lg{max-width:32rem}.md\:max-w-md{max-width:28rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+<body data-category="jailbreak" class="panic-active"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+
+<div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 1px;" toolbar-mode="auto" data-scrapbook-shadowdom="&lt;div id=&quot;wm-ipp&quot; style=&quot;position:fixed;left:0;top:0;right:0;&quot;&gt;
+&lt;div id=&quot;donato&quot; style=&quot;position:relative;width:100%;height:0;&quot;&gt;
+  &lt;div id=&quot;donato-base&quot;&gt;
+    &lt;iframe id=&quot;donato-if&quot; src=&quot;index_2.html&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;width:100%; height:100%&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;div id=&quot;wm-ipp-inside&quot; style=&quot;display: none;&quot;&gt;
+  &lt;div id=&quot;wm-toolbar&quot; style=&quot;position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;&quot; nav=&quot;async&quot;&gt;
+    &lt;div id=&quot;wm-logo&quot; style=&quot;/*width:110px;*/padding-top:12px;&quot;&gt;
+      &lt;a href=&quot;https://web.archive.org/web/&quot; title=&quot;Wayback Machine home page&quot;&gt;&lt;img src=&quot;wayback-toolbar-logo-200.png&quot; srcset=&quot;wayback-toolbar-logo-100.png, wayback-toolbar-logo-150.png 1.5x, wayback-toolbar-logo-200.png 2x&quot; alt=&quot;Wayback Machine&quot; style=&quot;width:100px&quot; border=&quot;0&quot;&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;c&quot; style=&quot;display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;&quot;&gt;
+      &lt;form class=&quot;u&quot; style=&quot;display:flex;flex-direction:row;flex-wrap:nowrap;&quot; target=&quot;_top&quot; method=&quot;get&quot; action=&quot;https://web.archive.org/web/submit&quot; name=&quot;wmtb&quot; id=&quot;wmtb&quot;&gt;&lt;input type=&quot;text&quot; name=&quot;url&quot; id=&quot;wmtbURL&quot; value=&quot;https://vityaig.github.io/26jailbreak.html&quot; style=&quot;flex:1;&quot; autocomplete=&quot;off&quot;&gt;&lt;input type=&quot;hidden&quot; name=&quot;type&quot; value=&quot;replay&quot;&gt;&lt;input type=&quot;hidden&quot; name=&quot;date&quot; value=&quot;20260503211418&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Go&quot;&gt;
+      &lt;/form&gt;
+      &lt;div style=&quot;display:flex;flex-flow:row nowrap;align-items:flex-end;&quot;&gt;
+                &lt;div class=&quot;s&quot; id=&quot;wm-nav-captures&quot; style=&quot;flex:1;&quot;&gt;&lt;a class=&quot;t&quot; href=&quot;https://web.archive.org/web/*/https://vityaig.github.io/26jailbreak.html&quot; title=&quot;See a list of every capture for this URL&quot;&gt;2 captures&lt;/a&gt;&lt;div class=&quot;r&quot; title=&quot;Timespan for captures of this URL&quot;&gt;3 May 2026 - 3 May 2026&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;k&quot;&gt;
+          &lt;a href=&quot;&quot; id=&quot;wm-graph-anchor&quot;&gt;
+            &lt;div id=&quot;wm-ipp-sparkline&quot; title=&quot;Explore captures for this URL&quot; style=&quot;position: relative&quot;&gt;
+              &lt;canvas id=&quot;wm-sparkline-canvas&quot; width=&quot;775&quot; height=&quot;27&quot; border=&quot;0&quot; data-scrapbook-canvas=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwcAAAAbCAYAAAAppPMyAAACTElEQVR4AezXwY2DQAwFUJT6t43thlK2B1Y5JoqCRZhge16kHBAG7Oe5/Nu6rtsy+OcbcWBWrOIC8UrnilVcIF7pXLGKC8QrnStWcYF4ZadztW2/297/b/nZ7v+9ulf3b3FWlQQI1BPQMQECBAgQIEAgLiAcxK1UEiBAgACBXAK6IUCAwMkCwsHJoF5HgAABAgQIECBA4AyBK94hHFyh7psECBAgQIAAAQIEEgoIBwmXoqWuAuYiQIAAAQIECOQWEA5y70d3BAgQIFBFQJ8ECBBoICAcNFiiEQgQIECAAAECBMYKzPJ24WCWTZuTAAECBAgQIECAwI6AcLAD5HZXAXMRIECAAAECBAg8CwgHzyKuCRAgQKC+gAkIECBA4JCAcHCIzUMECBAgQIAAAQJXCfjuOAHhYJytNxMgQIAAAQIECBAoJSAclFpX12bNRYAAAQIECBAgkEFAOMiwBT0QIECgs4DZCBAgQKCMgHBQZlUaJUCAAAECBAjkE9BRLwHhoNc+TUOAAAECBAgQIEDgsIBwcJiu64PmIkCAAAECBAgQmFVAOJh18+YmQGBOAVMTIECAAIE3AsLBGxy3CBAgQIAAAQKVBPRK4FMB4eBTQc8TIECAAAECBAgQaCIgHKRepOYIECBAgAABAgQIfE9AOPietS8RIEDgUcAVAQIECBBIJiAcJFuIdggQIECAAIEeAqYgUFFAOKi4NT0TIECAAAECBAgQGCAgHIRRFRIgQIAAAQIECBDoLSAc9N6v6QgQiAqoI0CAAAECBJZ/AAAA//+iB9aOAAAABklEQVQDAJu5vg6LUmZlAAAAAElFTkSuQmCC&quot;&gt;&lt;/canvas&gt;
+            &lt;div class=&quot;yt&quot; style=&quot;display: none; width: 25px; height: 27px;&quot;&gt;&lt;/div&gt;&lt;div class=&quot;mt&quot; style=&quot;display: none; width: 2px; height: 27px;&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;n&quot;&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          &lt;!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --&gt;
+          &lt;tr class=&quot;m&quot;&gt;
+            &lt;td class=&quot;b&quot; nowrap=&quot;nowrap&quot;&gt;Apr&lt;/td&gt;
+            &lt;td class=&quot;c&quot; id=&quot;displayMonthEl&quot; title=&quot;You are here: 21:14:18 May 03, 2026&quot;&gt;MAY&lt;/td&gt;
+            &lt;td class=&quot;f&quot; nowrap=&quot;nowrap&quot;&gt;Jun&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --&gt;
+          &lt;tr class=&quot;d&quot;&gt;
+            &lt;td class=&quot;b&quot; nowrap=&quot;nowrap&quot;&gt;&lt;span class=&quot;ta&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+            &lt;td class=&quot;c&quot; id=&quot;displayDayEl&quot; style=&quot;width:34px;font-size:22px;white-space:nowrap;&quot; title=&quot;You are here: 21:14:18 May 03, 2026&quot;&gt;03&lt;/td&gt;
+            &lt;td class=&quot;f&quot; nowrap=&quot;nowrap&quot;&gt;&lt;span class=&quot;ta&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --&gt;
+          &lt;tr class=&quot;y&quot;&gt;
+            &lt;td class=&quot;b&quot; nowrap=&quot;nowrap&quot;&gt;2025&lt;/td&gt;
+            &lt;td class=&quot;c&quot; id=&quot;displayYearEl&quot; title=&quot;You are here: 21:14:18 May 03, 2026&quot;&gt;2026&lt;/td&gt;
+            &lt;td class=&quot;f&quot; nowrap=&quot;nowrap&quot;&gt;2027&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;r&quot; style=&quot;display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;&quot;&gt;
+      &lt;div id=&quot;wm-btns&quot; style=&quot;text-align:right;height:23px;&quot;&gt;
+                &lt;span class=&quot;xxs&quot;&gt;
+          &lt;div id=&quot;wm-save-snapshot-success&quot;&gt;success&lt;/div&gt;
+          &lt;div id=&quot;wm-save-snapshot-fail&quot;&gt;fail&lt;/div&gt;
+          &lt;a id=&quot;wm-save-snapshot-open&quot; href=&quot;#&quot; title=&quot;Share via My Web Archive&quot; style=&quot;display: none;&quot;&gt;
+            &lt;span class=&quot;iconochive-web&quot;&gt;&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a href=&quot;https://archive.org/account/login.php&quot; title=&quot;Sign In&quot; id=&quot;wm-sign-in&quot; style=&quot;display: inline-block;&quot;&gt;
+            &lt;span class=&quot;iconochive-person&quot;&gt;&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;span id=&quot;wm-save-snapshot-in-progress&quot; class=&quot;iconochive-web&quot; style=&quot;display: none;&quot;&gt;&lt;/span&gt;
+        &lt;/span&gt;
+                &lt;a class=&quot;xxs&quot; href=&quot;https://help.archive.org/help/category/the-wayback-machine/&quot; title=&quot;Get some help using the Wayback Machine&quot; style=&quot;top:-6px;&quot;&gt;&lt;span class=&quot;iconochive-question&quot; style=&quot;color:rgb(87,186,244);font-size:160%;&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;a id=&quot;wm-tb-close&quot; href=&quot;#close&quot; style=&quot;top:-2px;&quot; title=&quot;Close the toolbar&quot;&gt;&lt;span class=&quot;iconochive-remove-circle&quot; style=&quot;color:#888888;font-size:240%;&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;wm-share&quot; class=&quot;xxs&quot;&gt;
+        &lt;a href=&quot;https://web.archive.org/web/20260503211418/http://web.archive.org/screenshot/https://vityaig.github.io/26jailbreak.html&quot; id=&quot;wm-screenshot&quot; title=&quot;screenshot&quot; style=&quot;visibility: hidden;&quot;&gt;
+          &lt;span class=&quot;wm-icon-screen-shot&quot;&gt;&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;#&quot; id=&quot;wm-video&quot; title=&quot;video&quot;&gt;
+          &lt;span class=&quot;iconochive-movies&quot;&gt;&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a id=&quot;wm-share-facebook&quot; href=&quot;#&quot; data-url=&quot;https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html&quot; title=&quot;Share on Facebook&quot; style=&quot;margin-right:5px;&quot; target=&quot;_blank&quot;&gt;&lt;span class=&quot;iconochive-facebook&quot; style=&quot;color:#3b5998;font-size:160%;&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;a id=&quot;wm-share-twitter&quot; href=&quot;#&quot; data-url=&quot;https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html&quot; title=&quot;Share on Twitter&quot; style=&quot;margin-right:5px;&quot; target=&quot;_blank&quot;&gt;&lt;span class=&quot;iconochive-twitter&quot; style=&quot;color:#1dcaff;font-size:160%;&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div style=&quot;padding-right:2px;text-align:right;white-space:nowrap;&quot;&gt;
+        &lt;a id=&quot;wm-expand&quot; class=&quot;wm-btn wm-closed&quot; href=&quot;#expand&quot;&gt;&lt;span id=&quot;wm-expand-icon&quot; class=&quot;iconochive-down-solid&quot;&gt;&lt;/span&gt; &lt;span class=&quot;xxs&quot; style=&quot;font-size:80%;&quot;&gt;About this capture&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+    &lt;div id=&quot;wm-capinfo&quot; style=&quot;border-top:1px solid #777;display:none; overflow: hidden&quot;&gt;
+        &lt;div id=&quot;wm-capinfo-notice&quot; source=&quot;api&quot;&gt;&lt;/div&gt;
+                &lt;div id=&quot;wm-capinfo-collected-by&quot;&gt;
+    &lt;div style=&quot;background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;&quot;&gt;COLLECTED BY&lt;/div&gt;
+    &lt;div style=&quot;padding:3px;position:relative&quot; id=&quot;wm-collected-by-content&quot;&gt;
+      &lt;div style=&quot;display:inline-block;vertical-align:top;width:49%;&quot;&gt;
+			&lt;span class=&quot;c-logo&quot; style=&quot;background-image:url(&amp;quot;save-page-now.jpg&amp;quot;)&quot;&gt;&lt;/span&gt;
+		&lt;div&gt;Collection: &lt;a style=&quot;color:#33f;&quot; href=&quot;https://archive.org/details/save-page-now&quot; target=&quot;_new&quot;&gt;&lt;span class=&quot;wm-title&quot;&gt;Save Page Now&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+	      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;wm-capinfo-timestamps&quot;&gt;
+    &lt;div style=&quot;background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;&quot; title=&quot;Timestamps for the elements of this page&quot;&gt;TIMESTAMPS&lt;/div&gt;
+    &lt;div&gt;
+      &lt;div id=&quot;wm-capresources&quot; style=&quot;margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important&quot;&gt;&lt;/div&gt;
+      &lt;div id=&quot;wm-capresources-loading&quot; style=&quot;text-align:left;margin:0 20px 5px 5px;display:none&quot;&gt;&lt;img src=&quot;loading.gif&quot; alt=&quot;loading&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;banner-styles.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;iconochive.css&quot;&gt;&lt;div class=&quot;wb-autocomplete-suggestions &quot; style=&quot;left: 0px; top: 200px; width: 0px;&quot;&gt;&lt;/div&gt;" data-scrapbook-shadowdom-mode="closed">
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html</div>
+
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+  <!-- Body touch-action to enable immediate :active states on iOS -->
+  <div></div>
+
+  <div id="share-toast" role="status" aria-live="polite" aria-atomic="true">
+    <span class="share-toast-dot" aria-hidden="true"></span>
+    <span id="share-toast-text">Спасибо! Ссылка скопирована</span>
+  </div>
+
+  <!-- Background Stars -->
+  <canvas id="stars-canvas" aria-hidden="true" width="982" height="730" class="jb-active" data-scrapbook-canvas="data:image/png;base64,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"></canvas>
+
+  <!-- System Status Badge -->
+  <div class="absolute top-6 left-6 z-20">
+    <div id="status-badge" class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0" id="system-status-dot"></span>
+      <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-white/70 uppercase whitespace-nowrap" id="system-ready-txt">Система поддерживается</span>
+    </div>
+  </div>
+
+  <!-- Info & Lang Buttons -->
+  <div class="absolute top-6 right-6 flex flex-col items-end gap-2 z-20">
+    <div class="flex items-center gap-2">
+      <button id="lang-btn" type="button" aria-haspopup="dialog" aria-controls="lang-modal" aria-expanded="false" class="px-3 h-10 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 transition-transform active:scale-90 hover:bg-white/10 text-sm font-semibold text-white/80 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-4 h-4 mr-1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg> <span id="lang-btn-text">RU</span>
+      </button>
+      <button id="info-btn" type="button" aria-label="Information" aria-haspopup="dialog" aria-controls="info-modal" aria-expanded="false" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 transition-transform active:scale-90 hover:bg-white/10 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" aria-hidden="true" class="lucide lucide-info w-5 h-5 text-white/80"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Language Modal -->
+  <div id="lang-modal" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="lang-backdrop"></div>
+    <div class="relative w-full max-w-sm md:max-w-md bg-[#111] border border-white/10 rounded-3xl flex flex-col shadow-2xl transform scale-95 opacity-0 transition-all duration-300 max-h-[85vh] overflow-hidden" id="lang-content">
+      
+      <div class="p-6 pb-2 overflow-y-auto no-scrollbar scroll-smooth">
+        <h2 class="text-2xl font-bold mb-4" id="lang-modal-title">Язык</h2>
+        
+        <div class="flex flex-col gap-2">
+          <button type="button" class="lang-option w-full p-4 rounded-xl border transition-all text-left flex items-center justify-between border-transparent" data-lang="en" aria-pressed="false">
+            <span class="font-medium text-white/70">English</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" class="lucide lucide-check w-5 h-5 text-green-400 hidden lang-check"><path d="M20 6 9 17l-5-5"></path></svg>
+          </button>
+          <button type="button" class="lang-option w-full p-4 rounded-xl border transition-all text-left flex items-center justify-between border-white/10 bg-white/5" data-lang="ru" aria-pressed="true">
+            <span class="font-medium text-white">Русский</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" class="lucide lucide-check w-5 h-5 text-green-400 lang-check"><path d="M20 6 9 17l-5-5"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6 pt-6 shrink-0 border-t border-white/5 bg-[#111] mt-2">
+        <button id="lang-close-btn" type="button" class="w-full py-3.5 bg-white/10 hover:bg-white/15 active:bg-white/20 rounded-xl font-semibold transition-colors active:scale-95 text-white">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selection Screen -->
+  <div id="selection-screen" style="--theme-color: #22c55e; --theme-rgb: 34, 197, 94; --accent-deep: rgb(14, 83, 39); --accent-dark: rgb(26, 150, 71); --accent-soft: rgb(171, 233, 194); display: none;" class="fade-out">
+    
+    <div class="text-center mb-10 px-4 flex flex-col items-center mt-16 sm:mt-12">
+      <div class="step-indicator mb-5" id="step-indicator" aria-label="Progress">
+        <div class="step-chip" id="step-chip-1">
+          <span class="step-dot"></span>
+          <span class="step-label" id="step-label-1">Шаг 1 - Выбор</span>
+        </div>
+        <span class="step-divider" aria-hidden="true"></span>
+        <div class="step-chip is-active" id="step-chip-2">
+          <span class="step-dot"></span>
+          <span class="step-label" id="step-label-2">Шаг 2 - Запуск</span>
+        </div>
+      </div>
+      <div class="hero-heading">
+        <div class="hero-logo-shell" aria-hidden="true">
+          <span class="hero-logo-glow"></span>
+          <img id="hero-logo" class="hero-logo" src="webbreak-logo-white.png" alt="" aria-hidden="true" decoding="async">
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight gradient-text hero-title" id="hero-title" aria-label="Давайте начнем">Давайте начнем</h1>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="relative mb-6 w-full max-w-md sm:max-w-2xl md:max-w-3xl mx-auto select-none">
+      <div id="category-tabs" class="relative flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 bg-white/5 rounded-2xl border border-white/10">
+        <button id="category-prev" type="button" class="category-nav-btn" aria-label="Previous: Бесплатная память iCloud">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" aria-hidden="true" class="lucide lucide-chevron-left w-4 h-4 sm:w-5 sm:h-5"><path d="m15 18-6-6 6-6"></path></svg>
+        </button>
+        <div class="min-w-0 flex-1 flex items-center justify-center">
+          <div id="category-current-label" class="category-current-label">Джейлбрейк</div>
+        </div>
+        <button id="category-next" type="button" class="category-nav-btn" aria-label="Next: Откат iOS">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4 sm:w-5 sm:h-5"><path d="m9 18 6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="category-spotlight" aria-live="polite">
+      <div class="category-spotlight-title" id="category-spotlight-title">
+        <span class="category-spotlight-title-dot" aria-hidden="true"></span>
+        <span id="category-spotlight-title-text">Инструменты джейлбрейка</span>
+      </div>
+      <div class="category-spotlight-desc" id="category-spotlight-desc">Выберите нужный инструмент и перейдите к шагу установки.</div>
+      <div class="category-spotlight-footer">
+        <div class="category-spotlight-tags" id="category-spotlight-tags"><span class="category-spotlight-tag">Основное</span><span class="category-spotlight-tag">Подпись IPA</span><span class="category-spotlight-tag">Пакеты</span></div>
+        <button id="share-btn" type="button" class="category-spotlight-tag transition-transform active:scale-90 hover:bg-white/10 focus:outline-none">
+          <span id="share-btn-label">Поделиться</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share-2" aria-hidden="true" class="lucide lucide-share-2 w-3.5 h-3.5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="options-list" data-category="jailbreak" class="has-selection"><div class="option-item group" data-id="dopamine" tabindex="0" role="button" aria-pressed="false" style="--theme-color: #22c55e;">
+          <div class="option-glow"></div>
+          <div class="option-icon-wrapper">
+            <div class="relative w-full h-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="flask-conical" aria-hidden="true" class="lucide lucide-flask-conical w-6 h-6 shrink-0 absolute opacity-50 z-0" style="display: none;"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></svg>
+          <img src="Icon-60@3x.png" alt="Установить Dopamine" class="option-icon-asset w-full h-full" style="opacity: 1;">
+        </div>
+          </div>
+          <div class="option-content">
+            <div class="option-title">Установить Dopamine</div>
+            <div class="option-desc">Rootless-установка джейлбрейка для современных поддерживаемых версий iOS.</div>
+            <div class="option-badge-row"><span class="recommendation-badge">Рекомендуется</span></div>
+          </div>
+          <div class="option-radio"></div>
+        </div><div class="option-item group" data-id="trollstore" tabindex="0" role="button" aria-pressed="false" style="--theme-color: #06b6d4;">
+          <div class="option-glow"></div>
+          <div class="option-icon-wrapper">
+            <div class="relative w-full h-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="gem" aria-hidden="true" class="lucide lucide-gem w-6 h-6 shrink-0 absolute opacity-50 z-0" style="display: none;"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"></path><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"></path><path d="M2 9h20"></path></svg>
+          <img src="AppIcon60x60@3x.png" alt="Установить TrollStore" class="option-icon-asset w-full h-full" style="opacity: 1;">
+        </div>
+          </div>
+          <div class="option-content">
+            <div class="option-title">Установить TrollStore</div>
+            <div class="option-desc">Постоянная подпись sideload-приложений без регулярных отзывов сертификата.</div>
+            
+          </div>
+          <div class="option-radio"></div>
+        </div><div class="option-item group selected" data-id="sileo" tabindex="0" role="button" aria-pressed="true" style="--theme-color: #3b82f6;">
+          <div class="option-glow"></div>
+          <div class="option-icon-wrapper">
+            <div class="relative w-full h-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="box" aria-hidden="true" class="lucide lucide-box w-6 h-6 shrink-0 absolute opacity-50 z-0" style="display: none;"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          <img src="AppIcon60x60@3x-1.png" alt="Установить Sileo" class="option-icon-asset w-full h-full" style="opacity: 1;">
+        </div>
+          </div>
+          <div class="option-content">
+            <div class="option-title">Установить Sileo</div>
+            <div class="option-desc">Аккуратный менеджер пакетов для твиков, репозиториев и базовых инструментов.</div>
+            
+          </div>
+          <div class="option-radio"></div>
+        </div><div class="option-item group" data-id="roothide" tabindex="0" role="button" aria-pressed="false" style="--theme-color: #ef4444;">
+          <div class="option-glow"></div>
+          <div class="option-icon-wrapper">
+            <div class="relative w-full h-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock-open" aria-hidden="true" class="lucide lucide-lock-open w-6 h-6 shrink-0 absolute z-0"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+          <img src="urn:scrapbook:download:error:https://web.archive.org/web/20260503211418/https://theapplewiki.com/wiki/Special:Redirect/file/Dopamine-roothide_Icon.png" alt="Включить RootHide" class="option-icon-asset w-full h-full" style="opacity: 0; display: none;">
+        </div>
+          </div>
+          <div class="option-content">
+            <div class="option-title">Включить RootHide</div>
+            <div class="option-desc">Снижает обнаружение джейлбрейка в банковских и игровых приложениях.</div>
+            
+          </div>
+          <div class="option-radio"></div>
+        </div></div>
+
+    <div id="continue-btn-container" class="visible">
+      <button id="continue-btn" type="button" class="group" aria-disabled="true" disabled="">Перейти к установке <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-5 h-5 transition-transform group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+    </div>
+  </div>
+
+  <!-- Jailbreak Screen -->
+  <div id="jailbreak-screen" class="relative overflow-hidden w-full h-full flex flex-col justify-center items-center active" style="--theme-color: #3b82f6; --theme-rgb: 59, 130, 246; --accent-deep: rgb(25, 55, 103); --accent-dark: rgb(45, 99, 187); --accent-soft: rgb(181, 208, 252);">
+    <div class="relative z-10 flex flex-col items-center w-full">
+      <div class="step-indicator mb-10" id="jb-step-indicator" aria-label="Progress">
+        <div class="step-chip" id="jb-step-chip-1">
+          <span class="step-dot"></span>
+          <span class="step-label" id="jb-step-label-1">Шаг 1 - Выбор</span>
+        </div>
+        <span class="step-divider" aria-hidden="true"></span>
+        <div class="step-chip is-active" id="jb-step-chip-2">
+          <span class="step-dot"></span>
+          <span class="step-label" id="jb-step-label-2">Шаг 2 - Запуск</span>
+        </div>
+      </div>
+      <!-- Animated Border Line Container -->
+      <div class="relative flex items-center justify-center group cursor-pointer transition-all duration-300 transform-gpu rounded-full" id="jb-btn-wrapper" style="width: auto; max-width: calc(-2rem + 100vw);">
+        <div class="jb-button-halo" aria-hidden="true"></div>
+        <div class="jb-pulse-waves" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- The orbital loading ring -->
+        <svg class="jb-orbit-ring" viewBox="0 0 320 104" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="jb-green-gradient" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#052e16">
+                <animate attributeName="stop-color" values="#052e16;#16a34a;#22c55e;#052e16" dur="3.4s" repeatCount="indefinite"></animate>
+              </stop>
+              <stop offset="32%" stop-color="#16a34a">
+                <animate attributeName="stop-color" values="#16a34a;#4ade80;#15803d;#16a34a" dur="3.4s" repeatCount="indefinite"></animate>
+              </stop>
+              <stop offset="65%" stop-color="#86efac">
+                <animate attributeName="stop-color" values="#86efac;#bbf7d0;#22c55e;#86efac" dur="3.4s" repeatCount="indefinite"></animate>
+              </stop>
+              <stop offset="100%" stop-color="#047857">
+                <animate attributeName="stop-color" values="#047857;#22c55e;#064e3b;#047857" dur="3.4s" repeatCount="indefinite"></animate>
+              </stop>
+            </linearGradient>
+          </defs>
+          <rect class="jb-orbit-track" x="3" y="3" width="314" height="98" rx="49" pathLength="100"></rect>
+          <rect class="jb-orbit-line" x="3" y="3" width="314" height="98" rx="49" pathLength="100"></rect>
+        </svg>
+        
+        <button id="main-jailbreak-btn" type="button" class="!border-none bg-[#0a0a0a]/80 backdrop-blur-xl text-white relative z-10 w-full transition-all duration-300 shadow-2xl overflow-hidden rounded-full" disabled="" aria-busy="true" style="">
+          <span class="relative z-20 drop-shadow-md text-xl sm:text-2xl font-bold tracking-wide" id="jb-btn-text">Начать установку</span>
+        </button>
+      </div>
+
+      <div id="jb-selected-container" class="mt-12 flex flex-col items-center transform transition-all duration-700 delay-300 relative opacity-100 translate-y-0">
+        <span class="text-white/50 text-sm font-medium mb-3 relative z-10 uppercase tracking-widest" id="jb-your-option-lbl" style="color: var(--theme-color, rgba(255,255,255,0.5));">Вы выбрали:</span>
+        <div class="px-6 py-3 bg-white/5 border rounded-2xl backdrop-blur-md flex items-center justify-center shadow-lg w-full max-w-[320px] relative z-10" id="jb-selected-box" style="border-color: var(--theme-color, rgba(255,255,255,0.1)); border-width: 1px;">
+          <div class="flex items-center gap-4" id="jb-selected-value"><div class="relative w-6 h-6 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="box" aria-hidden="true" class="lucide lucide-box w-5 h-5 shrink-0 absolute opacity-50 z-0" style="display: none;"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          <img src="AppIcon60x60@3x-1.png" alt="Установить Sileo" class="option-icon-asset w-6 h-6" style="opacity: 1;">
+        </div><span class="text-base font-bold truncate drop-shadow-md" style="color: var(--theme-color, white);">Установить Sileo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Info Modal -->
+  <div id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-title" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="info-backdrop"></div>
+    <div class="relative w-full max-w-sm md:max-w-lg bg-[#111] border border-white/10 rounded-3xl flex flex-col shadow-2xl transform scale-95 opacity-0 transition-all duration-300 max-h-[85vh] overflow-hidden" id="info-content">
+      
+      <div id="info-scroll-area" class="p-6 overflow-y-auto no-scrollbar scroll-smooth">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="about-logo-wrap" aria-hidden="true">
+            <img src="webbreak-logo-white.png" alt="" decoding="async">
+          </div>
+          <div class="min-w-0">
+            <div id="info-pill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-400/10 text-green-300 border border-green-400/20 text-[11px] font-bold uppercase tracking-wide mb-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>Концепт-сборка</div>
+            <h2 id="info-title" class="text-2xl font-black tracking-tight">iOS 26 WebBreak</h2>
+          </div>
+        </div>
+        <p id="info-desc" class="text-white/70 text-sm mb-5 leading-relaxed">Аккуратный интерфейс Web-Break с понятным выбором, адаптивной визуальной темой и чистым запуском.</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-5">
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="version-lbl" class="text-white/50">Версия</span>
+            <div class="font-mono mt-1 text-white/90">1.2.5</div>
+          </div>
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="compat-lbl" class="text-white/50">Совместимость</span>
+            <div class="text-green-400 font-semibold mt-1">iOS 15.0 - 26.5</div>
+          </div>
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="build-lbl" class="text-white/50">Интерфейс</span>
+            <div class="text-white/90 font-semibold mt-1">Web-Break</div>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-6">
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-green-400/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-green-300"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+            </div>
+            <span id="about-feature-flow" class="text-sm text-white/75">Пошаговый выбор для инструментов, отката и приложений.</span>
+          </div>
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-cyan-400/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="palette" aria-hidden="true" class="lucide lucide-palette w-4 h-4 text-cyan-300"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+            </div>
+            <span id="about-feature-theme" class="text-sm text-white/75">Цвет темы подстраивается под выбранную опцию.</span>
+          </div>
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="image" aria-hidden="true" class="lucide lucide-image w-4 h-4 text-white/80"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+            </div>
+            <span id="about-feature-icons" class="text-sm text-white/75">Реальные иконки используются там, где есть надежные источники.</span>
+          </div>
+        </div>
+
+        <button id="view-credits-btn" type="button" aria-expanded="false" class="w-full py-2.5 mb-2 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 active:bg-white/15 transition-colors border border-white/5 flex items-center justify-center gap-2">
+          <span>Показать создателей</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down w-4 h-4 text-white/50"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+
+        <div id="credits-section" class="pt-6 pb-2 hidden">
+          <h3 id="credits-title" class="text-base font-bold mb-4 text-white/80 uppercase tracking-widest">Создатели</h3>
+          <div class="space-y-4">
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#2AABEE]/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" aria-hidden="true" class="lucide lucide-send w-5 h-5 text-[#2AABEE]"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">@VityaV [Telegram]</span>
+                  <span id="role-designer" class="text-white/50 text-xs">Главный дизайнер и автор идеи</span>
+                </div>
+             </div>
+             
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-5 h-5 text-purple-400"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">Gemini | Codex</span>
+                  <span id="role-ai" class="text-white/50 text-xs">ИИ-разработка и генерация кода</span>
+                </div>
+             </div>
+
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-5 h-5 text-green-400"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">rooted~us3r</span>
+                  <span id="role-infra" class="text-white/50 text-xs">Инфраструктура и настройка поддоменов</span>
+                </div>
+             </div>
+
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="refresh-cw" aria-hidden="true" class="lucide lucide-refresh-cw w-5 h-5 text-cyan-400"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">Neonmodder123</span>
+                  <span id="role-execution" class="text-white/50 text-xs">Логика запуска Browser-to-SpringBoard (Respring)</span>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 pt-3 shrink-0 border-t border-white/5 bg-[#111]">
+        <button id="info-close-btn" type="button" class="w-full py-3.5 bg-white/10 hover:bg-white/15 active:bg-white/20 rounded-xl font-semibold transition-colors active:scale-95">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="panic-screen" class="panic-screen active" aria-hidden="false"><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Entering Bootloop...</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">OVERFLOW_DETECTION</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">THREAD_STUCK_IN_DEVICE_DRIVER</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">KERNEL_PANIC</span><span class="error-msg">SYSTEM_FREEZE</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">FS_CORRUPTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">MEMORY_CORRUPTION</span><span class="error-msg">CRITICAL_PROCESS_DIED</span><span class="error-msg">STACK_COLLISION</span><span class="error-msg">Fatal Error 0x3333</span><span class="error-msg">0xFFFF_SYSTEM_HALT</span><span class="error-msg">HARDWARE_MALFUNCTION</span><span class="error-msg">BOOT_LOOP_DETECTED</span></div>
+
+  <!-- Audio preload -->
+  <audio id="jb-audio" src="otkat.mp3" preload="auto"></audio>
+
+  
+
+
+
+<iframe id="respring-iframe" sandbox="allow-forms allow-modals allow-scripts allow-same-origin" style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; opacity: 0.01; pointer-events: none; z-index: -1;" allow="autoplay 'self'; fullscreen 'self'" src="index_1.html"></iframe><script data-scrapbook-elem="basic-loader">(function () { var k1 = "data-scrapbook-shadowdom", k2 = "data-scrapbook-canvas", k3 = "data-scrapbook-input-indeterminate", k4 = "data-scrapbook-input-checked", k5 = "data-scrapbook-option-selected", k6 = "data-scrapbook-input-value", k7 = "data-scrapbook-textarea-value", k8 = "data-scrapbook-adoptedstylesheets", k9 = /^data-scrapbook-adoptedstylesheet-(\d+)$/, k10 = "data-scrapbook-shadowdom-mode", k11 = "data-scrapbook-shadowdom-clonable", k12 = "data-scrapbook-shadowdom-delegates-focus", k13 = "data-scrapbook-shadowdom-serializable", k14 = "data-scrapbook-shadowdom-slot-assignment", k15 = "data-scrapbook-slot-assigned", k16 = "data-scrapbook-slot-index", k17 = /^scrapbook-slot-index=(\d+)$/, k18 = '/scrapbook-slot-index', d = document, r = d.documentElement, $s = !!r.attachShadow, $as = !!d.adoptedStyleSheets, $c = !!window.HTMLCanvasElement, $sa = !!d.createElement('slot').assign, sle = [], sls = [], slt = function (r) { if ($sa) { var E = r.childNodes, i, e, s, m; for (i = 0; i < E.length; i++) { e = E[i]; if (e.nodeType === 8) { s = e.nodeValue; if (m = s.match(k17)) { s = e.nextSibling; if (s.nodeType === 3) { sls[m[1]] = s; } r.removeChild(e); i--; } else if (s === k18) { r.removeChild(e); i--; } } } } }, sl = function () { var i = sle.length, j, d, e; while (i--) { d = sle[i]; e = d.elem; d = d.value.split(','); j = d.length; while (j--) { d[j] = sls[parseInt(d[j], 10)]; } try { try { e.assign.apply(e, d); } catch (ex) { if (ex.message.includes('must have a callable @@iterator')) { e.assign(d); } else { throw ex; } } } catch (ex) { console.error(ex); } } }, asl = (function (r) { var l = [], E, i, e, m, c, j; if ($as) { E = r.attributes; i = E.length; while (i--) { e = E[i]; if (!(m = e.nodeName.match(k9))) { continue; } c = l[m[1]] = new CSSStyleSheet(); r.removeAttribute(m[0]); m = e.nodeValue.split('\n\n'); j = m.length; while (j--) { try { m[j] && c.insertRule(m[j]); } catch (ex) { console.error(ex); } } } } return l; })(r), as = function (d, e) { var l; if ($as && (l = e.getAttribute(k8)) !== null) { l = l.split(',').map(i => asl[i]); d.adoptedStyleSheets = d.adoptedStyleSheets.concat(l); e.removeAttribute(k8); } }, fn = function (r) { var E = r.querySelectorAll ? r.querySelectorAll("*") : r.getElementsByTagName("*"), i = E.length, e, d, s, m; while (i--) { e = E[i]; s = e.shadowRoot; if ($s && (d = e.getAttribute(k1))) { if (!s) { try { s = e.attachShadow({ mode: (m = e.getAttribute(k10)) !== null ? m : 'open', clonable: e.hasAttribute(k11), delegatesFocus: e.hasAttribute(k12), serializable: e.hasAttribute(k13), slotAssignment: (m = e.getAttribute(k14)) !== null ? m : void 0, }); s.innerHTML = d; } catch (ex) { console.error(ex); } } e.removeAttribute(k1); e.removeAttribute(k10); e.removeAttribute(k11); e.removeAttribute(k12); e.removeAttribute(k13); e.removeAttribute(k14); } if ($c && (d = e.getAttribute(k2)) !== null) { (function () { var c = e, g = new Image(); g.onload = function () { c.getContext('2d').drawImage(g, 0, 0); }; g.src = d; })(); e.removeAttribute(k2); } if ((d = e.getAttribute(k3)) !== null) { e.indeterminate = true; e.removeAttribute(k3); } if ((d = e.getAttribute(k4)) !== null) { e.checked = d === 'true'; e.removeAttribute(k4); } if ((d = e.getAttribute(k5)) !== null) { e.selected = d === 'true'; e.removeAttribute(k5); } if ((d = e.getAttribute(k6)) !== null) { e.value = d; e.removeAttribute(k6); } if ((d = e.getAttribute(k7)) !== null) { e.value = d; e.removeAttribute(k7); } if ($sa && (d = e.getAttribute(k15)) !== null) { sle.push({elem: e, value: d}); e.removeAttribute(k15); } if ($sa && (d = e.getAttribute(k16)) !== null) { sls[d] = e; e.removeAttribute(k16); } if (s) { slt(e); as(s, e); fn(s); } } }; as(d, r); fn(d); sl(); })()</script></body></html><!--
+     FILE ARCHIVED ON 21:14:18 May 03, 2026 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:46:41 Aug 13, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--><!--
+playback timings (ms):
+  captures_list: 0.339
+  exclusion.robots: 0.033
+  exclusion.robots.policy: 0.027
+  esindex: 0.006
+  cdx.remote: 33.045
+  LoadShardBlock: 123.638 (3)
+  PetaboxLoader3.datanode: 225.883 (4)
+  PetaboxLoader3.resolve: 107.182 (3)
+  load_resource: 234.001
+  nav: 0.142 (6)
+-->
