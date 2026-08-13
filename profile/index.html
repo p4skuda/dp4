@@ -12,7 +12,7 @@
             padding: 0;
         }
 
-        /* Полностью блокируем любую прокрутку */
+        /* Блокируем прокрутку */
         html, body {
             overflow: hidden; 
             height: 100%; 
@@ -59,20 +59,20 @@
             transform-style: preserve-3d;
             will-change: transform, opacity;
 
-            /* Начальное состояние стартовой анимации */
+            /* Начальное состояние анимации появления */
             opacity: 0;
             transform: translateY(50px) scale(0.95);
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
                         transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Активация панели */
+        /* Появление главной панели */
         body.page-loaded .glass-panel {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* --- ЭФФЕКТ СТАРТОВОГО ВЫЛЕТА (КАСКАД) --- */
+        /* --- СТАРТОВЫЙ ВЫЛЕТ ЭЛЕМЕНТОВ (КАСКАД) --- */
         .header, .card {
             opacity: 0;
             transform: translateY(30px) scale(0.96);
@@ -81,28 +81,27 @@
                         transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Поочередное всплытие элементов */
+        /* Четкая привязка по классам вместо nth-of-type */
         body.page-loaded .header {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.1s;
         }
 
-        body.page-loaded .card:nth-of-type(1) {
+        body.page-loaded .profile-card {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.22s;
         }
 
-        body.page-loaded .card:nth-of-type(2) {
+        body.page-loaded .player-card {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.34s;
         }
 
-        /* --- ПОСЛЕ ЗАГРУЗКИ: РЕЖИМ МГНОВЕННОГО ИНТЕРАКТИВА --- */
+        /* --- РЕЖИМ МГНОВЕННОГО ОТКЛИКА (ПОСЛЕ ЗАГРУЗКИ) --- */
         body.page-ready .card {
-            /* Сбрасываем задержки вылета и включаем быстрый возврат при mouseout (0.18s) */
             transition-delay: 0s !important;
             transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.18s ease-out,
@@ -123,7 +122,7 @@
             margin-bottom: 6px;
         }
 
-        /* Базовый стиль карточек */
+        /* Карточки */
         .card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -306,14 +305,13 @@
             transition: transform 0.08s ease !important;
         }
 
-        /* Иконки */
         .icon {
             width: 20px;
             height: 20px;
             fill: currentColor;
         }
 
-        /* Адаптивность для мобильных устройств */
+        /* Адаптивность для мобилок */
         @media (max-width: 520px) {
             body {
                 align-items: flex-start;
@@ -440,19 +438,19 @@
         document.addEventListener('DOMContentLoaded', () => {
             const panel = document.getElementById('glassPanel');
 
-            // 1. Запуск вылета элементов при открытии страницы
+            // 1. Анимация открытия
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     document.body.classList.add('page-loaded');
                 }, 50);
             });
 
-            // 2. Включаем режим быстрого отклика (page-ready) сразу после завершения стартового вылета
+            // 2. Быстрый режим взаимодействия
             setTimeout(() => {
                 document.body.classList.add('page-ready');
             }, 900);
 
-            // 3. Плавный переход при клике по ссылкам (для внутренних ссылок)
+            // 3. Переход по внутренним ссылкам
             document.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -480,7 +478,7 @@
                 });
             });
 
-            // 4. 3D TILT EFFECT (Только для устройств с мышами)
+            // 4. 3D Tilt Effect
             if (window.matchMedia('(hover: hover)').matches && panel) {
                 panel.addEventListener('mousemove', (e) => {
                     const rect = panel.getBoundingClientRect();
@@ -506,7 +504,7 @@
                 });
             }
 
-            // 5. ЛОГИКА АУДИО ПЛЕЕРА
+            // 5. Логика музыкального плеера
             const audio = document.getElementById('audioPlayer');
             const playBtn = document.getElementById('playBtn');
             const currentTimeEl = document.getElementById('currentTime');
@@ -561,7 +559,7 @@
             });
         });
 
-        // 6. Фикс восстановления анимации при навигации "Назад" в Safari / iOS
+        // 6. Восстановление состояния при переходах "Назад" в браузерах
         window.addEventListener('pageshow', (event) => {
             if (event.persisted) {
                 document.body.classList.add('page-loaded');
