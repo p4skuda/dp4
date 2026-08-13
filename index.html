@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>писькад</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         /* Базовые настройки и шрифт в стиле iOS */
         * {
@@ -20,11 +19,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat fixed;
+            background-color: #000;
             perspective: 1000px;
             overflow-x: hidden;
             overflow-y: auto;
             padding: 20px 0;
+            position: relative;
+        }
+
+        /* Размытый фоновый рисунок */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat;
+            filter: blur(8px); /* Небольшое размытие фона */
+            transform: scale(1.05); /* Убирает прозрачные края после размытия */
+            z-index: -1;
         }
 
         /* Главная панель с 3D-наклоном и эффектом матового стекла */
@@ -171,9 +185,7 @@
         
         <!-- Шапка главной страницы -->
         <div class="header">
-
             <h1>писькад</h1>
-            
         </div>
 
         <!-- Навигационные карточки перехода -->
@@ -196,8 +208,6 @@
             </a>
 
         </div>
-
-
 
     </div>
 
