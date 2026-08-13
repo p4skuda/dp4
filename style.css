@@ -1,33 +1,73 @@
-/* Базовые сбросы */
-html, body {
+/* ==========================================
+   ФАЙЛ: style.css (Стили для всего проекта)
+   ========================================== */
+
+/* Базовый сброс и подготовка страницы */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    width: 100%;
-    min-height: 100vh;
 }
 
 body {
     position: relative;
-    color: #ffffff; /* Цвет текста */
-    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #ffffff;
+    background-color: #0b0c10; /* Запасной цвет фона */
+    overflow-x: hidden;
 }
 
-/* Размытый фоновый слой */
+/* РАЗМЫТЫЙ ФОН */
 body::before {
     content: '';
     position: fixed;
-    /* Небольшой отступ наружу, чтобы размытие не оставляло белых краев по бокам */
+    /* Увеличиваем размер слоя, чтобы блюр не давал белых полос по краям */
     top: -20px;
     left: -20px;
     right: -20px;
     bottom: -20px;
     
-    /* Укажите путь к вашей картинке */
-    background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') no-repeat center center / cover; 
+    /* Укажите имя или путь к вашей картинке */
+    background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') no-repeat center center / cover;
     
-    /* Сила размытия (можно менять px) */
-    filter: blur(15px); 
+    /* Интенсивность размытия и затемнения */
+    filter: blur(18px) brightness(0.65);
     
-    /* Задний план */
-    z-index: -1; 
+    z-index: -1;
+    transform: scale(1.05);
+}
+
+/* Стили для контейнера с контентом (матовое стекло) */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    margin-bottom: 16px;
+    font-size: 2rem;
+}
+
+p {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+a {
+    color: #4da6ff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #80c1ff;
+    text-decoration: underline;
 }
