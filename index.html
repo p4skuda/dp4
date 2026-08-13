@@ -57,18 +57,21 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             
             transform-style: preserve-3d;
-            will-change: transform;
+            will-change: transform, opacity;
 
-            /* Начальное состояние для вылета снизу */
+            /* Начальное состояние: опущена вниз, чуть уменьшена и полностью прозрачна */
             opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transform: translateY(50px) scale(0.95);
+            
+            /* Ультра-плавная кривая анимации iOS (0.8 секунды) */
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Класс активации: плавно возвращает панель на место */
+        /* Активация: мягкое всплытие и полноразмерный вид */
         body.page-loaded .glass-panel {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         /* Шапка */
@@ -223,12 +226,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const panel = document.getElementById('glassPanel');
 
-            // 1. Показываем панель вылетом снизу при загрузке
-            setTimeout(() => {
-                document.body.classList.add('page-loaded');
-            }, 50);
+            // 1. Запускаем мягкий вылет панели
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    document.body.classList.add('page-loaded');
+                }, 60);
+            });
 
-            // 2. Перехват кликов по ссылкам для плавного ухода вниз
+            // 2. Плавный уход панели вниз при клике на ссылку
             document.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -240,18 +245,20 @@
 
                     e.preventDefault();
 
-                    // Сбрасываем инлайновый 3D-наклон, чтобы плавно сработал уход вниз
-                    if (panel) panel.style.transform = '';
+                    // Возвращаем плавный transition для скрытия панели
+                    if (panel) {
+                        panel.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    }
                     
                     document.body.classList.remove('page-loaded');
 
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 500);
+                    }, 600);
                 });
             });
 
-            // 3. 3D TILT EFFECT (Только для устройств с мышами)
+            // 3. 3D TILT EFFECT (Только для десктопов, без конфликта с появлением)
             if (window.matchMedia('(hover: hover)').matches && panel) {
                 panel.addEventListener('mousemove', (e) => {
                     const rect = panel.getBoundingClientRect();
@@ -262,8 +269,7 @@
                     const x = (e.clientX - panelCenterX) / (rect.width / 2);
                     const y = (e.clientY - panelCenterY) / (rect.height / 2);
 
-                    const maxTilt = 10;
-
+                    const maxTilt = 8;
                     const tiltX = -y * maxTilt;
                     const tiltY = x * maxTilt;
 
@@ -272,13 +278,13 @@
                 });
 
                 panel.addEventListener('mouseleave', () => {
-                    panel.style.transition = 'transform 0.5s ease';
+                    panel.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                     panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
                 });
             }
         });
 
-        // 4. Фикс для Safari/iOS при возврате назад по стрелке браузера
+        // 4. Страховка для Safari при возврате по истории
         window.addEventListener('pageshow', (event) => {
             if (event.persisted) {
                 document.body.classList.add('page-loaded');
