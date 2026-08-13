@@ -1,14 +1,33 @@
-body {
+/* Базовые сбросы */
+html, body {
     margin: 0;
-    background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') no-repeat center center / cover fixed;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
 }
 
-/* Обертка для контента или карточек */
-.container, .card, main {
-    background: rgba(255, 255, 255, 0.15); /* Полупрозрачный слой */
-    backdrop-filter: blur(12px);             /* Размытие заднего плана */
-    -webkit-backdrop-filter: blur(12px);      /* Поддержка Safari */
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
+body {
+    position: relative;
+    color: #ffffff; /* Цвет текста */
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Размытый фоновый слой */
+body::before {
+    content: '';
+    position: fixed;
+    /* Небольшой отступ наружу, чтобы размытие не оставляло белых краев по бокам */
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    
+    /* Укажите путь к вашей картинке */
+    background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') no-repeat center center / cover; 
+    
+    /* Сила размытия (можно менять px) */
+    filter: blur(15px); 
+    
+    /* Задний план */
+    z-index: -1; 
 }
