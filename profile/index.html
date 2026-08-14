@@ -56,7 +56,7 @@
             width: 92%;
             max-width: 620px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-            
+
             transform-style: preserve-3d;
             will-change: transform, opacity;
 
@@ -174,7 +174,7 @@
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         .card:hover {
             background: rgba(255, 255, 255, 0.09);
             border-color: rgba(255, 255, 255, 0.18);
@@ -262,14 +262,14 @@
             flex-direction: column;
             margin-bottom: 0;
         }
-        
+
         .player-top {
             display: flex;
             align-items: center;
             width: 100%;
             margin-bottom: 16px;
         }
-        
+
         .player-title {
             flex: 1;
             text-align: center;
@@ -356,7 +356,7 @@
         /* Адаптивность для мобилок */
         @media (max-width: 520px) {
             body {
-                align-items: flex-start;
+                align-items: center; /* Центрирование по вертикали */
                 padding: 16px 0;
             }
 
@@ -433,8 +433,7 @@
 <body>
 
     <div class="glass-panel" id="glassPanel">
-        
-        <!-- Кнопка Назад -->
+
         <a href="../" class="back-btn">
             <svg class="icon" viewBox="0 0 24 24" style="width:16px; height:16px;"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
             Назад
@@ -452,7 +451,7 @@
                     <p>@k0sty4pskd</p>
                 </div>
             </div>
-            
+
             <div class="action-links">
                 <a href="https://t.me/k0sty4pskd" target="_blank" class="action-link">Telegram →</a>
                 <a href="https://discord.com/users/1015892476378218546" target="_blank" class="action-link">Discord →</a>
@@ -524,7 +523,7 @@
                     if (panel) {
                         panel.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                     }
-                    
+
                     document.body.classList.remove('page-loaded');
 
                     setTimeout(() => {
@@ -537,7 +536,7 @@
             if (window.matchMedia('(hover: hover)').matches && panel) {
                 panel.addEventListener('mousemove', (e) => {
                     const rect = panel.getBoundingClientRect();
-                    
+
                     const panelCenterX = rect.left + rect.width / 2;
                     const panelCenterY = rect.top + rect.height / 2;
 
