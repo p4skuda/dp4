@@ -211,6 +211,19 @@
             line-height: 1.35;
         }
 
+        /* Иконки в названиях карточек */
+        .card-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .card-icon.avatar-icon {
+            border-radius: 50%;
+        }
+
         /* Кнопка-стрелка внутри карточки */
         .badge-btn {
             font-size: 13px;
@@ -266,7 +279,7 @@
             
             <a href="iosexploits/" class="nav-card">
                 <div class="card-info">
-                    <h2>⚡ Shortcuts</h2>
+                    <h2><img src="/icons/shortcuts.png" alt="Shortcuts" class="card-icon"> Shortcuts</h2>
                     <p>Эксплоиты на основе ярлыков и приложении комманды</p>
                 </div>
                 <span class="badge-btn">Открыть →</span>
@@ -274,18 +287,18 @@
 
             <a href="https://profile.larp.pp.ua/" class="nav-card">
                 <div class="card-info">
-                    <h2>👤 Профиль</h2>
+                    <h2><img src="/icons/avatar.jpg" alt="Профиль" class="card-icon avatar-icon"> Профиль</h2>
                     <p>Информация обо мне, соцсети</p>
                 </div>
                 <span class="badge-btn">Перейти →</span>
             </a>
 
-            <a href="https://larp.pp.ua/larp333" class="nav-card">
+            <a href="https://larp333.pp.ua/" class="nav-card">
                 <div class="card-info">
-                    <h2>larp333</h2>
-                    <p>ларп скулшутинг луксмакс ларп</p>
+                    <h2>🔥 larp333</h2>
+                    <p>Дополнительный раздел и ресурсы</p>
                 </div>
-                <span class="badge-btn">ларп →</span>
+                <span class="badge-btn">Перейти →</span>
             </a>
 
         </div>
