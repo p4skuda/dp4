@@ -106,6 +106,12 @@
             transition-delay: 0.46s;
         }
 
+        body.page-loaded .nav-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.58s;
+        }
+
         /* --- ПОСЛЕ ЗАГРУЗКИ: РЕЖИМ МГНОВЕННОГО ИНТЕРАКТИВА --- */
         body.page-ready .nav-card {
             /* Сбрасываем стартовые задержки и ставим быстрый возврат при уводе мыши (0.18s) */
@@ -272,6 +278,14 @@
                     <p>Информация обо мне, соцсети</p>
                 </div>
                 <span class="badge-btn">Перейти →</span>
+            </a>
+
+            <a href="https://larp.pp.ua/larp333" class="nav-card">
+                <div class="card-info">
+                    <h2>larp333</h2>
+                    <p>ларп скулшутинг луксмакс ларп</p>
+                </div>
+                <span class="badge-btn">ларп →</span>
             </a>
 
         </div>
