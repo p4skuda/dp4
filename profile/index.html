@@ -28,6 +28,14 @@
             background-color: #000;
             perspective: 1000px;
             position: relative;
+            
+            /* --- ДОБАВЛЕНО: Блокируем любые нажатия до окончания анимации загрузки --- */
+            pointer-events: none;
+        }
+
+        /* --- ДОБАВЛЕНО: Возвращаем возможность кликать, когда страница загрузилась --- */
+        body.page-ready {
+            pointer-events: auto;
         }
 
         /* Размытый фоновый рисунок */
@@ -356,7 +364,7 @@
         /* Адаптивность для мобилок */
         @media (max-width: 520px) {
             body {
-                align-items: center; /* Центрирование по вертикали */
+                align-items: center; 
                 padding: 16px 0;
             }
 
@@ -516,6 +524,9 @@
 
                     e.preventDefault();
 
+                    // --- ДОБАВЛЕНО: Блокируем интерфейс при запуске анимации перехода ---
+                    document.body.style.pointerEvents = 'none';
+
                     document.querySelectorAll('.back-btn, .header, .card').forEach(el => {
                         el.style.transitionDelay = '0s';
                     });
@@ -618,6 +629,8 @@
             if (event.persisted) {
                 document.body.classList.add('page-loaded');
                 document.body.classList.add('page-ready');
+                // Разблокируем интерфейс, если пользователь вернулся назад свайпом
+                document.body.style.pointerEvents = 'auto';
             }
         });
     </script>
