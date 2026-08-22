@@ -59,6 +59,9 @@
             transform-style: preserve-3d;
             will-change: transform, opacity;
 
+            /* БЛОКИРУЕМ МЫШЬ во время стартовой анимации */
+            pointer-events: none;
+
             /* Вылет основной панели */
             opacity: 0;
             transform: translateY(50px) scale(0.95);
@@ -113,6 +116,10 @@
         }
 
         /* --- ПОСЛЕ ЗАГРУЗКИ: РЕЖИМ МГНОВЕННОГО ИНТЕРАКТИВА --- */
+        body.page-ready .glass-panel {
+            pointer-events: auto; /* ВОЗВРАЩАЕМ управление мышью */
+        }
+
         body.page-ready .nav-card {
             /* Сбрасываем стартовые задержки и ставим быстрый возврат при уводе мыши (0.18s) */
             transition-delay: 0s !important;
@@ -176,8 +183,8 @@
             cursor: pointer;
         }
 
-        /* Мгновенный отклик при НАВЕДЕНИИ (0.12s) */
-        .nav-card:hover {
+        /* Мгновенный отклик при НАВЕДЕНИИ (0.12s) - СРАБАТЫВАЕТ ТОЛЬКО ПОСЛЕ ЗАГРУЗКИ */
+        body.page-ready .nav-card:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px) scale(1.015) !important;
@@ -190,7 +197,7 @@
         }
 
         /* Быстрый iOS-отклик при клике/тапе (0.08s) */
-        .nav-card:active {
+        body.page-ready .nav-card:active {
             transform: scale(0.97) !important;
             transition: transform 0.08s ease !important;
             background: rgba(255, 255, 255, 0.08);
@@ -235,7 +242,7 @@
             transition: background 0.18s ease-out, transform 0.18s ease-out;
         }
 
-        .nav-card:hover .badge-btn {
+        body.page-ready .nav-card:hover .badge-btn {
             background: rgba(255, 255, 255, 0.22);
             transform: translateX(2px);
             transition: background 0.12s ease-out, transform 0.12s ease-out;
@@ -319,7 +326,7 @@
             // 2. Включаем режим быстрого интерактива (page-ready) сразу после окончания стартовых анимаций
             setTimeout(() => {
                 document.body.classList.add('page-ready');
-            }, 900);
+            }, 1000); // Немного увеличил время (до 1 сек), чтобы последняя карточка 100% успела доехать
 
             // 3. Перехват кликов для красивого ухода элементов вниз перед переходом
             document.querySelectorAll('a').forEach(link => {
@@ -343,6 +350,7 @@
                     }
                     
                     document.body.classList.remove('page-loaded');
+                    document.body.classList.remove('page-ready'); // Сразу отключаем ховеры при уходе
 
                     setTimeout(() => {
                         window.location.href = href;
@@ -353,6 +361,9 @@
             // 4. 3D TILT EFFECT (Только для ПК)
             if (window.matchMedia('(hover: hover)').matches && panel) {
                 panel.addEventListener('mousemove', (e) => {
+                    // ЗАЩИТА: Игнорируем движение мыши, пока не закончится анимация вылета
+                    if (!document.body.classList.contains('page-ready')) return;
+
                     const rect = panel.getBoundingClientRect();
                     
                     const panelCenterX = rect.left + rect.width / 2;
