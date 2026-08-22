@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>писькад</title>
     <style>
-        /* Базовые настройки */
+        /* Базовые настройки и шрифт в стиле iOS */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* Полностью блокируем любую прокрутку */
         html, body {
             overflow: hidden; 
             height: 100%; 
@@ -29,7 +30,7 @@
             position: relative;
         }
 
-        /* Размытый фон */
+        /* Размытый фоновый рисунок */
         body::before {
             content: '';
             position: fixed;
@@ -39,34 +40,11 @@
             height: 100%;
             background: url('https://static.rozetked.me/imager/full/images/uploads/mUIkM061Ljzp.jpg') center/cover no-repeat;
             filter: blur(8px);
-            transform: scale(1.05);
+            transform: scale(1.05); /* Убирает прозрачные края после размытия */
             z-index: -1;
         }
 
-        /* 
-         * 1. ВНЕШНЯЯ ОБЕРТКА (Отвечает только за анимацию вылета)
-         */
-        .glass-panel-wrapper {
-            width: 92%;
-            max-width: 580px;
-            transform-style: preserve-3d;
-            
-            /* Стартовая позиция вылета */
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Активация вылета */
-        body.page-loaded .glass-panel-wrapper {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* 
-         * 2. ВНУТРЕННЯЯ ПАНЕЛЬ (Отвечает за дизайн и 3D-вращение мышью)
-         */
+        /* Главная панель с 3D-наклоном и эффектом матового стекла */
         .glass-panel {
             background: rgba(15, 15, 15, 0.45);
             backdrop-filter: blur(14px);
@@ -74,15 +52,30 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 32px;
+            width: 92%;
+            max-width: 580px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             
             transform-style: preserve-3d;
-            will-change: transform;
-            /* Быстрая анимация для следования за мышью */
-            transition: transform 0.1s ease-out;
+            will-change: transform, opacity;
+
+            /* БЛОКИРУЕМ МЫШЬ во время стартовой анимации */
+            pointer-events: none;
+
+            /* Вылет основной панели */
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- ЭФФЕКТ КАСКАДА ДЛЯ КНОПОК --- */
+        /* Активация панели */
+        body.page-loaded .glass-panel {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- ЭФФЕКТ СТАРТОВОГО ВЫЛЕТА (КАСКАД) --- */
         .header, .nav-card {
             opacity: 0;
             transform: translateY(30px) scale(0.96);
@@ -91,31 +84,92 @@
                         transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* Поочередное всплытие при загрузке страницы */
         body.page-loaded .header {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.1s;
         }
 
-        body.page-loaded .nav-card:nth-child(1) { transition-delay: 0.22s; opacity: 1; transform: translateY(0) scale(1); }
-        body.page-loaded .nav-card:nth-child(2) { transition-delay: 0.34s; opacity: 1; transform: translateY(0) scale(1); }
-        body.page-loaded .nav-card:nth-child(3) { transition-delay: 0.46s; opacity: 1; transform: translateY(0) scale(1); }
+        body.page-loaded .nav-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.22s;
+        }
+
+        body.page-loaded .nav-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.34s;
+        }
+
+        body.page-loaded .nav-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.46s;
+        }
+
+        body.page-loaded .nav-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.58s;
+        }
 
         /* --- ПОСЛЕ ЗАГРУЗКИ: РЕЖИМ МГНОВЕННОГО ИНТЕРАКТИВА --- */
+        body.page-ready .glass-panel {
+            pointer-events: auto; /* ВОЗВРАЩАЕМ управление мышью */
+        }
+
         body.page-ready .nav-card {
+            /* Сбрасываем стартовые задержки и ставим быстрый возврат при уводе мыши (0.18s) */
             transition-delay: 0s !important;
             transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.18s ease-out,
                         border-color 0.18s ease-out,
-                        box-shadow 0.18s ease-out !important;
+                        box-shadow 0.18s ease-out,
+                        opacity 0.4s ease !important;
         }
 
-        /* Остальные стили для шапки, кнопок и иконок */
-        .header { text-align: center; margin-bottom: 28px; }
-        .header h1 { font-family: monospace; font-size: 28px; letter-spacing: 1px; margin-bottom: 6px; }
-        
-        .nav-grid { display: flex; flex-direction: column; gap: 12px; }
+        /* Шапка */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
 
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .header h1 {
+            font-family: monospace;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Сетка разделов */
+        .nav-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Навигационная карточка (Кнопка) */
         .nav-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -129,97 +183,150 @@
             cursor: pointer;
         }
 
-        /* Ховер срабатывает ТОЛЬКО после завершения анимации вылета (body.page-ready) */
+        /* Мгновенный отклик при НАВЕДЕНИИ (0.12s) - СРАБАТЫВАЕТ ТОЛЬКО ПОСЛЕ ЗАГРУЗКИ */
         body.page-ready .nav-card:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px) scale(1.015) !important;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            
+            transition: transform 0.12s ease-out,
+                        background 0.12s ease-out,
+                        border-color 0.12s ease-out,
+                        box-shadow 0.12s ease-out !important;
         }
 
+        /* Быстрый iOS-отклик при клике/тапе (0.08s) */
         body.page-ready .nav-card:active {
             transform: scale(0.97) !important;
             transition: transform 0.08s ease !important;
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .card-info h2 { font-size: 16px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-        .card-info p { font-size: 13px; color: #aaa; line-height: 1.35; }
-        .card-icon { width: 20px; height: 20px; object-fit: cover; border-radius: 4px; display: inline-block; }
-        .card-icon.avatar-icon { border-radius: 50%; }
+        .card-info h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
+        .card-info p {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.35;
+        }
+
+        /* Иконки в названиях карточек */
+        .card-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .card-icon.avatar-icon {
+            border-radius: 50%;
+        }
+
+        /* Кнопка-стрелка внутри карточки */
         .badge-btn {
-            font-size: 13px; font-weight: 600; padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.08); border-radius: 10px;
-            white-space: nowrap; transition: background 0.18s ease-out, transform 0.18s ease-out;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            white-space: nowrap;
+            transition: background 0.18s ease-out, transform 0.18s ease-out;
         }
 
         body.page-ready .nav-card:hover .badge-btn {
-            background: rgba(255, 255, 255, 0.22); transform: translateX(2px);
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateX(2px);
+            transition: background 0.12s ease-out, transform 0.12s ease-out;
         }
 
+        /* Футер */
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Адаптивность для мобильных */
         @media (max-width: 520px) {
-            .glass-panel { padding: 24px 16px; border-radius: 20px; }
-            .nav-card { padding: 14px; }
-            .badge-btn { padding: 6px 10px; font-size: 12px; }
+            .glass-panel {
+                padding: 24px 16px;
+                border-radius: 20px;
+            }
+
+            .nav-card {
+                padding: 14px;
+            }
+
+            .badge-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ВНЕШНЯЯ ОБЕРТКА: отвечает за вылет -->
-    <div class="glass-panel-wrapper" id="glassPanelWrapper">
+    <div class="glass-panel" id="glassPanel">
         
-        <!-- ВНУТРЕННЯЯ ПАНЕЛЬ: отвечает за 3D-поворот мышью -->
-        <div class="glass-panel" id="glassPanel">
+        <div class="header">
+            <h1>писькад</h1>
+        </div>
+
+        <div class="nav-grid">
             
-            <div class="header">
-                <h1>писькад</h1>
-            </div>
+            <a href="iosexploits/" class="nav-card">
+                <div class="card-info">
+                    <h2><img src="/icons/shortcuts.png" alt="Shortcuts" class="card-icon"> Shortcuts</h2>
+                    <p>Эксплоиты на основе ярлыков и приложении комманды</p>
+                </div>
+                <span class="badge-btn">Открыть →</span>
+            </a>
 
-            <div class="nav-grid">
-                <a href="iosexploits/" class="nav-card">
-                    <div class="card-info">
-                        <h2><img src="/icons/shortcuts.png" alt="Shortcuts" class="card-icon"> Shortcuts</h2>
-                        <p>Эксплоиты на основе ярлыков и приложении комманды</p>
-                    </div>
-                    <span class="badge-btn">Открыть →</span>
-                </a>
+            <a href="https://profile.larp.pp.ua/" class="nav-card">
+                <div class="card-info">
+                    <h2><img src="/icons/avatar.jpg" alt="Профиль" class="card-icon avatar-icon"> Профиль</h2>
+                    <p>Информация обо мне, соцсети</p>
+                </div>
+                <span class="badge-btn">Перейти →</span>
+            </a>
 
-                <a href="https://profile.larp.pp.ua/" class="nav-card">
-                    <div class="card-info">
-                        <h2><img src="/icons/avatar.jpg" alt="Профиль" class="card-icon avatar-icon"> Профиль</h2>
-                        <p>Информация обо мне, соцсети</p>
-                    </div>
-                    <span class="badge-btn">Перейти →</span>
-                </a>
-
-                <a href="https://www.tiktok.com/@funduk_40/video/7672901929906736415" class="nav-card">
-                    <div class="card-info">
-                        <h2><img src="/icons/image.png" alt="larp" class="card-icon avatar-icon"> larp333</h2>
-                        <p>ларп это типо скулшутинг и луксмаксинг</p>
-                    </div>
-                    <span class="badge-btn">Перейти →</span>
-                </a>
-            </div>
+            <a href="https://www.tiktok.com/@funduk_40/video/7672901929906736415" class="nav-card">
+                <div class="card-info">
+                    <h2><img src="/icons/image.png" alt="larp" class="card-icon avatar-icon"> larp333</h2>
+                    <p>ларп это типо скулшутинг и луксмаксинг</p>
+                </div>
+                <span class="badge-btn">Перейти →</span>
+            </a>
 
         </div>
+
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const wrapper = document.getElementById('glassPanelWrapper');
             const panel = document.getElementById('glassPanel');
 
-            // 1. Запуск вылета элементов
+            // 1. Запуск вылета элементов при открытии
             requestAnimationFrame(() => {
-                setTimeout(() => { document.body.classList.add('page-loaded'); }, 50);
+                setTimeout(() => {
+                    document.body.classList.add('page-loaded');
+                }, 50);
             });
 
-            // 2. Включаем интерактивы кнопок (hover/active) после окончания стартовых анимаций
+            // 2. Включаем режим быстрого интерактива (page-ready) сразу после окончания стартовых анимаций
             setTimeout(() => {
                 document.body.classList.add('page-ready');
-            }, 1000);
+            }, 1000); 
 
             // 3. Перехват кликов для красивого ухода элементов вниз перед переходом
             document.querySelectorAll('a').forEach(link => {
@@ -227,29 +334,38 @@
                     const href = this.getAttribute('href');
                     const target = this.getAttribute('target');
 
-                    if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') return;
+                    if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') {
+                        return;
+                    }
+
                     e.preventDefault();
 
                     // Сбрасываем задержки при уходе, чтобы всё скрывалось одновременно
-                    document.querySelectorAll('.header, .nav-card').forEach(el => { el.style.transitionDelay = '0s'; });
+                    document.querySelectorAll('.header, .nav-card').forEach(el => {
+                        el.style.transitionDelay = '0s';
+                    });
 
-                    if (wrapper) {
-                        wrapper.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    if (panel) {
+                        panel.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                     }
                     
                     document.body.classList.remove('page-loaded');
-                    document.body.classList.remove('page-ready'); 
+                    document.body.classList.remove('page-ready'); // Сразу отключаем ховеры при уходе
 
-                    setTimeout(() => { window.location.href = href; }, 500);
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
                 });
             });
 
-            // 4. 3D TILT EFFECT (Работает всегда, даже во время вылета)
-            if (window.matchMedia('(hover: hover)').matches && wrapper && panel) {
-                // Слушаем движение мыши по всему документу
-                document.addEventListener('mousemove', (e) => {
-                    // Пересчитываем координаты относительно обертки (которая летит)
-                    const rect = wrapper.getBoundingClientRect();
+            // 4. 3D TILT EFFECT (Только для ПК)
+            if (window.matchMedia('(hover: hover)').matches && panel) {
+                panel.addEventListener('mousemove', (e) => {
+                    // ЗАЩИТА: Игнорируем движение мыши, пока не закончится анимация вылета
+                    if (!document.body.classList.contains('page-ready')) return;
+
+                    const rect = panel.getBoundingClientRect();
+                    
                     const panelCenterX = rect.left + rect.width / 2;
                     const panelCenterY = rect.top + rect.height / 2;
 
@@ -264,8 +380,7 @@
                     panel.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
                 });
 
-                // Возврат в исходное положение если мышь ушла за окно браузера
-                document.addEventListener('mouseleave', () => {
+                panel.addEventListener('mouseleave', () => {
                     panel.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                     panel.style.transform = 'rotateX(0deg) rotateY(0deg)';
                 });
@@ -275,7 +390,8 @@
         // 5. Фикс для Safari/iOS при возврате назад
         window.addEventListener('pageshow', (event) => {
             if (event.persisted) {
-                document.body.classList.add('page-loaded', 'page-ready');
+                document.body.classList.add('page-loaded');
+                document.body.classList.add('page-ready');
             }
         });
     </script>
